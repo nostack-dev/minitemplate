@@ -6,7 +6,7 @@
             <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
         </svg>
     </div>
-    <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] shadow-2xl hidden">   
+    <ul id="themeDropdown" tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] shadow-2xl hidden">
         <li>
             <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dark" value="dark" />
         </li>
@@ -39,6 +39,14 @@
                 if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
                     themeDropdown.classList.add('hidden');
                 }
+            });
+
+            // Apply selected theme and close dropdown
+            themeOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    document.body.setAttribute('data-theme', this.value); // Change theme
+                    themeDropdown.classList.add('hidden'); // Close dropdown
+                });
             });
         });
     </script>
