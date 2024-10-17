@@ -112,7 +112,7 @@ To include a component in `template.html` (or any other component you have creat
 
 The project now includes a **Theme Controller** (`themecontrollerComponent.html`) that allows users to change the theme dynamically via a dropdown. Themes like "light," "dark," "cupcake," "cyberpunk," and many more are available. To update the theme:
 
-1. Use the `themecontrollerComponent` integrated into the header.
+1. The  `themecontrollerComponent` is used to switch between themes, local storage is used to store the selection.
 2. The selected theme will be applied immediately to the page by updating the `data-theme` attribute.
 
 The available themes include but are not limited to:
