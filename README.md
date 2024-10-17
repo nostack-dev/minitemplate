@@ -14,6 +14,8 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 
 ## Project Structure
 
+The flat project structure is intentional to improve development speed by providing direct access to all components without deep navigation. Further structure can be added as the project scales to accommodate more complexity while maintaining this simplicity.
+
 The project consists of the following files and components:
 
 ```
