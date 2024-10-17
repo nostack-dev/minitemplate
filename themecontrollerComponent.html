@@ -1,12 +1,12 @@
 <!-- themecontrollerComponent.html -->
 <div id="themecontrollerComponent" class="dropdown">
-    <div tabindex="0" role="button" class="btn">
+    <div id="themeButton" tabindex="0" role="button" class="btn">
         Theme
         <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
             <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
         </svg>
     </div>
-    <ul tabindex="0" class="dropdown-content">
+    <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] shadow-2xl hidden">   
         <li>
             <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dark" value="dark" />
         </li>
@@ -25,13 +25,21 @@
     </ul>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const themeControllers = document.querySelectorAll('.theme-controller');
-            themeControllers.forEach(controller => {
-                controller.addEventListener('change', function() {
-                    document.body.setAttribute('data-theme', this.value); // Change theme
-                });
+            const themeButton = document.getElementById('themeButton');
+            const themeDropdown = document.getElementById('themeDropdown');
+            const themeOptions = document.querySelectorAll('.theme-controller');
+
+            // Toggle dropdown visibility when the button is clicked
+            themeButton.addEventListener('click', function() {
+                themeDropdown.classList.toggle('hidden');
+            });
+
+            // Close the dropdown if clicked outside
+            document.addEventListener('click', function(event) {
+                if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
+                    themeDropdown.classList.add('hidden');
+                }
             });
         });
     </script>
 </div>
-

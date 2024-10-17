@@ -25,7 +25,7 @@ if [[ ! -f "$TEMPLATE_FILE" ]]; then
 fi
 
 # Prompt the user for the page title
-read -p "Enter the title for your page: " PAGE_TITLE
+read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
 
 # Function to ensure all required components exist
 ensure_components() {
@@ -48,8 +48,8 @@ missing_components=()
 
 # Read the template file line by line
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # Replace the <title> tag with the user-provided title
-    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]]; then
+    # Replace the <title> tag with the user-provided title, only if a title is provided
+    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]] && [[ ! -z "$PAGE_TITLE" ]]; then
         echo "Replacing <title> tag with user-provided title."
         line="<title>${PAGE_TITLE}</title>"
     fi
