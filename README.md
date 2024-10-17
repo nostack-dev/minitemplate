@@ -1,4 +1,3 @@
-
 # ✍️ MiniTemplate - Simple Template Engine
 
 ## Overview
@@ -18,19 +17,19 @@ The flat project structure is intentional to improve development speed by provid
 
 The project consists of the following files and components:
 
-```html 
+```html
 .
-├── contentComponent.html        <!-- Main content area for dynamic display -->
-├── 🟢 createcomponent.sh        <!-- Script to create new components -->
-├── footerComponent.html         <!-- Footer with copyright and scripts -->
-├── 🟢 generate.sh               <!-- Script to generate index.html with optional theme support -->
-├── headerComponent.html         <!-- Header including the theme controller -->
-├── index.html                   <!-- Main entry point for the application -->
-├── 🟢 print.sh                  <!-- Script to display directory structure -->
-├── README.md                    <!-- Documentation for the project -->
-├── sidebarComponent.html        <!-- Sidebar with navigation and toggling -->
-├── template.html                <!-- Template file combining all components -->
-└── themecontrollerComponent.html <!-- Theme controller dropdown for changing site themes -->
+├── 🟢 createcomponent.sh [name]         # Create a new component (name is required)
+├── 🟢 generate.sh [theme]               # Generate index.html with optional theme
+├── 🟢 print.sh .                        # Print current directory structure and files
+├── template.html                        # Base file used to generate index.html
+├── index.html                           # Generated from template.html
+├── headerComponent.html                 # Header with theme controller
+├── contentComponent.html                # Main content area
+├── sidebarComponent.html                # Sidebar with navigation
+├── themecontrollerComponent.html        # Theme controller dropdown
+├── footerComponent.html                 # Footer content
+└── README.md                            # Project documentation
 ```
 
 ## How to Use
@@ -95,33 +94,14 @@ The available themes include but are not limited to:
 - emerald
 - corporate
 - synthwave
-- retro
+- business
 - cyberpunk
-- valentine
-- aqua
-- lofi
-- pastel
-- fantasy
-- wireframe
-- black
-- luxury
-- dracula
-- cmyk
-- autumn
-- acid
-- lemonade
-- night
-- coffee
-- winter
-- dim
-- nord
-- sunset
 
+For a complete list [click here](https://daisyui.com/docs/themes/)
 ## daisyUI
 
-MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [click here](https://daisyui.com/components/) to see all available components, themes and their documentation.
+MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [visit daisyUI documentation](https://daisyui.com/components/) to see all available components, themes, and their documentation.
 
 For further assistance or contributions, feel free to reach out or contribute to the project!
 
 ---
-
