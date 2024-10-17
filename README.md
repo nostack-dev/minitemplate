@@ -18,7 +18,7 @@ The flat project structure is intentional to improve development speed by provid
 
 The project consists of the following files and components:
 
-```bash
+```console 
 .
 ├── contentComponent.html        # Main content area for dynamic display
 ├── createcomponent.sh           # Script to create new components
