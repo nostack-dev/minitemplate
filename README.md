@@ -8,7 +8,6 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 
 - **Modular Components**: Reusable components like headers, sidebars, footers, and chat inputs.
 - **Template-based System**: Utilize a main `template.html` file to assemble components using a simple placeholder system (e.g., `{{component}}`).
-- **Authentication Integration**: Easy management of login and session states using Keycloak through `keycloakComponent.html`.
 - **Custom Theming**: Quickly change themes with the `generate.sh` script or directly using the theme controller dropdown.
 
 ## Project Structure
