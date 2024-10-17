@@ -115,9 +115,9 @@ The available themes include but are not limited to:
 - nord
 - sunset
 
-## Conclusion
+## daisyUI
 
-MiniTemplate is designed for developers who want to streamline their web development process by utilizing modular, reusable components. By following the structure and usage guidelines provided, you can efficiently create and manage your web applications with ease.
+MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [click here](https://daisyui.com/components/) to see all available components, themes and their documentation.
 
 For further assistance or contributions, feel free to reach out or contribute to the project!
 
