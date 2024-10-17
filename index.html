@@ -45,56 +45,58 @@
 
     <!-- Self-contained JavaScript for Sidebar Toggle and Breakpoint Detection -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebarComponent');
-            const toggleButtons = document.querySelectorAll('.toggleSidebarButton'); // Targeting all hamburger icons
-            const mainContainer = document.body;
-            const content = document.getElementById('contentComponent');
-            const contentHamburger = document.getElementById('contentHamburger'); // The hamburger in the content header
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebar = document.getElementById('sidebarComponent');
+                const toggleButtons = document.querySelectorAll('.toggleSidebarButton'); // Targeting all hamburger icons
+                const mainContainer = document.body;
+                const content = document.getElementById('contentComponent');
+                const contentHamburger = document.getElementById('contentHamburger'); // The hamburger in the content header
 
-            function updateSidebarState() {
-                if (window.innerWidth >= 768) { // Medium screens and larger
-                    sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
-                    sidebar.classList.add('md:translate-x-0');
-                    sidebar.setAttribute('data-state', 'open');
-                    content.classList.add('md:ml-64');
-                    mainContainer.setAttribute('data-sidebar', 'open');
-                    contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
-                } else { // Small screens (mobile)
-                    sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
-                    sidebar.setAttribute('data-state', 'closed');
-                    content.classList.remove('md:ml-64');
-                    mainContainer.setAttribute('data-sidebar', 'closed');
-                    contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
-                }
-            }
-
-            // Add event listener to buttons for toggling the sidebar
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const state = sidebar.getAttribute('data-state');
-                    if (state === 'open') {
+                function updateSidebarState() {
+                    if (window.innerWidth >= 768) { // Medium screens and larger
+                        sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
+                        sidebar.classList.add('md:translate-x-0');
+                        sidebar.setAttribute('data-state', 'open');
+                        content.classList.add('md:ml-64');
+                        mainContainer.setAttribute('data-sidebar', 'open');
+                        contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
+                    } else { // Small screens (mobile)
                         sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
                         sidebar.setAttribute('data-state', 'closed');
-                        mainContainer.setAttribute('data-sidebar', 'closed');
                         content.classList.remove('md:ml-64');
+                        mainContainer.setAttribute('data-sidebar', 'closed');
                         contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
-                    } else {
-                        sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
-                        sidebar.setAttribute('data-state', 'open');
-                        mainContainer.setAttribute('data-sidebar', 'open');
-                        content.classList.add('md:ml-64');
-                        contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
                     }
+                }
+
+                // Add event listener to buttons for toggling the sidebar
+                toggleButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const state = sidebar.getAttribute('data-state');
+                        if (state === 'open') {
+                            sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
+                            sidebar.setAttribute('data-state', 'closed');
+                            mainContainer.setAttribute('data-sidebar', 'closed');
+                            content.classList.remove('md:ml-64');
+                            contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
+                        } else {
+                            sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
+                            sidebar.setAttribute('data-state', 'open');
+                            mainContainer.setAttribute('data-sidebar', 'open');
+                            content.classList.add('md:ml-64');
+                            contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
+                        }
+                    });
                 });
+
+                // Detect window resize and apply sidebar state accordingly
+                window.addEventListener('resize', updateSidebarState);
+
+                // Set initial sidebar state based on screen size
+                updateSidebarState();
             });
-
-            // Detect window resize and apply sidebar state accordingly
-            window.addEventListener('resize', updateSidebarState);
-
-            // Set initial sidebar state based on screen size
-            updateSidebarState();
-        });
+        })();
     </script>
 </div>
     </div>
@@ -195,10 +197,6 @@
   </div>
 </div>
     <script>
-        // Add your component-specific JavaScript here
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('hero component loaded.');
-        });
     </script>
 </div>    
     </div>
