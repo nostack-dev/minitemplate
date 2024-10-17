@@ -18,19 +18,19 @@ The flat project structure is intentional to improve development speed by provid
 
 The project consists of the following files and components:
 
-```console 
+```html 
 .
-├── contentComponent.html        # Main content area for dynamic display
-├── createcomponent.sh           # Script to create new components
-├── footerComponent.html         # Footer with copyright and scripts
-├── generate.sh                  # Script to generate index.html with optional theme support
-├── headerComponent.html         # Header including the theme controller
-├── index.html                   # Main entry point for the application
-├── print.sh                     # Script to display directory structure
-├── README.md                    # Documentation for the project
-├── sidebarComponent.html        # Sidebar with navigation and toggling
-├── template.html                # Template file combining all components
-└── themecontrollerComponent.html # Theme controller dropdown for changing site themes
+├── contentComponent.html        <!-- Main content area for dynamic display -->
+├── 🟢 createcomponent.sh        <!-- Script to create new components -->
+├── footerComponent.html         <!-- Footer with copyright and scripts -->
+├── 🟢 generate.sh               <!-- Script to generate index.html with optional theme support -->
+├── headerComponent.html         <!-- Header including the theme controller -->
+├── index.html                   <!-- Main entry point for the application -->
+├── 🟢 print.sh                  <!-- Script to display directory structure -->
+├── README.md                    <!-- Documentation for the project -->
+├── sidebarComponent.html        <!-- Sidebar with navigation and toggling -->
+├── template.html                <!-- Template file combining all components -->
+└── themecontrollerComponent.html <!-- Theme controller dropdown for changing site themes -->
 ```
 
 ## How to Use
