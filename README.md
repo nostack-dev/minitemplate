@@ -53,6 +53,37 @@ To create a new component, use the `createcomponent` script, which will generate
   ```
 - Replace `[componentName]` with the desired name for your new component.
 
+The generated component structure includes:
+- A `div` element with an ID corresponding to the component name.
+- A button element using DaisyUI classes (`btn`) for consistent styling.
+- An immediately invoked function expression (IIFE) in the script tag to ensure that JavaScript executes once the document is loaded, scoped specifically to this component.
+
+#### Example Component Structure
+
+```html
+<!-- buttonComponent.html -->
+<div id="buttonComponent">
+    <!-- Add your component HTML here -->
+    <button class="btn">Action</button>
+
+    <script>
+        // Add your component-specific JavaScript here
+        (function() {
+            // Ensures the script runs only after the document is fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('button component loaded.');
+            });
+        })();
+    </script>
+</div>
+```
+
+- **Why use an Immediate Function?**
+  - The immediate function, also known as an Immediately Invoked Function Expression (IIFE), ensures that the JavaScript within the component is self-contained and doesn't interfere with other components. This keeps the scope of variables and functions limited to this component, promoting modularity and avoiding conflicts.
+
+- **Scoped Tailwind and DaisyUI CSS**
+  - The use of DaisyUI ensures that the styles are consistent and scoped to the elements using DaisyUI classes like `btn`. This approach helps keep the styling modular and easily maintainable, while also providing a visually appealing design out of the box.
+
 ### 3. Integrating Components into the Template
 
 To include a component in `template.html`:
@@ -97,6 +128,7 @@ The available themes include but are not limited to:
 - cyberpunk
 
 For a complete list [click here](https://daisyui.com/docs/themes/)
+
 ## daisyUI
 
 MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [visit daisyUI documentation](https://daisyui.com/components/) to see all available components, themes, and their documentation.
@@ -104,3 +136,4 @@ MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [v
 For further assistance or contributions, feel free to reach out or contribute to the project!
 
 ---
+
