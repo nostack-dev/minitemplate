@@ -1,3 +1,4 @@
+
 # ✍️ MiniTemplate - Simple Template Engine
 
 ## Overview
@@ -9,7 +10,7 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 - **Modular Components**: Reusable components like headers, sidebars, footers, and chat inputs.
 - **Template-based System**: Utilize a main `template.html` file to assemble components using a simple placeholder system (e.g., `{{component}}`).
 - **Authentication Integration**: Easy management of login and session states using Keycloak through `keycloakComponent.html`.
-- **Custom Theming**: Quickly change themes with the `generate.sh` script.
+- **Custom Theming**: Quickly change themes with the `generate.sh` script or directly using the theme controller dropdown.
 
 ## Project Structure
 
@@ -17,21 +18,17 @@ The project consists of the following files and components:
 
 ```
 .
-├── chatinputComponent.html      # Chat input UI with a send button
 ├── contentComponent.html        # Main content area for dynamic display
 ├── createcomponent.sh           # Script to create new components
 ├── footerComponent.html         # Footer with copyright and scripts
-├── generate.sh                  # Script to generate index.html
-├── headerComponent.html         # Header with model dropdown and login
+├── generate.sh                  # Script to generate index.html with optional theme support
+├── headerComponent.html         # Header including the theme controller
 ├── index.html                   # Main entry point for the application
-├── keycloakComponent.html       # Handles Keycloak authentication
-├── modeldropdownComponent.html   # Dropdown for selecting models
-├── ollamachatComponent.html     # UI for Ollama chat interaction
-├── openaichatComponent.html     # Chat component integrating OpenAI chat
 ├── print.sh                     # Script to display directory structure
 ├── README.md                    # Documentation for the project
 ├── sidebarComponent.html        # Sidebar with navigation and toggling
-└── template.html                # Template file combining all components
+├── template.html                # Template file combining all components
+└── themecontrollerComponent.html # Theme controller dropdown for changing site themes
 ```
 
 ## How to Use
@@ -44,7 +41,7 @@ The core structure of the application is generated using the `generate.sh` scrip
   ```bash
   ./generate.sh [theme-name]
   ```
-- If no theme is specified, the default theme (`business`) will be applied.
+- If no theme is specified, the default theme will be applied. If no theme is provided, the `data-theme` attribute will not be set.
 
 ### 2. Creating New Components
 
@@ -80,6 +77,44 @@ To include a component in `template.html`:
 </html>
 ```
 
+## Custom Theming
+
+The project now includes a **Theme Controller** (`themecontrollerComponent.html`) that allows users to change the theme dynamically via a dropdown. Themes like "light," "dark," "cupcake," "cyberpunk," and many more are available. To update the theme:
+
+1. Use the `themecontrollerComponent` integrated into the header.
+2. The selected theme will be applied immediately to the page by updating the `data-theme` attribute.
+
+The available themes include but are not limited to:
+
+- light
+- dark
+- cupcake
+- bumblebee
+- emerald
+- corporate
+- synthwave
+- retro
+- cyberpunk
+- valentine
+- aqua
+- lofi
+- pastel
+- fantasy
+- wireframe
+- black
+- luxury
+- dracula
+- cmyk
+- autumn
+- acid
+- lemonade
+- night
+- coffee
+- winter
+- dim
+- nord
+- sunset
+
 ## Conclusion
 
 MiniTemplate is designed for developers who want to streamline their web development process by utilizing modular, reusable components. By following the structure and usage guidelines provided, you can efficiently create and manage your web applications with ease.
@@ -87,3 +122,4 @@ MiniTemplate is designed for developers who want to streamline their web develop
 For further assistance or contributions, feel free to reach out or contribute to the project!
 
 ---
+
