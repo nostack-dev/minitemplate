@@ -1,0 +1,102 @@
+<!-- keycloakComponent.html -->
+<div id="keycloakComponent">
+    <button id="loginButton" class="btn mr-16px">Login</button>
+    <script>
+        let keycloakInitialized = false;  // Global flag to track if Keycloak is initialized
+
+        // Function to check if Keycloak is already defined
+        function initializeKeycloak() {
+            if (typeof keycloak === 'undefined' && !keycloakInitialized) {
+                const storedToken = localStorage.getItem('kcToken');
+                if (storedToken) {
+                    keycloak = new Keycloak({
+                        url: 'https://identityserver.de',
+                        realm: 'fakturaservice',
+                        clientId: 'frontendserver-frontend',
+                        token: storedToken
+                    });
+                } else {
+                    keycloak = new Keycloak({
+                        url: 'https://identityserver.de',
+                        realm: 'fakturaservice',
+                        clientId: 'frontendserver-frontend'
+                    });
+                }
+
+                keycloak.onTokenExpired = function () {
+                    keycloak.updateToken(30).then(function (refreshed) {
+                        if (refreshed) {
+                            localStorage.setItem('kcToken', keycloak.token); // Store new token in local storage
+                        }
+                    }).catch(function () {
+                        console.warn('Failed to refresh the token, or the session has expired');
+                        keycloak.logout();
+                    });
+                };
+
+                keycloakInitialized = true;  // Mark Keycloak as initialized
+            }
+        }
+
+        // Load the Keycloak library dynamically
+        function loadKeycloakScript() {
+            return new Promise((resolve, reject) => {
+                if (document.querySelector('script[src="https://cdn.jsdelivr.net/npm/keycloak-js@latest/dist/keycloak.min.js"]')) {
+                    resolve();  // Script already loaded
+                } else {
+                    const script = document.createElement('script');
+                    script.src = "https://cdn.jsdelivr.net/npm/keycloak-js@latest/dist/keycloak.min.js";
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error('Failed to load Keycloak script'));
+                    document.head.appendChild(script);
+                }
+            });
+        }
+
+        // Update UI based on authentication state
+        function updateUI(authenticated) {
+            const authContent = document.getElementById('auth-content');
+            const authSidebar = document.getElementById('auth-sidebar');
+            const authModeldropdown = document.getElementById('auth-modeldropdown');
+            const loginButton = document.getElementById('loginButton');
+
+            if (authenticated) {
+                loginButton.textContent = 'Logout';
+                // Add event listener for logout
+                loginButton.addEventListener('click', () => keycloak.logout({ redirectUri: window.location.href }));
+                // Show the authenticated content
+                authSidebar.classList.remove('hidden');
+                authContent.classList.remove('hidden');
+                authModeldropdown.classList.remove('hidden');
+            } else {
+                loginButton.textContent = 'Login';
+                // Add event listener for login
+                loginButton.addEventListener('click', () => keycloak.login());
+                // Hide the authenticated content
+                authSidebar.classList.add('hidden');
+                authContent.classList.add('hidden');
+                authModeldropdown.classList.add('hidden');
+            }
+        }
+
+        // Load the Keycloak script, then initialize Keycloak
+        loadKeycloakScript()
+            .then(() => {
+                initializeKeycloak();  // Ensure Keycloak is only initialized if not defined
+
+                // Initialize Keycloak and update the UI accordingly
+                keycloak.init({ onLoad: 'check-sso', checkLoginIframe: false })
+                    .then(authenticated => {
+                        updateUI(authenticated);
+                        if (authenticated) {
+                            localStorage.setItem('kcToken', keycloak.token);  // Store token in localStorage
+                        }
+                    })
+                    .catch(() => updateUI(false));
+
+            })
+            .catch(error => {
+                console.error(error.message);
+            });
+    </script>
+</div>

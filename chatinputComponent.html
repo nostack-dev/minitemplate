@@ -1,0 +1,11 @@
+<!-- chatinputComponent.html -->
+<div id="chatinputComponent" class="p-4">
+  <div class="flex items-center gap-2 bg-base-100 rounded-full p-2 shadow">
+    <input id="userInput" type="text" class="input flex-grow bg-transparent border-none focus:outline-none" placeholder="Enter your message..." onkeypress="handleKeyPress(event)" />
+    <button class="btn btn-circle btn-sm" onclick="sendPrompt()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path d="M2.003 21l20.993-9L2.003 3v7l15 2-15 2z"/>
+      </svg>
+    </button>
+  </div>
+</div>
