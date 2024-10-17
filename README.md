@@ -58,7 +58,7 @@ The generated component structure includes:
 - A button element using DaisyUI classes (`btn`) for consistent styling.
 - An immediately invoked function expression (IIFE) in the script tag to ensure that JavaScript executes once the document is loaded, scoped specifically to this component.
 
-#### Example Component Structure
+#### Component Structure
 
 ```html
 <!-- buttonComponent.html -->
