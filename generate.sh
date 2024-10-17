@@ -8,14 +8,14 @@ TEMPLATE_FILE="template.html"
 OUTPUT_FILE="index.html"  # Output file set to index.html
 
 # Default theme if not provided
-THEME_NAME="business"
+THEME_NAME=""
 
 # Check if a theme name was passed as an argument
 if [[ ! -z "$1" ]]; then
     THEME_NAME="$1"
     echo "Using theme: $THEME_NAME"
 else
-    echo "No theme provided, using default: $THEME_NAME"
+    echo "No theme provided, will not set data-theme attribute."
 fi
 
 # Check if the template file exists
@@ -54,10 +54,14 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         line="<title>${PAGE_TITLE}</title>"
     fi
 
-    # Replace the <body> tag with the user-provided theme
+    # Replace the <body> tag with the user-provided theme if a theme is specified
     if [[ "$line" =~ \<body ]]; then
-        echo "Adding data-theme attribute with theme: $THEME_NAME"
-        line="<body class=\"flex flex-col min-h-screen\" data-theme=\"$THEME_NAME\">"
+        if [[ ! -z "$THEME_NAME" ]]; then
+            echo "Adding data-theme attribute with theme: $THEME_NAME"
+            line="<body class=\"flex flex-col min-h-screen\" data-theme=\"$THEME_NAME\">"
+        else
+            line="<body class=\"flex flex-col min-h-screen\">"
+        fi
     fi
 
     # Use regex to find all placeholders in the line

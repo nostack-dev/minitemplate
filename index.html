@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ai chat</title>
+<title>title</title>
 
     <!-- DaisyUI with Tailwind CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex flex-col min-h-screen" data-theme="cyberpunk">
+<body class="flex flex-col min-h-screen">
 
     <!-- Components that will be hidden/shown based on authentication -->
     <div class="flex-1">
         <!-- Sidebar -->
-    <div id="auth-sidebar">
+    <div>
         <!-- sidebarComponent.html -->
-<div id="sidebarComponent" data-state="closed" class="bg-base-100 base-content w-64 h-full fixed top-0 left-0 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-10">
+<div id="sidebarComponent" data-state="closed" class="w-64 h-full fixed top-0 left-0 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-10">
     <!-- Sidebar Header -->
     <div class="h-16 flex items-center justify-between px-4">
         <!-- Hamburger Icon (Always Visible) -->
@@ -35,7 +35,7 @@
     <!-- Sidebar Navigation -->
     <nav class="flex-1 p-4">
         <ul class="menu w-full">
-            <li>I'm your guide... 🗑</li>
+            <li>sidebar entry</li>
         </ul>
     </nav>
 
@@ -100,120 +100,74 @@
 </div>
     </div>
         <!-- contentComponent.html -->
-<div id="contentComponent" class="flex flex-col flex-1 transition-all duration-300 ease-in-out md:ml-64 h-dvh">
+<div id="contentComponent" class="bg-neutral flex flex-col flex-1 transition-all duration-300 ease-in-out md:ml-64 h-dvh">
     <div id="headerComponent">
         <header id="contentHeader" class="h-16 flex items-center justify-between w-full p-0 px-4">
             <div class="flex items-center space-x-4">
                 <button id="contentHamburger" class="toggleSidebarButton hidden" aria-label="Toggle Sidebar">☰</button>
-                <h1 id="auth-modeldropdown" class="text-lg"><!-- modeldropdownComponent.html -->
-<div id="modeldropdownComponent" class="flex items-center gap-2">
-    <select id="modelSelect" class="input input-bordered">
-        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
-        <option value="gpt-4o">GPT-4o</option>
-        <!-- Add more models as needed -->
-    </select>
-</div></h1>
+                <h1 id="auth-modeldropdown" class="text-lg"></h1>
             </div>
-            <!-- keycloakComponent.html -->
-<div id="keycloakComponent">
-    <button id="loginButton" class="btn mr-16px">Login</button>
+            <!-- themecontrollerComponent.html -->
+<div id="themecontrollerComponent" class="dropdown">
+  <div tabindex="0" role="button" class="btn">
+    Theme
+    <svg
+      width="12px"
+      height="12px"
+      class="inline-block h-2 w-2 fill-current opacity-60"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 2048 2048">
+      <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+    </svg>
+  </div>
+  <ul tabindex="0" class="dropdown-content">
+    <li>
+      <input
+        type="radio"
+        name="theme-dropdown"
+        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+        aria-label="Default"
+        value="default" />
+    </li>
+    <li>
+      <input
+        type="radio"
+        name="theme-dropdown"
+        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+        aria-label="Retro"
+        value="retro" />
+    </li>
+    <li>
+      <input
+        type="radio"
+        name="theme-dropdown"
+        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+        aria-label="Cyberpunk"
+        value="cyberpunk" />
+    </li>
+    <li>
+      <input
+        type="radio"
+        name="theme-dropdown"
+        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+        aria-label="Valentine"
+        value="valentine" />
+    </li>
+    <li>
+      <input
+        type="radio"
+        name="theme-dropdown"
+        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+        aria-label="Aqua"
+        value="aqua" />
+    </li>
+  </ul>
+</div>
     <script>
-        let keycloakInitialized = false;  // Global flag to track if Keycloak is initialized
-
-        // Function to check if Keycloak is already defined
-        function initializeKeycloak() {
-            if (typeof keycloak === 'undefined' && !keycloakInitialized) {
-                const storedToken = localStorage.getItem('kcToken');
-                if (storedToken) {
-                    keycloak = new Keycloak({
-                        url: 'https://identityserver.de',
-                        realm: 'fakturaservice',
-                        clientId: 'frontendserver-frontend',
-                        token: storedToken
-                    });
-                } else {
-                    keycloak = new Keycloak({
-                        url: 'https://identityserver.de',
-                        realm: 'fakturaservice',
-                        clientId: 'frontendserver-frontend'
-                    });
-                }
-
-                keycloak.onTokenExpired = function () {
-                    keycloak.updateToken(30).then(function (refreshed) {
-                        if (refreshed) {
-                            localStorage.setItem('kcToken', keycloak.token); // Store new token in local storage
-                        }
-                    }).catch(function () {
-                        console.warn('Failed to refresh the token, or the session has expired');
-                        keycloak.logout();
-                    });
-                };
-
-                keycloakInitialized = true;  // Mark Keycloak as initialized
-            }
-        }
-
-        // Load the Keycloak library dynamically
-        function loadKeycloakScript() {
-            return new Promise((resolve, reject) => {
-                if (document.querySelector('script[src="https://cdn.jsdelivr.net/npm/keycloak-js@latest/dist/keycloak.min.js"]')) {
-                    resolve();  // Script already loaded
-                } else {
-                    const script = document.createElement('script');
-                    script.src = "https://cdn.jsdelivr.net/npm/keycloak-js@latest/dist/keycloak.min.js";
-                    script.onload = () => resolve();
-                    script.onerror = () => reject(new Error('Failed to load Keycloak script'));
-                    document.head.appendChild(script);
-                }
-            });
-        }
-
-        // Update UI based on authentication state
-        function updateUI(authenticated) {
-            const authContent = document.getElementById('auth-content');
-            const authSidebar = document.getElementById('auth-sidebar');
-            const authModeldropdown = document.getElementById('auth-modeldropdown');
-            const loginButton = document.getElementById('loginButton');
-
-            if (authenticated) {
-                loginButton.textContent = 'Logout';
-                // Add event listener for logout
-                loginButton.addEventListener('click', () => keycloak.logout({ redirectUri: window.location.href }));
-                // Show the authenticated content
-                authSidebar.classList.remove('hidden');
-                authContent.classList.remove('hidden');
-                authModeldropdown.classList.remove('hidden');
-            } else {
-                loginButton.textContent = 'Login';
-                // Add event listener for login
-                loginButton.addEventListener('click', () => keycloak.login());
-                // Hide the authenticated content
-                authSidebar.classList.add('hidden');
-                authContent.classList.add('hidden');
-                authModeldropdown.classList.add('hidden');
-            }
-        }
-
-        // Load the Keycloak script, then initialize Keycloak
-        loadKeycloakScript()
-            .then(() => {
-                initializeKeycloak();  // Ensure Keycloak is only initialized if not defined
-
-                // Initialize Keycloak and update the UI accordingly
-                keycloak.init({ onLoad: 'check-sso', checkLoginIframe: false })
-                    .then(authenticated => {
-                        updateUI(authenticated);
-                        if (authenticated) {
-                            localStorage.setItem('kcToken', keycloak.token);  // Store token in localStorage
-                        }
-                    })
-                    .catch(() => updateUI(false));
-
-            })
-            .catch(error => {
-                console.error(error.message);
-            });
+        // Add your component-specific JavaScript here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('themecontroller component loaded.');
+        });
     </script>
 </div>
         </header>
@@ -222,222 +176,6 @@
 </div>
 
     <div id="auth-content" class="hidden flex flex-1 flex-col p-6 rounded-lg shadow overflow-hidden">
-        <!-- openaichatComponent.html -->
-<div id="openaichatComponent" class="flex flex-col justify-between w-full h-full max-w-2xl mx-auto">
-    <!-- Chat bubbles container (scrollable) -->
-    <div id="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4" onscroll="handleScroll()">
-        <!-- Messages will be dynamically appended here -->
-    </div>
-
-    <!-- Autoscroll button -->
-    <div id="autoscrollButtonContainer" class="flex justify-center mb-2">
-        <button id="autoscrollButton" class="btn btn-circle btn-sm" onclick="enableAutoscroll()" style="visibility: hidden;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                <path d="M12 16l4-4h-3V4h-2v8H8l4 4z"/>
-            </svg>
-        </button>
-    </div>
-
-    <!-- Chat input at the bottom -->
-    <div class="p-4 border-t border-gray-200">
-        <div class="flex items-center gap-2">
-            <input type="text" id="userInput" class="input input-bordered flex-grow" placeholder="Enter your message..." onkeypress="handleKeyPress(event)" />
-            <button class="btn" onclick="sendPrompt()">Send</button>
-        </div>
-    </div>
-
-    <script>
-        let conversationHistory = [];
-        let autoscrollEnabled = true;
-
-        // Function to format the message before displaying
-        function formatMessage(message) {
-            // Convert newlines (\n) into <br> for line breaks
-            const formattedMessage = message
-                .replace(/\n/g, '<br>') // Handle line breaks
-                .replace(/(\.\s)/g, '$1<br>'); // Optionally handle periods followed by space
-            return formattedMessage;
-        }
-
-        function handleScroll() {
-            const chatContainer = document.getElementById("chatContainer");
-            const scrollTop = chatContainer.scrollTop;
-            const scrollHeight = chatContainer.scrollHeight;
-            const clientHeight = chatContainer.clientHeight;
-
-            // Check if the user has scrolled away from the bottom
-            if (scrollHeight - scrollTop > clientHeight + 10) {
-                autoscrollEnabled = false;
-                toggleAutoscrollButtonVisibility();
-            } else {
-                autoscrollEnabled = true;
-                toggleAutoscrollButtonVisibility();
-            }
-        }
-
-        function enableAutoscroll() {
-            autoscrollEnabled = true;
-            scrollToBottom();  // Immediately scroll to the bottom
-            toggleAutoscrollButtonVisibility();
-        }
-
-        function toggleAutoscrollButtonVisibility() {
-            const button = document.getElementById("autoscrollButton");
-            button.style.visibility = autoscrollEnabled ? "hidden" : "visible";
-        }
-
-        function scrollToBottom() {
-            const chatContainer = document.getElementById("chatContainer");
-
-            // Continue to follow the scroll as new messages come in
-            if (autoscrollEnabled) {
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === "Enter") {
-                sendPrompt();
-            }
-        }
-
-        async function sendPrompt() {
-            const inputField = document.getElementById("userInput");
-            const userMessage = inputField.value.trim();
-            inputField.value = "";
-
-            if (!userMessage) return;
-
-            appendMessage(userMessage, 'user');
-            const loadingElement = createLoadingElement();
-            const chatContainer = document.getElementById("chatContainer");
-            chatContainer.appendChild(loadingElement);
-            scrollToBottom();
-
-            const selectedModel = document.getElementById("modelSelect").value;
-
-            const requestBody = {
-                input: {
-                    input: {
-                        prompt: userMessage,
-                        conversationHistory: conversationHistory,
-                        model: selectedModel
-                    }
-                }
-            };
-
-            try {
-                let token = null;
-
-                if (typeof keycloak !== 'undefined') {
-                    token = keycloak.token;
-                } else {
-                    const storedToken = localStorage.getItem('kcToken');
-                    if (storedToken) {
-                        token = storedToken;
-                    } else {
-                        throw new Error("Authentication is required. Please login.");
-                    }
-                }
-
-                const response = await fetch("https://frontendserver.de/api/askOpenAI", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify(requestBody)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-                let done = false;
-                let tokenBuffer = '';
-                let aiResponseText = '';
-
-                while (!done) {
-                    const { value, done: readerDone } = await reader.read();
-                    done = readerDone;
-
-                    if (value) {
-                        tokenBuffer += decoder.decode(value, { stream: true });
-                        const tokens = tokenBuffer.split('\n');
-                        tokenBuffer = tokens.pop();
-
-                        tokens.forEach(token => {
-                            if (token.trim()) {
-                                try {
-                                    const parsed = JSON.parse(token);
-                                    aiResponseText += parsed.response;
-                                    loadingElement.innerHTML = formatMessage(aiResponseText);
-                                    scrollToBottom();
-                                } catch (error) {
-                                    console.error("Error parsing token:", error);
-                                }
-                            }
-                        });
-                    }
-                }
-
-                loadingElement.innerHTML = formatMessage(aiResponseText);
-                conversationHistory.push({ role: 'assistant', content: aiResponseText });
-
-            } catch (error) {
-                loadingElement.innerHTML = `Error: ${error.message}`;
-            }
-        }
-
-        // Function to create a message element with DaisyUI chat classes
-        function createMessageElement(message, sender) {
-            const messageElement = document.createElement("div");
-            messageElement.classList.add("chat", sender === 'user' ? "chat-end" : "chat-start");
-
-            const bubbleElement = document.createElement("div");
-            bubbleElement.classList.add("chat-bubble");
-
-            // Apply formatting using the formatMessage function
-            bubbleElement.innerHTML = formatMessage(message); // Use innerHTML to preserve formatting
-
-            messageElement.appendChild(bubbleElement);
-            return messageElement;
-        }
-
-        function createLoadingElement() {
-            const loadingElement = document.createElement("div");
-            loadingElement.classList.add("chat", "chat-start");
-            const spinnerElement = document.createElement("span");
-            spinnerElement.classList.add("loading", "loading-ring", "loading-sm");
-            loadingElement.appendChild(spinnerElement);
-            return loadingElement;
-        }
-
-        function appendMessage(message, sender) {
-            const messageElement = createMessageElement(message, sender);
-            const chatContainer = document.getElementById("chatContainer");
-            chatContainer.appendChild(messageElement);
-            scrollToBottom();
-        }
-
-        // Focus management for input
-        document.addEventListener('keydown', function(event) {
-            const chatInput = document.getElementById('userInput');
-            function shouldFocusOnInput(event) {
-                if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) {
-                    return false;
-                }
-                return event.key.length === 1; // Single character keys
-            }
-
-            if (shouldFocusOnInput(event)) {
-                chatInput.focus();
-            }
-        });
-    </script>
-</div>
     </div>
     <!-- Content Footer -->
     <div class="p-4 h-5px flex items-center justify-center">
