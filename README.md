@@ -86,7 +86,7 @@ The generated component structure includes:
 
 ### 3. Integrating Components into the Template
 
-To include a component in `template.html`:
+To include a component in `template.html` (or any other component you have created):
 
 1. Use the placeholder syntax `{{componentName}}` within `template.html` where you want the component to appear.
 2. Ensure the component file (e.g., `headerComponent.html`) is correctly named and located in the project root.
