@@ -1,4 +1,3 @@
-
 # ✍️ MiniTemplate - Simple Template Engine
 
 ## Overview
@@ -20,6 +19,7 @@ The project consists of the following files and components:
 .
 ├── chatinputComponent.html      # Chat input UI with a send button
 ├── contentComponent.html        # Main content area for dynamic display
+├── createcomponent.sh           # Script to create new components
 ├── footerComponent.html         # Footer with copyright and scripts
 ├── generate.sh                  # Script to generate index.html
 ├── headerComponent.html         # Header with model dropdown and login
