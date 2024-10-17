@@ -24,43 +24,45 @@
         </li>
     </ul>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeButton = document.getElementById('themeButton');
-            const themeDropdown = document.getElementById('themeDropdown');
-            const themeOptions = document.querySelectorAll('.theme-controller');
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const themeButton = document.getElementById('themeButton');
+                const themeDropdown = document.getElementById('themeDropdown');
+                const themeOptions = document.querySelectorAll('.theme-controller');
 
-            // Set initial theme from session storage or default to "Theme"
-            const savedTheme = sessionStorage.getItem('selectedTheme');
-            if (savedTheme) {
-                document.body.setAttribute('data-theme', savedTheme);
-                const selectedOption = Array.from(themeOptions).find(option => option.value === savedTheme);
-                if (selectedOption) {
-                    themeButton.firstChild.textContent = selectedOption.getAttribute('aria-label');
-                    selectedOption.checked = true;
+                // Set initial theme from local storage or default to "Theme"
+                const savedTheme = localStorage.getItem('selectedTheme');
+                if (savedTheme) {
+                    document.body.setAttribute('data-theme', savedTheme);
+                    const selectedOption = Array.from(themeOptions).find(option => option.value === savedTheme);
+                    if (selectedOption) {
+                        themeButton.childNodes[0].textContent = selectedOption.getAttribute('aria-label');
+                        selectedOption.checked = true;
+                    }
                 }
-            }
 
-            // Toggle dropdown visibility when the button is clicked
-            themeButton.addEventListener('click', function() {
-                themeDropdown.classList.toggle('hidden');
-            });
+                // Toggle dropdown visibility when the button is clicked
+                themeButton.addEventListener('click', function() {
+                    themeDropdown.classList.toggle('hidden');
+                });
 
-            // Close the dropdown if clicked outside
-            document.addEventListener('click', function(event) {
-                if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
-                    themeDropdown.classList.add('hidden');
-                }
-            });
+                // Close the dropdown if clicked outside
+                document.addEventListener('click', function(event) {
+                    if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
+                        themeDropdown.classList.add('hidden');
+                    }
+                });
 
-            // Apply selected theme, update button label, save to session storage, and close dropdown
-            themeOptions.forEach(option => {
-                option.addEventListener('change', function() {
-                    document.body.setAttribute('data-theme', this.value); // Change theme
-                    themeButton.firstChild.textContent = this.getAttribute('aria-label'); // Update button label
-                    sessionStorage.setItem('selectedTheme', this.value); // Save to session storage
-                    themeDropdown.classList.add('hidden'); // Close dropdown
+                // Apply selected theme, update button label, save to local storage, and close dropdown
+                themeOptions.forEach(option => {
+                    option.addEventListener('change', function() {
+                        document.body.setAttribute('data-theme', this.value); // Change theme
+                        themeButton.childNodes[0].textContent = this.getAttribute('aria-label'); // Update button label
+                        localStorage.setItem('selectedTheme', this.value); // Save to local storage
+                        themeDropdown.classList.add('hidden'); // Close dropdown
+                    });
                 });
             });
-        });
+        })();
     </script>
 </div>
