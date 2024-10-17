@@ -26,9 +26,12 @@ cat <<EOL > "$COMPONENT_FILE"
 
     <script>
         // Add your component-specific JavaScript here
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('${COMPONENT_NAME} component loaded.');
-        });
+        (function() {
+            // Ensures the script runs only after the document is fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('${COMPONENT_NAME} component loaded.');
+            });
+        })();
     </script>
 </div>
 EOL
