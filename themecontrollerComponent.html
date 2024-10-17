@@ -29,6 +29,17 @@
             const themeDropdown = document.getElementById('themeDropdown');
             const themeOptions = document.querySelectorAll('.theme-controller');
 
+            // Set initial theme from session storage or default to "Theme"
+            const savedTheme = sessionStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                const selectedOption = Array.from(themeOptions).find(option => option.value === savedTheme);
+                if (selectedOption) {
+                    themeButton.firstChild.textContent = selectedOption.getAttribute('aria-label');
+                    selectedOption.checked = true;
+                }
+            }
+
             // Toggle dropdown visibility when the button is clicked
             themeButton.addEventListener('click', function() {
                 themeDropdown.classList.toggle('hidden');
@@ -41,10 +52,12 @@
                 }
             });
 
-            // Apply selected theme and close dropdown
+            // Apply selected theme, update button label, save to session storage, and close dropdown
             themeOptions.forEach(option => {
                 option.addEventListener('change', function() {
                     document.body.setAttribute('data-theme', this.value); // Change theme
+                    themeButton.firstChild.textContent = this.getAttribute('aria-label'); // Update button label
+                    sessionStorage.setItem('selectedTheme', this.value); // Save to session storage
                     themeDropdown.classList.add('hidden'); // Close dropdown
                 });
             });
