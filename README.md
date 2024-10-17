@@ -63,7 +63,7 @@ The generated component structure includes:
 ```html
 <!-- buttonComponent.html -->
 <div id="buttonComponent">
-    <!-- Add your component HTML here (or paste any DaisyUI HTML components from: https://daisyui.com/components/) -->
+    <!-- Add custom HTML or paste daisyUI components: https://daisyui.com/components/ -->
     <button class="btn">Action</button>
 
     <script>
