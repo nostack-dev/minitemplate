@@ -33,7 +33,7 @@ The project consists of the following files and components:
 
 ## How to Use
 
-### 1. Generating the Index File
+### 1. Generating the index.html File
 
 The core structure of the application is generated using the `generate.sh` script. This script reads `template.html` and populates it with the actual content from each component.
 
