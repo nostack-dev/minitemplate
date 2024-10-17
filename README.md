@@ -58,12 +58,12 @@ The generated component structure includes:
 - A button element using DaisyUI classes (`btn`) for consistent styling.
 - An immediately invoked function expression (IIFE) in the script tag to ensure that JavaScript executes once the document is loaded, scoped specifically to this component.
 
-#### Example Component Structure
+#### Component Structure
 
 ```html
 <!-- buttonComponent.html -->
 <div id="buttonComponent">
-    <!-- Add your component HTML here -->
+    <!-- Add custom HTML or paste daisyUI components: https://daisyui.com/components/ -->
     <button class="btn">Action</button>
 
     <script>
@@ -86,7 +86,7 @@ The generated component structure includes:
 
 ### 3. Integrating Components into the Template
 
-To include a component in `template.html`:
+To include a component in `template.html` (or any other component you have created):
 
 1. Use the placeholder syntax `{{componentName}}` within `template.html` where you want the component to appear.
 2. Ensure the component file (e.g., `headerComponent.html`) is correctly named and located in the project root.
@@ -112,7 +112,7 @@ To include a component in `template.html`:
 
 The project now includes a **Theme Controller** (`themecontrollerComponent.html`) that allows users to change the theme dynamically via a dropdown. Themes like "light," "dark," "cupcake," "cyberpunk," and many more are available. To update the theme:
 
-1. Use the `themecontrollerComponent` integrated into the header.
+1. The  `themecontrollerComponent` is used to switch between themes, local storage is used to store the selection.
 2. The selected theme will be applied immediately to the page by updating the `data-theme` attribute.
 
 The available themes include but are not limited to:
