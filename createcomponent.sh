@@ -4,7 +4,7 @@
 
 if [ -z "$1" ]; then
     echo "Error: No component name provided."
-    echo "Usage: ./createcomponent.sh [componentName]"
+    echo "Usage: ./createcomponent.sh [yourcomponentnamelowercase]"
     exit 1
 fi
 

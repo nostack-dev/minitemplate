@@ -1,10 +1,15 @@
 #!/bin/bash
 
-# Script to wrap all HTML components in the root folder that match specific naming conventions into <template> tags
+# Directory for wrapped components
+WRAPPED_DIR="./wrapped"
 
+# Create the wrapped directory if it doesn't exist
+mkdir -p "$WRAPPED_DIR"
+
+# Script to wrap all HTML components in the root folder that match specific naming conventions into <template> tags
 for COMPONENT_FILE in ./*Component.html; do
     if [[ -f "$COMPONENT_FILE" ]]; then
-        TEMPLATE_FILE="${COMPONENT_FILE%.html}Wrapped.html"
+        TEMPLATE_FILE="${WRAPPED_DIR}/$(basename "${COMPONENT_FILE%.html}Wrapped.html")"
         COMPONENT_NAME=$(basename "$COMPONENT_FILE" .html)
 
         # Read the contents of the component file
