@@ -10,7 +10,7 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 - **Template-based System**: Utilize a main `template.html` file to assemble components using a simple placeholder system (e.g., `{{component}}`).
 - **Custom Theming**: Quickly change themes with the `generate.sh` script or directly using the theme controller dropdown.
 
-## Project Structure 
+## Project Structure
 
 The flat project structure is intentional to improve development speed by providing direct access to all components without deep navigation. Further structure can be added as the project scales to accommodate more complexity while maintaining this simplicity.
 
