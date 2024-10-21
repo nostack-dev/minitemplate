@@ -20,6 +20,19 @@ copy_scripts_to_tests() {
     cp ./generate.sh ./tests/
     cp ./createcomponent.sh ./tests/
     cp ./wrapcomponents.sh ./tests/
+    mkdir -p ./tests/wrapped
+    if [ -d "./wrapped" ]; then
+        echo "Copying wrapped components to ./tests/wrapped/..."
+        cp -r ./wrapped/* ./tests/wrapped/
+    fi
+}
+
+# Function to clean up the utility scripts from the tests directory after running the tests
+cleanup_copied_scripts() {
+    echo "Cleaning up copied utility scripts from tests directory..."
+    rm -f ./tests/generate.sh
+    rm -f ./tests/createcomponent.sh
+    rm -f ./tests/wrapcomponents.sh
 }
 
 # Function to run a single test script
@@ -68,6 +81,9 @@ for test_script in "${test_scripts[@]}"; do
         ((failed++))
     fi
 done
+
+# Clean up copied utility scripts after running the tests
+cleanup_copied_scripts
 
 # Summary of results
 echo "---------------------------------"
