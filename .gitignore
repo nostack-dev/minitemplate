@@ -1,0 +1,3 @@
+# Ignore all files in the tests directory except test scripts
+/tests/*
+!/tests/test_*.sh
