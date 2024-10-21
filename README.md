@@ -3,7 +3,7 @@
 ## Overview
 
 MiniTemplate is a modular web template system designed to easily integrate various components. It leverages **Tailwind CSS** and **DaisyUI**, providing a flexible and efficient structure for statically generated web applications.
-
+ 
 ## Key Features
 
 - **Modular Components**: Reusable components like headers, sidebars, footers, and chat inputs.
