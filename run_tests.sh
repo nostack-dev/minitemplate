@@ -4,11 +4,26 @@
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
-CHECKMARK='\u2714' # Checkmark
+CHECKMARK='✔' # Checkmark
+
+# Verbose flag (default: false)
+VERBOSE=false
+
+# Check for verbose flag
+while getopts "v" option; do
+  case $option in
+    v) VERBOSE=true;;
+    *) echo "Usage: $0 [-v]"; exit 1;;
+  esac
+done
+
+# Summary of results at the beginning
+echo -e "\n### Test Start"
+echo -e "${GREEN}---------------------------------"
 
 # Function to clean up old temporary files, but keep test scripts intact
 cleanup_tests_directory() {
-    echo "Cleaning up old temporary files in the tests directory..."
+    $VERBOSE && echo -e "\n---------------------------------\n🧹 ${GREEN}Cleaning up old temporary files in the tests directory...${NC}"
     # Only remove files that match temporary patterns (e.g., temp_*.html or other temp files)
     rm -f ./tests/temp_*.html 2>/dev/null
     rm -f ./tests/*.log 2>/dev/null # Remove log files if they exist
@@ -16,20 +31,20 @@ cleanup_tests_directory() {
 
 # Function to copy the required utility scripts to the tests directory
 copy_scripts_to_tests() {
-    echo "Copying required scripts to tests directory..."
+    $VERBOSE && echo -e "\n📄 ${GREEN}Copying required scripts to tests directory...${NC}"
     cp ./generate.sh ./tests/
     cp ./createcomponent.sh ./tests/
     cp ./wrapcomponents.sh ./tests/
     mkdir -p ./tests/wrapped
     if [ -d "./wrapped" ]; then
-        echo "Copying wrapped components to ./tests/wrapped/..."
+        $VERBOSE && echo -e "📂 ${GREEN}Copying wrapped components to ./tests/wrapped/...${NC}"
         cp -r ./wrapped/* ./tests/wrapped/
     fi
 }
 
 # Function to clean up the utility scripts from the tests directory after running the tests
 cleanup_copied_scripts() {
-    echo "Cleaning up copied utility scripts from tests directory..."
+    $VERBOSE && echo -e "\n🗑️ ${GREEN}Cleaning up copied utility scripts from tests directory...${NC}"
     rm -f ./tests/generate.sh
     rm -f ./tests/createcomponent.sh
     rm -f ./tests/wrapcomponents.sh
@@ -38,9 +53,9 @@ cleanup_copied_scripts() {
 # Function to run a single test script
 run_test() {
     local test_script="$1"
-    echo "Running $test_script..."
+    $VERBOSE && echo -e "\n### Running \`$test_script\`"
 
-    if bash "$test_script"; then
+    if bash "$test_script" &>/dev/null; then
         echo -e "${GREEN}${CHECKMARK} Test passed: $test_script${NC}"
         return 0
     else
@@ -50,6 +65,7 @@ run_test() {
 }
 
 # Clean up temporary files before starting tests
+$VERBOSE && echo -e "\n## Running Tests\n"
 cleanup_tests_directory
 
 # Copy utility scripts to the tests folder before running the tests
@@ -77,26 +93,30 @@ for test_script in "${test_scripts[@]}"; do
             ((failed++))
         fi
     else
-        echo -e "${RED}Test script not found: $test_script${NC}"
+        $VERBOSE && echo -e "${RED}Test script not found: $test_script${NC}"
         ((failed++))
     fi
+    $VERBOSE && echo -e "\n---"
 done
 
 # Clean up copied utility scripts after running the tests
 cleanup_copied_scripts
 
 # Summary of results
-echo "---------------------------------"
-for test_script in "${test_scripts[@]}"; do
-    if [ -f "$test_script" ]; then
-        echo -e "${GREEN}${CHECKMARK} $test_script${NC}"
-    fi
-done
-
+echo -e "\n### Test Summary"
 if [ "$failed" -eq 0 ]; then
-    echo -e "${GREEN}All tests passed!${NC}"
+    echo -e "${GREEN}---------------------------------
+${CHECKMARK} All tests passed!
+---------------------------------${NC}"
 else
-    echo -e "${RED}Some tests failed.${NC}"
+    echo -e "${RED}---------------------------------
+Some tests failed.
+---------------------------------${NC}"
 fi
-echo "---------------------------------"
-echo "All tests finished."
+
+echo -e "\nTotal Tests Passed: ${GREEN}$passed${NC}"
+echo -e "Total Tests Failed: ${RED}$failed${NC}"
+
+echo -e "\nAll tests finished."
+
+exit 0
