@@ -28,19 +28,3 @@ jobs:
         run: |
           chmod +x ./run_tests.sh
           ./run_tests.sh
-
-      # Only continue to deployment if the tests succeed
-      - name: Setup Pages
-        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
-        id: deployment
-        uses: actions/deploy-pages@v4
