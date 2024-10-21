@@ -1,11 +1,10 @@
 name: Deploy static content to Pages
 
 on:
-  # Trigger this workflow only after the "Run Tests" workflow completes successfully
-  workflow_run:
-    workflows: ["Run Tests"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,25 +16,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}  # Deploy only if tests succeeded
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  run-tests-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Step to run the tests
+      - name: Run Tests
+        run: |
+          chmod +x ./run_tests.sh
+          ./run_tests.sh
+
+      # Only continue to deployment if the tests succeed
       - name: Setup Pages
+        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
+        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
       - name: Deploy to GitHub Pages
+        if: ${{ success() }}  # Deploy only if previous steps (tests) succeed
         id: deployment
         uses: actions/deploy-pages@v4
