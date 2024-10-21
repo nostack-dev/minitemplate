@@ -1,3 +1,8 @@
-# Ignore all files in the tests directory except test scripts
-/tests/*
-!/tests/test_*.sh
+# Ignore all files in the tests directory
+tests/*
+
+# Except the test scripts starting with 'test_'
+!tests/test_*.sh
+
+# Ignore everything in tests/wrapped
+tests/wrapped/*
