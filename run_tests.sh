@@ -19,7 +19,7 @@ done
 
 # Summary of results at the beginning
 echo -e "\n### Test Start"
-echo -e "${GREEN}---------------------------------"
+echo -e "---------------------------------\n"
 
 # Function to clean up old temporary files, but keep test scripts intact
 cleanup_tests_directory() {
@@ -53,9 +53,12 @@ cleanup_copied_scripts() {
 # Function to run a single test script
 run_test() {
     local test_script="$1"
-    $VERBOSE && echo -e "\n### Running \`$test_script\`"
+    if [ "$VERBOSE" = true ]; then
+        echo -e "\n### Running \`$test_script\`"
+        bash "$test_script"
+    fi
 
-    if bash "$test_script" &>/dev/null; then
+    if bash "$test_script" > /dev/null 2>&1; then
         echo -e "${GREEN}${CHECKMARK} Test passed: $test_script${NC}"
         return 0
     else
@@ -65,7 +68,7 @@ run_test() {
 }
 
 # Clean up temporary files before starting tests
-$VERBOSE && echo -e "\n## Running Tests\n"
+echo -e "\n## Running Tests\n"
 cleanup_tests_directory
 
 # Copy utility scripts to the tests folder before running the tests
@@ -104,15 +107,13 @@ cleanup_copied_scripts
 
 # Summary of results
 echo -e "\n### Test Summary"
+echo -e "---------------------------------"
 if [ "$failed" -eq 0 ]; then
-    echo -e "${GREEN}---------------------------------
-${CHECKMARK} All tests passed!
----------------------------------${NC}"
+    echo -e "${GREEN}${CHECKMARK} All tests passed!${NC}"
 else
-    echo -e "${RED}---------------------------------
-Some tests failed.
----------------------------------${NC}"
+    echo -e "${RED}Some tests failed.${NC}"
 fi
+echo -e "---------------------------------"
 
 echo -e "\nTotal Tests Passed: ${GREEN}$passed${NC}"
 echo -e "Total Tests Failed: ${RED}$failed${NC}"
