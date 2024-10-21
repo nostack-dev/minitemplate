@@ -19,7 +19,7 @@ powershell.exe -Command "Start-Process 'chrome.exe' -ArgumentList '--headless', 
 
 # Wait briefly to allow Chrome to start
 echo "Waiting for Chrome to start..."
-sleep 2  # Adjusted wait time for Chrome to initialize
+sleep 1  # Adjusted wait time for Chrome to initialize
 
 # Check if Chrome is running using Windows tasklist
 if tasklist.exe | grep -q "chrome.exe"; then

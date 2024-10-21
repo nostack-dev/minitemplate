@@ -53,16 +53,17 @@ cleanup_copied_scripts() {
 # Function to run a single test script
 run_test() {
     local test_script="$1"
-    if [ "$VERBOSE" = true ]; then
-        echo -e "\n### Running \`$test_script\`"
-        bash "$test_script"
-    fi
+    $VERBOSE && echo -e "\n### Running \`$test_script\`"
 
     if bash "$test_script" > /dev/null 2>&1; then
         echo -e "${GREEN}${CHECKMARK} Test passed: $test_script${NC}"
         return 0
     else
         echo -e "${RED}✖ Test failed: $test_script${NC}"
+        if [ "$VERBOSE" = true ]; then
+            echo -e "\n---\n"
+            bash "$test_script"
+        fi
         return 1
     fi
 }
@@ -74,14 +75,8 @@ cleanup_tests_directory
 # Copy utility scripts to the tests folder before running the tests
 copy_scripts_to_tests
 
-# Add to the list of test scripts to run
-test_scripts=(
-    "./tests/test_component_creation.sh"
-    "./tests/test_template_generation.sh"
-    "./tests/test_wrap_components.sh"
-    "./tests/test_print.sh"
-    "./tests/test_invalid_component_references.sh"
-)
+# Find all test scripts dynamically in the ./tests/ directory
+test_scripts=( ./tests/test_*.sh )
 
 # Initialize counters for passed and failed tests
 passed=0
