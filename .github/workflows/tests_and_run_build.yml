@@ -1,0 +1,47 @@
+name: Run Tests and Invoke Deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step to run the tests
+      - name: Run Tests
+        run: |
+          chmod +x ./run_tests.sh
+          ./run_tests.sh
+
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    needs: run-tests  # This job runs after the tests job
+    if: ${{ needs.run-tests.result == 'success' }}  # Proceed only if tests succeeded
+
+    steps:
+      - name: Trigger Pages Build and Deployment
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const workflow = 'pages build and deployment';  // Name of the workflow to trigger
+            const ref = 'main';  // Reference to the branch
+
+            // Trigger the workflow
+            await github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: workflow,
+              ref: ref,
+            });
