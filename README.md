@@ -45,17 +45,17 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 ├── CONTRIBUTING.md                             # Contribution guidelines
 ├── addcomponent.sh                             # Adds component from `lib/output` to the root
 └── lib                                         # Library directory containing input/output components
-    ├── convert.sh                              # Script to convert components
-    ├── custom_output                           # Custom components generated from user-provided HTML
-    ├── input                                   # Source components directory
-    └── output                                  # Generated components directory
+    ├── 🟢 convert.sh                              # Script to convert components
+    ├──    custom_output                           # Custom components generated from user-provided HTML
+    ├──    input                                   # Source components directory
+    └──    output                                  # Generated components directory
 └── tests                                       # Directory containing test scripts
-    ├── 🟢 run_tests.sh                         # Run all test scripts
-    ├── 🟢 test_component_creation.sh           # Test component creation script
-    ├── 🟢 test_component_ids.sh                # Test that component IDs match filenames
-    ├── 🟢 test_component_references.sh         # Test for invalid component references
-    ├── 🟢 test_print.sh                        # Test print functionality
-    └── 🟢 test_template_generation.sh          # Test template generation
+    ├── 🟢 run_tests.sh                             # Run all test scripts
+    ├── 🟢 test_component_creation.sh               # Test component creation script
+    ├── 🟢 test_component_ids.sh                    # Test that component IDs match filenames
+    ├── 🟢 test_component_references.sh             # Test for invalid component references
+    ├── 🟢 test_print.sh                            # Test print functionality
+    └── 🟢 test_template_generation.sh              # Test template generation
 ```
 
 ## How to Use
