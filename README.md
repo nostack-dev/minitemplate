@@ -33,7 +33,7 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 ├── 🟢 createcomponent.sh [componentname]       # Create a new component (componentname is required)
 ├── 🟢 generate.sh [theme]                      # Generates the final static `index.html` from template.html 
 ├── 🟢 print.sh                                 # Print current directory structure and files
-├── template.html                               # Template file: <html> ...{{mycomponentComponent}}--- </html>
+├── template.html                               # Template file: <html> ...{{mycomponentComponent}}... </html>
 ├── index.html                                  # Generated from `template.html`
 ├── headerComponent.html                        # Header with theme controller
 ├── contentComponent.html                       # Main content area
