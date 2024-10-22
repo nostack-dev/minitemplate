@@ -22,7 +22,7 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 ## Key Features
 
 - **Modular Components**: Reusable components like headers, sidebars, footers, and chat inputs.
-- **Template-based System**: Utilize a main `template.html` file to assemble components using a simple placeholder system (e.g., `{{component}}`).
+- **Template-based System**: Utilize a main `template.html` file to assemble components using a simple placeholder system (e.g., `{{lowercasenameComponent}}`).
 - **Custom Theming**: Quickly change themes with the `generate.sh` script or directly using the theme controller dropdown.
 - **Self-contained**: No need for complex build systems or dependencies beyond basic command-line tools.
 
