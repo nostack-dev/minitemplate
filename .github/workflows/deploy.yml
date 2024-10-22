@@ -16,21 +16,26 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Run tests
-        run: cd ./tests && chmod +x run_tests.sh && ./run_tests.sh  # Ensure the script has execute permissions and run tests
-        continue-on-error: false  # Skip deployment if tests fail
+        run: |
+          cd ./tests
+          chmod +x run_tests.sh
+          ./run_tests.sh  # Run tests and fail the job if they fail
 
       # Prepare files for GitHub Pages and exclude the _site directory
       - name: Prepare files for GitHub Pages
+        if: success()  # This ensures the step only runs if the previous steps (tests) were successful
         run: |
           mkdir -p ./_site
           rsync -av --progress ./ ./_site --exclude _site  # Use rsync to exclude the _site directory
 
       - name: Upload GitHub Pages artifact
+        if: success()  # This ensures the step only runs if the previous steps (tests) were successful
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
       - name: Deploy to GitHub Pages
+        if: success()  # This ensures the step only runs if the previous steps (tests) were successful
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}  # Ensure GitHub Pages deploy token is set
