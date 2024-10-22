@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
       - name: Run tests
-        run: chmod +x ./tests/run_tests.sh  # Ensure the script has execute permissions
+        run: chmod +x ./tests/run_tests.sh && ./tests/run_tests.sh  # Ensure the script has execute permissions and run tests
         continue-on-error: false  # Skip deployment if tests fail
 
       # Prepare files for GitHub Pages and exclude the _site directory
@@ -26,17 +26,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: success()  # Only deploy if build (and tests) succeed
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
