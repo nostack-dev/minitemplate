@@ -2,7 +2,7 @@
 
 # Define the directory for Git hooks and the new pre-push hook file
 HOOK_DIR=".git/hooks"
-HOOK_FILE="pre-push-new"
+HOOK_FILE="pre-push"
 
 # Ensure the hooks directory exists
 mkdir -p "$HOOK_DIR"
