@@ -21,14 +21,6 @@ done
 echo -e "\n### Test Start"
 echo -e "---------------------------------\n"
 
-# Function to clean up old temporary files, but keep test scripts intact
-cleanup_tests_directory() {
-    $VERBOSE && echo -e "\n---------------------------------\n🧹 ${GREEN}Cleaning up old temporary files in the tests directory...${NC}"
-    # Only remove files that match temporary patterns (e.g., temp_*.html or other temp files)
-    rm -f ./tests/temp_*.html 2>/dev/null
-    rm -f ./tests/*.log 2>/dev/null # Remove log files if they exist
-}
-
 # Function to copy the required utility scripts to the tests directory
 copy_scripts_to_tests() {
     $VERBOSE && echo -e "\n📄 ${GREEN}Copying required scripts to tests directory...${NC}"
@@ -40,14 +32,6 @@ copy_scripts_to_tests() {
         $VERBOSE && echo -e "📂 ${GREEN}Copying wrapped components to ./tests/wrapped/...${NC}"
         cp -r ./wrapped/* ./tests/wrapped/
     fi
-}
-
-# Function to clean up the utility scripts from the tests directory after running the tests
-cleanup_copied_scripts() {
-    $VERBOSE && echo -e "\n🗑️ ${GREEN}Cleaning up copied utility scripts from tests directory...${NC}"
-    rm -f ./tests/generate.sh
-    rm -f ./tests/createcomponent.sh
-    rm -f ./tests/wrapcomponents.sh
 }
 
 # Function to run a single test script
@@ -68,9 +52,7 @@ run_test() {
     fi
 }
 
-# Clean up temporary files before starting tests
 echo -e "\n## Running Tests\n"
-cleanup_tests_directory
 
 # Copy utility scripts to the tests folder before running the tests
 copy_scripts_to_tests
@@ -96,9 +78,6 @@ for test_script in "${test_scripts[@]}"; do
     fi
     $VERBOSE && echo -e "\n---"
 done
-
-# Clean up copied utility scripts after running the tests
-cleanup_copied_scripts
 
 # Summary of results
 echo -e "\n### Test Summary"
