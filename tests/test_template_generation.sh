@@ -2,9 +2,7 @@
 # Test Template Generation Script
 
 # Create a temporary directory
-TEMP_DIR=$(mktemp -d)
-cp generate.sh template.html headerComponent.html contentComponent.html sidebarComponent.html footerComponent.html "$TEMP_DIR"
-cd "$TEMP_DIR" || exit 1
+cp ../generate.sh ../template.html ../headerComponent.html ../contentComponent.html ../sidebarComponent.html ../footerComponent.html ../tests
 
 # Provide a default title for the test
 export PAGE_TITLE="Test Page Title"
@@ -40,7 +38,3 @@ else
     echo "Test failed: headerComponent missing in index.html"
     exit 1
 fi
-
-# Clean up
-rm -rf "$TEMP_DIR"
-echo "Temporary files cleaned up."

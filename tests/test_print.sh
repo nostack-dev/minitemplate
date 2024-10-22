@@ -1,10 +1,7 @@
 #!/bin/bash
 # Test Print Script
 
-# Create a temporary directory
-TEMP_DIR=$(mktemp -d)
-cp print.sh README.md template.html index.html "$TEMP_DIR"
-cd "$TEMP_DIR" || exit 1
+cp ../print.sh ../README.md ../template.html ../index.html ../tests
 
 # Run the test
 ./print.sh > output.txt
@@ -17,7 +14,3 @@ for file in README.md template.html index.html; do
         exit 1
     fi
 done
-
-# Clean up
-rm -rf "$TEMP_DIR"
-echo "Temporary files cleaned up."
