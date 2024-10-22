@@ -163,22 +163,36 @@ To ensure the integrity of the components and templates, the project includes a 
 
 ## Component Generation from Input to Output in `lib/`
 
-The `lib/` directory contains two subdirectories: `input/` and `output/`. These directories handle the transformation of components from their source form (`input/`) to their generated version (`output/`).
+The `lib/` directory contains two subdirectories: `input/` and `output/`. These directories handle the transformation of components from their source form (`input/`) to their generated version (`output/`). The `custom_output/` directory stores user-defined custom components.
 
 ### How It Works:
 
-- **`lib/input/`**: Contains the source components in their base form. These are simple components using DaisyUI and Tailwind CSS, with no extra JavaScript logic or complex styling applied. For example, `input/button.html` might contain just a button with minimal configuration.
-  
-- **`lib/output/`**: This is where the transformed or enhanced version of the component is saved. The `convert.sh` script in `lib/` handles this transformation, applying any additional logic or CSS necessary to generate a complete component ready for use.
+- **`lib/input/`**: Contains the source components in their base form. These are simple components using DaisyUI and Tailwind CSS, with no extra JavaScript logic or complex styling applied.
+- **`lib/output/`**: This is where the transformed or enhanced version of the component is saved.
+- **`lib/custom_output/`**: This directory stores user-generated custom components that were created with custom HTML using the `convert.sh` script.
 
 ### Example
 
 To transform a component from `input/` to `output/`, you would run:
 
 ```bash
-./lib/convert.sh [componentName]
+./lib/convert.sh
 ```
 
-This would read `lib/input/componentName.html` and generate `lib/output/componentNameComponent.html`, applying any predefined transformations.
+This would read all html files in `lib/input` and output them as self contained components in `lib/output/`.
 
-The generated components in `lib/output/` are fully usable components that can be integrated directly into the `template.html` file or any other page.
+To generate a custom component from provided HTML:
+
+```bash
+./lib/convert.sh [customname] '<custom_html/>'
+```
+
+This would generate `lib/custom_output/customnameComponent.html` with your provided HTML.
+
+The generated components in `lib/output/` and `lib/custom_output/` are fully usable components that can be integrated directly into the `template.html` file or any other page.
+
+To use the components created with convert.sh script, run ./addcomponent.sh. This will list all default components and all custom components you have created. 
+If you want to add a custom component you previously created, use:
+```bash
+./lib/addcomponent.sh [customname] 
+```
