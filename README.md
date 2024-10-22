@@ -1,6 +1,20 @@
 
 # ✍️ MiniTemplate - Simple Template Engine
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Key Features](#key-features)
+3. [Project Structure](#project-structure)
+4. [How to Use](#how-to-use)
+    - [Generating index.html](#1-generating-the-indexhtml-file)
+    - [Creating New Components](#2-creating-new-components)
+    - [Integrating Components into the Template](#3-integrating-components-into-the-template)
+5. [Custom Theming](#custom-theming)
+6. [Component Generation from Input to Output](#component-generation-from-input-to-output-in-lib)
+7. [Testing](#testing)
+8. [Contribution Guidelines](#contribution-guidelines)
+9. [License](#license)
+
 ## Overview
 
 MiniTemplate is a modular web template system designed to easily integrate various components. It leverages **Tailwind CSS** and **DaisyUI**, providing a flexible and efficient structure for statically generated web applications.
@@ -68,34 +82,6 @@ The generated component structure includes:
 - A button element using DaisyUI classes (`btn`) for consistent styling.
 - An immediately invoked function expression (IIFE) in the script tag to ensure that JavaScript executes once the document is loaded, scoped specifically to this component.
 
-#### Component Structure
-
-```html
-<!-- buttonComponent.html -->
-<div id="buttonComponent">
-    <!-- Add custom HTML or paste daisyUI components: https://daisyui.com/components/ -->
-    <button class="btn">Action</button>
-
-    <script>
-        // Add your component-specific JavaScript here
-        (function() {
-            // Ensures the script runs only after the document is fully loaded
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('button component loaded.');
-            });
-        })();
-    </script>
-</div>
-```
-
-- **Why use an Immediate Function?**
-
-  - The immediate function, also known as an Immediately Invoked Function Expression (IIFE), ensures that the JavaScript within the component is self-contained and doesn't interfere with other components. This keeps the scope of variables and functions limited to this component, promoting modularity and avoiding conflicts.
-
-- **Scoped Tailwind and DaisyUI CSS**
-
-  - The use of DaisyUI ensures that the styles are consistent and scoped to the elements using DaisyUI classes like `btn`. This approach helps keep the styling modular and easily maintainable, while also providing a visually appealing design out of the box.
-
 ### 3. Integrating Components into the Template
 
 To include a component in `template.html` (or any other component you have created):
@@ -141,26 +127,6 @@ The available themes include but are not limited to:
 
 For a complete list [click here](https://daisyui.com/docs/themes/)
 
-## daisyUI
-
-MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [visit daisyUI documentation](https://daisyui.com/components/) to see all available components, themes, and their documentation.
-
-## Testing
-
-### Running Tests
-
-To ensure the integrity of the components and templates, the project includes a set of automated tests located in the `tests` directory. These tests cover:
-
-- **Component Creation**: Validating that components are correctly created.
-- **Template Generation**: Ensuring that the template is properly generated.
-- **Print Functionality**: Testing the print script to ensure it outputs the correct structure.
-- **Invalid Component References**: Verifying that no invalid component references exist in the templates.
-
-- **Run all tests**:
-  ```bash
-  ./tests/run_tests.sh
-  ```
-
 ## Component Generation from Input to Output in `lib/`
 
 The `lib/` directory contains two subdirectories: `input/` and `output/`. These directories handle the transformation of components from their source form (`input/`) to their generated version (`output/`). The `custom_output/` directory stores user-defined custom components.
@@ -179,7 +145,7 @@ To transform a component from `input/` to `output/`, you would run:
 ./lib/convert.sh
 ```
 
-This would read all html files in `lib/input` and output them as self contained components in `lib/output/`.
+This would read all html files in `lib/input` and output them as self-contained components in `lib/output/`.
 
 To generate a custom component from provided HTML:
 
@@ -187,12 +153,27 @@ To generate a custom component from provided HTML:
 ./lib/convert.sh [customname] '<custom_html/>'
 ```
 
-This would generate `lib/custom_output/customnameComponent.html` with your provided HTML.
+This would generate `lib/custom_output/[customname]customComponent.html` with your provided HTML.
 
 The generated components in `lib/output/` and `lib/custom_output/` are fully usable components that can be integrated directly into the `template.html` file or any other page.
 
-To use the components created with convert.sh script, run ./addcomponent.sh. This will list all default components and all custom components you have created. 
-If you want to add a custom component you previously created, use:
-```bash
-./lib/addcomponent.sh [customname] 
-```
+### Example Workflow
+
+1. Use `convert.sh` to generate the components:
+   ```bash
+   ./lib/convert.sh button
+   ```
+2. Integrate the component in your template by adding `{{buttonComponent}}` to the desired location in `template.html`.
+
+3. Run `generate.sh` to compile `index.html`:
+   ```bash
+   ./generate.sh [theme-name]
+   ```
+
+## Contribution Guidelines
+
+We welcome contributions to MiniTemplate! If you have ideas for new features, bug fixes, or improvements, feel free to open a pull request. Before contributing, please check the [Contribution Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License.
