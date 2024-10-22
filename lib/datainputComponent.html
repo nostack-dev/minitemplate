@@ -1,0 +1,21 @@
+<div id="datainputComponent">
+    <input type="text" placeholder="Enter data here" class="input input-bordered w-full max-w-xs" />
+    <script>
+        (function() {
+            // Check if DaisyUI and Tailwind CSS are already loaded
+            if (!document.querySelector('link[href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"]')) {
+                var daisyUICSS = document.createElement('link');
+                daisyUICSS.rel = 'stylesheet';
+                daisyUICSS.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+                document.head.appendChild(daisyUICSS);
+            }
+            if (!document.querySelector('script[src="https://cdn.tailwindcss.com"]')) {
+                var tailwindScript = document.createElement('script');
+                tailwindScript.src = 'https://cdn.tailwindcss.com';
+                document.head.appendChild(tailwindScript);
+            }
+
+            // Data input specific behavior can be added here
+        })();
+    </script>
+</div>

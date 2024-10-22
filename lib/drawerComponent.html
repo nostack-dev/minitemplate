@@ -1,0 +1,33 @@
+
+    <div id="drawerComponent">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+            <label for="my-drawer" class="btn">Open drawer</label>
+        </div>
+        <div class="drawer-side">
+            <label for="my-drawer" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 bg-base-100">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+            </ul>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    

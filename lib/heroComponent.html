@@ -1,0 +1,30 @@
+
+    <div id="heroComponent">
+        <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Hero Title</h1>
+                    <p class="py-6">Hero subtitle text goes here.</p>
+                </div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    

@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+
 # Exit immediately if a command exits with a non-zero status
 set -e
 
@@ -10,10 +10,20 @@ OUTPUT_FILE="index.html"  # Output file set to index.html
 # Default theme if not provided
 THEME_NAME=""
 
-# Check if a theme name was passed as an argument
+# Optional showcase mode
+SHOWCASE_MODE=false
+
+# Check if a theme name or showcase parameter was passed as an argument
 if [[ ! -z "$1" ]]; then
-    THEME_NAME="$1"
-    echo "Using theme: $THEME_NAME"
+    if [[ "$1" == "showcase" ]]; then
+        SHOWCASE_MODE=true
+        TEMPLATE_FILE="./lib/showcase.html"
+        OUTPUT_FILE="./lib/showcase_output.html"  # Showcase output file
+        echo "Showcase mode enabled. Processing 'showcase.html' in ./lib/."
+    else
+        THEME_NAME="$1"
+        echo "Using theme: $THEME_NAME"
+    fi
 else
     echo "No theme provided, will not set data-theme attribute."
 fi
@@ -24,8 +34,10 @@ if [[ ! -f "$TEMPLATE_FILE" ]]; then
     exit 1
 fi
 
-# Prompt the user for the page title
-read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
+# If not in showcase mode, prompt for the page title
+if [[ "$SHOWCASE_MODE" == false ]]; then
+    read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
+fi
 
 # Function to ensure all required components exist
 ensure_components() {
@@ -37,8 +49,10 @@ ensure_components() {
     done
 }
 
-# Ensure all components are present
-ensure_components
+# Ensure all components are present if not in showcase mode
+if [[ "$SHOWCASE_MODE" == false ]]; then
+    ensure_components
+fi
 
 # Create or overwrite the output file
 > "$OUTPUT_FILE"
@@ -48,8 +62,8 @@ missing_components=()
 
 # Read the template file line by line
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # Replace the <title> tag with the user-provided title, only if a title is provided
-    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]] && [[ ! -z "$PAGE_TITLE" ]]; then
+    # Replace the <title> tag with the user-provided title, only if a title is provided and not in showcase mode
+    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]] && [[ ! -z "$PAGE_TITLE" ]] && [[ "$SHOWCASE_MODE" == false ]]; then
         echo "Replacing <title> tag with user-provided title."
         line="<title>${PAGE_TITLE}</title>"
     fi
@@ -69,10 +83,17 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         COMPONENT_ID="${BASH_REMATCH[1]}"
         COMPONENT_FILE="${COMPONENT_ID}.html"
 
-        # Check if the component file exists
-        if [[ -f "$COMPONENT_FILE" ]]; then
+        # Check if we are in showcase mode to search in the ./lib/ folder
+        if [[ "$SHOWCASE_MODE" == true ]]; then
+            COMPONENT_PATH="./lib/$COMPONENT_FILE"
+        else
+            COMPONENT_PATH="$COMPONENT_FILE"
+        fi
+
+        # Check if the component file exists in the appropriate folder
+        if [[ -f "$COMPONENT_PATH" ]]; then
             echo "Processing component: $COMPONENT_ID"
-            COMPONENT_CONTENT=$(<"$COMPONENT_FILE")
+            COMPONENT_CONTENT=$(<"$COMPONENT_PATH")
 
             # Safely escape special characters like &
             COMPONENT_CONTENT=$(echo "$COMPONENT_CONTENT" | sed 's/&/\\&/g')
@@ -80,7 +101,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
             line="${line/\{\{$COMPONENT_ID\}\}/$COMPONENT_CONTENT}"
             echo "Replaced {{${COMPONENT_ID}}} successfully."
         else
-            echo "Warning: Component file '$COMPONENT_FILE' not found. Leaving placeholder unchanged."
+            echo "Warning: Component file '$COMPONENT_FILE' not found in ${COMPONENT_PATH}. Leaving placeholder unchanged."
             missing_components+=("$COMPONENT_ID")
             line="${line/\{\{$COMPONENT_ID\}\}/{{${COMPONENT_ID}}}}"
         fi

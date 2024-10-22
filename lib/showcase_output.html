@@ -1,0 +1,1864 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaisyUI Components Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8">DaisyUI Components Showcase</h1>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Button Component</h2>
+        <div class="border p-4">
+            <!-- Render the button component -->
+            
+    <div id="buttonComponent">
+        <button class="btn">Button</button>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Dropdown Component</h2>
+        <div class="border p-4">
+            <!-- Render the dropdown component -->
+            
+    <div id="dropdownComponent">
+        <div class="dropdown">
+            <label tabindex="0" class="btn">Dropdown</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+            </ul>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Modal Component</h2>
+        <div class="border p-4">
+            <!-- Render the modal component -->
+            
+    <div id="modalComponent">
+        <label for="my-modal" class="btn">Open Modal</label>
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <div class="modal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Modal Title</h3>
+                <p>Modal content goes here.</p>
+                <div class="modal-action">
+                    <label for="my-modal" class="btn">Close Modal</label>
+                </div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Swap Component</h2>
+        <div class="border p-4">
+            <!-- Render the swap component -->
+            <div id="swapComponent">
+    <div class="swap swap-rotate">
+        <input type="checkbox" class="hidden" />
+        <div class="swap-on">ON</div>
+        <div class="swap-off">OFF</div>
+    </div>
+
+    <script>
+        (function() {
+            var head = document.head;
+            if (!document.querySelector('link[href*="daisyui"]')) {
+                var daisyUICDN = document.createElement('link');
+                daisyUICDN.rel = 'stylesheet';
+                daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+                head.appendChild(daisyUICDN);
+            }
+            if (!document.querySelector('script[src*="tailwindcss"]')) {
+                var tailwindCDN = document.createElement('script');
+                tailwindCDN.src = 'https://cdn.tailwindcss.com';
+                head.appendChild(tailwindCDN);
+            }
+        })();
+    </script>
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Accordion Component</h2>
+        <div class="border p-4">
+            <!-- Render the accordion component -->
+            
+    <div id="accordionComponent">
+        <div class="collapse">
+            <input type="checkbox" />
+            <div class="collapse-title text-xl font-medium">
+                Accordion Title
+            </div>
+            <div class="collapse-content">
+                <p>Accordion content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Avatar Component</h2>
+        <div class="border p-4">
+            <!-- Render the avatar component -->
+            
+    <div id="avatarComponent">
+        <div class="avatar">
+            <div class="w-24 rounded-full">
+                <img src="https://picsum.photos/200" alt="Avatar Image" />
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Badge Component</h2>
+        <div class="border p-4">
+            <!-- Render the badge component -->
+            
+    <div id="badgeComponent">
+        <div class="badge">Badge</div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Card Component</h2>
+        <div class="border p-4">
+            <!-- Render the card component -->
+            
+    <div id="cardComponent">
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Card Title</h2>
+                <p>Card content goes here.</p>
+                <div class="card-actions justify-end">
+                    <button class="btn">Action</button>
+                </div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Carousel Component</h2>
+        <div class="border p-4">
+            <!-- Render the carousel component -->
+            <div id="swapComponent">
+    <div class="swap swap-rotate">
+        <input type="checkbox" class="hidden" />
+        <div class="swap-on">ON</div>
+        <div class="swap-off">OFF</div>
+    </div>
+
+    <script>
+        (function() {
+            var head = document.head;
+            if (!document.querySelector('link[href*="daisyui"]')) {
+                var daisyUICDN = document.createElement('link');
+                daisyUICDN.rel = 'stylesheet';
+                daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+                head.appendChild(daisyUICDN);
+            }
+            if (!document.querySelector('script[src*="tailwindcss"]')) {
+                var tailwindCDN = document.createElement('script');
+                tailwindCDN.src = 'https://cdn.tailwindcss.com';
+                head.appendChild(tailwindCDN);
+            }
+        })();
+    </script>
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Chat bubble Component</h2>
+        <div class="border p-4">
+            <!-- Render the chat bubble component -->
+            <div id="chatbubbleComponent">
+    <div class="chat chat-start">
+        <div class="chat-bubble">Hello!</div>
+    </div>
+    <div class="chat chat-end">
+        <div class="chat-bubble">Hi there!</div>
+    </div>
+
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Collapse Component</h2>
+        <div class="border p-4">
+            <!-- Render the collapse component -->
+            
+    <div id="collapseComponent">
+        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+            <div class="collapse-title text-xl font-medium">
+                Collapse Title
+            </div>
+            <div class="collapse-content">
+                <p>Collapse content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Countdown Component</h2>
+        <div class="border p-4">
+            <!-- Render the countdown component -->
+            <div id="countdownComponent">
+    <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span class="countdown font-mono text-5xl">
+                <span style="--value:15;"></span>
+            </span>
+            days
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span class="countdown font-mono text-5xl">
+                <span style="--value:10;"></span>
+            </span>
+            hours
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span class="countdown font-mono text-5xl">
+                <span style="--value:24;"></span>
+            </span>
+            min
+        </div>
+        <div class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <span class="countdown font-mono text-5xl">
+                <span style="--value:41;"></span>
+            </span>
+            sec
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var head = document.head;
+            if (!document.querySelector('link[href*="daisyui"]')) {
+                var daisyUICDN = document.createElement('link');
+                daisyUICDN.rel = 'stylesheet';
+                daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+                head.appendChild(daisyUICDN);
+            }
+            if (!document.querySelector('script[src*="tailwindcss"]')) {
+                var tailwindCDN = document.createElement('script');
+                tailwindCDN.src = 'https://cdn.tailwindcss.com';
+                head.appendChild(tailwindCDN);
+            }
+        })();
+    </script>
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Diff Component</h2>
+        <div class="border p-4">
+            <!-- Render the diff component -->
+            
+    <div id="diffComponent">
+        <div class="mockup-code">
+            <pre data-prefix="-" class="text-error"><code>This is incorrect</code></pre>
+            <pre data-prefix="+" class="text-success"><code>This is correct</code></pre>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Kbh Component</h2>
+        <div class="border p-4">
+            <!-- Render the kbh component -->
+            
+    <div id="kbhComponent">
+        <kbd class="kbd">Ctrl</kbd>+<kbd class="kbd">K</kbd>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Stat Component</h2>
+        <div class="border p-4">
+            <!-- Render the stat component -->
+            
+    <div id="statComponent">
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">Stat Title</div>
+                <div class="stat-value">31K</div>
+                <div class="stat-desc">Stat description</div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Table Component</h2>
+        <div class="border p-4">
+            <!-- Render the table component -->
+            
+    <div id="tableComponent">
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Favorite Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>Developer</td>
+                    <td>Blue</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>Designer</td>
+                    <td>Green</td>
+                </tr>
+            </tbody>
+        </table>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Timeline Component</h2>
+        <div class="border p-4">
+            <!-- Render the timeline component -->
+            
+    <div id="timelineComponent">
+        <ul class="steps steps-vertical">
+            <li class="step step-primary">Step 1</li>
+            <li class="step step-primary">Step 2</li>
+            <li class="step">Step 3</li>
+        </ul>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Navigation Component</h2>
+        <div class="border p-4">
+            <!-- Render the navigation component -->
+            
+    <div id="navigationComponent">
+        <nav class="navbar">
+            <a class="btn btn-ghost normal-case text-xl">Navigation</a>
+        </nav>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Breadcrumbs Component</h2>
+        <div class="border p-4">
+            <!-- Render the breadcrumbs component -->
+            
+    <div id="breadcrumbsComponent">
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a>Home</a></li>
+                <li><a>Library</a></li>
+                <li>Data</li>
+            </ul>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Button navigation Component</h2>
+        <div class="border p-4">
+            <!-- Render the button navigation component -->
+            <div id="buttonnavigationComponent">
+    <div class="btn-group">
+        <button class="btn">Left</button>
+        <button class="btn">Middle</button>
+        <button class="btn">Right</button>
+    </div>
+
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Link Component</h2>
+        <div class="border p-4">
+            <!-- Render the link component -->
+            
+    <div id="linkComponent">
+        <a class="link link-hover" href="#">Link</a>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Menu Component</h2>
+        <div class="border p-4">
+            <!-- Render the menu component -->
+            
+    <div id="menuComponent">
+        <ul class="menu bg-base-100 w-56 p-2 rounded-box">
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+        </ul>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Navbar Component</h2>
+        <div class="border p-4">
+            <!-- Render the navbar component -->
+            
+    <div id="navbarComponent">
+        <div class="navbar bg-base-100">
+            <a class="btn btn-ghost normal-case text-xl">Navbar</a>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Pagination Component</h2>
+        <div class="border p-4">
+            <!-- Render the pagination component -->
+            
+    <div id="paginationComponent">
+        <div class="btn-group">
+            <button class="btn">1</button>
+            <button class="btn btn-active">2</button>
+            <button class="btn">3</button>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Steps Component</h2>
+        <div class="border p-4">
+            <!-- Render the steps component -->
+            
+    <div id="stepsComponent">
+        <ul class="steps">
+            <li class="step step-primary">Step 1</li>
+            <li class="step step-primary">Step 2</li>
+            <li class="step">Step 3</li>
+            <li class="step">Step 4</li>
+        </ul>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Tab Component</h2>
+        <div class="border p-4">
+            <!-- Render the tab component -->
+            
+    <div id="tabComponent">
+        <div class="tabs">
+            <a class="tab tab-bordered">Tab 1</a>
+            <a class="tab tab-bordered tab-active">Tab 2</a>
+            <a class="tab tab-bordered">Tab 3</a>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Alert Component</h2>
+        <div class="border p-4">
+            <!-- Render the alert component -->
+            
+    <div id="alertComponent">
+        <div class="alert alert-error">
+            <span>Error Alert!</span>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Loading Component</h2>
+        <div class="border p-4">
+            <!-- Render the loading component -->
+            
+    <div id="loadingComponent">
+        <span class="loading loading-spinner loading-lg"></span>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Progress Component</h2>
+        <div class="border p-4">
+            <!-- Render the progress component -->
+            
+    <div id="progressComponent">
+        <progress class="progress w-56" value="70" max="100"></progress>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Radial progress Component</h2>
+        <div class="border p-4">
+            <!-- Render the radial progress component -->
+            <div id="radialprogressComponent">
+    <div class="radial-progress" style="--value:70;">70%</div>
+
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Skeleton Component</h2>
+        <div class="border p-4">
+            <!-- Render the skeleton component -->
+            
+    <div id="skeletonComponent">
+        <div class="w-full h-2 rounded-full skeleton"></div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Toast Component</h2>
+        <div class="border p-4">
+            <!-- Render the toast component -->
+            
+    <div id="toastComponent">
+        <div class="toast">
+            <div class="alert alert-success">
+                <span>Toast message success!</span>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Tooltip Component</h2>
+        <div class="border p-4">
+            <!-- Render the tooltip component -->
+            
+    <div id="tooltipComponent">
+        <button class="btn" data-tip="Tooltip">Hover me</button>
+        <div class="tooltip tooltip-open tooltip-right">
+            <span>Tooltip content</span>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Data input Component</h2>
+        <div class="border p-4">
+            <!-- Render the data input component -->
+            <div id="datainputComponent">
+    <input type="text" placeholder="Enter data here" class="input input-bordered w-full max-w-xs" />
+    <script>
+        (function() {
+            // Check if DaisyUI and Tailwind CSS are already loaded
+            if (!document.querySelector('link[href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"]')) {
+                var daisyUICSS = document.createElement('link');
+                daisyUICSS.rel = 'stylesheet';
+                daisyUICSS.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+                document.head.appendChild(daisyUICSS);
+            }
+            if (!document.querySelector('script[src="https://cdn.tailwindcss.com"]')) {
+                var tailwindScript = document.createElement('script');
+                tailwindScript.src = 'https://cdn.tailwindcss.com';
+                document.head.appendChild(tailwindScript);
+            }
+
+            // Data input specific behavior can be added here
+        })();
+    </script>
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Checkbox Component</h2>
+        <div class="border p-4">
+            <!-- Render the checkbox component -->
+            
+    <div id="checkboxComponent">
+        <input type="checkbox" class="checkbox" />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">File input Component</h2>
+        <div class="border p-4">
+            <!-- Render the file input component -->
+            <div id="fileinputComponent">
+    <input type="file" class="file-input file-input-bordered w-full max-w-xs" />
+
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Radio Component</h2>
+        <div class="border p-4">
+            <!-- Render the radio component -->
+            
+    <div id="radioComponent">
+        <input type="radio" name="radio-1" class="radio" checked />
+        <input type="radio" name="radio-1" class="radio" />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Range Component</h2>
+        <div class="border p-4">
+            <!-- Render the range component -->
+            
+    <div id="rangeComponent">
+        <input type="range" min="0" max="100" class="range" />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Rating Component</h2>
+        <div class="border p-4">
+            <!-- Render the rating component -->
+            
+    <div id="ratingComponent">
+        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Select Component</h2>
+        <div class="border p-4">
+            <!-- Render the select component -->
+            
+    <div id="selectComponent">
+        <select class="select select-bordered w-full max-w-xs">
+            <option disabled selected>Select an option</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+        </select>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Textinput Component</h2>
+        <div class="border p-4">
+            <!-- Render the textinput component -->
+            <div id="textinputComponent">
+    <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+</div>
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Textarea Component</h2>
+        <div class="border p-4">
+            <!-- Render the textarea component -->
+            
+    <div id="textareaComponent">
+        <textarea class="textarea textarea-bordered" placeholder="Textarea"></textarea>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Toggle Component</h2>
+        <div class="border p-4">
+            <!-- Render the toggle component -->
+            
+    <div id="toggleComponent">
+        <input type="checkbox" class="toggle" />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Artboard Component</h2>
+        <div class="border p-4">
+            <!-- Render the artboard component -->
+            
+    <div id="artboardComponent">
+        <div class="artboard artboard-horizontal bg-base-200">Artboard</div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Divider Component</h2>
+        <div class="border p-4">
+            <!-- Render the divider component -->
+            
+    <div id="dividerComponent">
+        <div class="divider">Divider Text</div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Drawer Component</h2>
+        <div class="border p-4">
+            <!-- Render the drawer component -->
+            
+    <div id="drawerComponent">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+            <label for="my-drawer" class="btn">Open drawer</label>
+        </div>
+        <div class="drawer-side">
+            <label for="my-drawer" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 bg-base-100">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+            </ul>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Footer Component</h2>
+        <div class="border p-4">
+            <!-- Render the footer component -->
+            
+    <div id="footerComponent">
+        <footer class="footer p-10 bg-neutral text-neutral-content">
+            <div>
+                <span class="footer-title">Footer Title</span> 
+                <a class="link link-hover">Link 1</a> 
+                <a class="link link-hover">Link 2</a> 
+            </div>
+        </footer>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Hero Component</h2>
+        <div class="border p-4">
+            <!-- Render the hero component -->
+            
+    <div id="heroComponent">
+        <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Hero Title</h1>
+                    <p class="py-6">Hero subtitle text goes here.</p>
+                </div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Indicator Component</h2>
+        <div class="border p-4">
+            <!-- Render the indicator component -->
+            
+    <div id="indicatorComponent">
+        <div class="indicator">
+            <span class="indicator-item badge badge-secondary">New</span>
+            <button class="btn">Indicator Button</button>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Join (group items) Component</h2>
+        <div class="border p-4">
+            <!-- Render the join (group items) component -->
+            {{join(groupitems)Component}}
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Mask Component</h2>
+        <div class="border p-4">
+            <!-- Render the mask component -->
+            
+    <div id="maskComponent">
+        <img src="https://picsum.photos/200" class="mask mask-squircle" />
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Stack Component</h2>
+        <div class="border p-4">
+            <!-- Render the stack component -->
+            
+    <div id="stackComponent">
+        <div class="stack">
+            <div class="bg-primary text-primary-content rounded-lg shadow-lg p-8">Item 1</div>
+            <div class="bg-secondary text-secondary-content rounded-lg shadow-lg p-8">Item 2</div>
+            <div class="bg-accent text-accent-content rounded-lg shadow-lg p-8">Item 3</div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Browser Component</h2>
+        <div class="border p-4">
+            <!-- Render the browser component -->
+            
+    <div id="browserComponent">
+        <div class="mockup-browser border border-base-300">
+            <div class="mockup-browser-toolbar">
+                <div class="input input-bordered w-24 input-xs"></div>
+            </div>
+            <div class="mockup-browser-content">
+                <p>Browser content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Code Component</h2>
+        <div class="border p-4">
+            <!-- Render the code component -->
+            
+    <div id="codeComponent">
+        <div class="mockup-code">
+            <pre data-prefix="$"><code>npm install daisyui</code></pre> 
+            <pre data-prefix=">" class="text-warning"><code>Installing...</code></pre> 
+            <pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Phone Component</h2>
+        <div class="border p-4">
+            <!-- Render the phone component -->
+            
+    <div id="phoneComponent">
+        <div class="mockup-phone">
+            <div class="camera"></div> 
+            <div class="display">
+                <div class="artboard artboard-demo phone-1">Phone content goes here.</div>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Window Component</h2>
+        <div class="border p-4">
+            <!-- Render the window component -->
+            
+    <div id="windowComponent">
+        <div class="mockup-window border border-base-300">
+            <div class="mockup-window-content">
+                <p>Window content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
+        </div>
+    </section>
+    
+    </div>
+</body>
+</html>

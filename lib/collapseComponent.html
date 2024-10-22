@@ -1,0 +1,30 @@
+
+    <div id="collapseComponent">
+        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+            <div class="collapse-title text-xl font-medium">
+                Collapse Title
+            </div>
+            <div class="collapse-content">
+                <p>Collapse content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    

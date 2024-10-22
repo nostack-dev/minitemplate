@@ -1,0 +1,31 @@
+
+    <div id="accordionComponent">
+        <div class="collapse">
+            <input type="checkbox" />
+            <div class="collapse-title text-xl font-medium">
+                Accordion Title
+            </div>
+            <div class="collapse-content">
+                <p>Accordion content goes here.</p>
+            </div>
+        </div>
+        
+<script>
+(function() {
+    var head = document.head;
+    if (!document.querySelector('link[href*="daisyui"]')) {
+        var daisyUICDN = document.createElement('link');
+        daisyUICDN.rel = 'stylesheet';
+        daisyUICDN.href = 'https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css';
+        head.appendChild(daisyUICDN);
+    }
+    if (!document.querySelector('script[src*="tailwindcss"]')) {
+        var tailwindCDN = document.createElement('script');
+        tailwindCDN.src = 'https://cdn.tailwindcss.com';
+        head.appendChild(tailwindCDN);
+    }
+})();
+</script>
+
+    </div>
+    
