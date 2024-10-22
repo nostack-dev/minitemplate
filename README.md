@@ -31,9 +31,9 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 ```
 .
 ├── 🟢 createcomponent.sh [componentname]       # Create a new component (componentname is required)
-├── 🟢 generate.sh [theme]                      # Generate `index.html` with an optional theme
+├── 🟢 generate.sh [theme]                      # Generates the final static `index.html` from template.html 
 ├── 🟢 print.sh                                 # Print current directory structure and files
-├── template.html                               # Base file used to generate `index.html`
+├── template.html                               # Template file: <html> ...{{mycomponentComponent}}--- </html>
 ├── index.html                                  # Generated from `template.html`
 ├── headerComponent.html                        # Header with theme controller
 ├── contentComponent.html                       # Main content area
@@ -43,12 +43,12 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 ├── footerComponent.html                        # Footer content
 ├── README.md                                   # Project documentation
 ├── CONTRIBUTING.md                             # Contribution guidelines
-├── addcomponent.sh                             # Adds component from `lib/output` to the root
+├──🟢addcomponent.sh                           # clones reusable MiniTemplate Components into main root folder
 └── lib                                         # Library directory containing input/output components
-    ├── 🟢 convert.sh                              # Script to convert components
-    ├──    custom_output                           # Custom components generated from user-provided HTML
+    ├── 🟢 convert.sh                              # Converts daisyui HTML into reusable MiniTemplate Components
+    ├──    custom_output                           # Custom components converted from user-provided HTML
     ├──    input                                   # Source components directory
-    └──    output                                  # Generated components directory
+    └──    output                                  # result of convert.sh (usable MiniTemplate Components)
 └── tests                                       # Directory containing test scripts
     ├── 🟢 run_tests.sh                             # Run all test scripts
     ├── 🟢 test_component_creation.sh               # Test component creation script
