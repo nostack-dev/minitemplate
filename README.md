@@ -1,7 +1,8 @@
+
 # ✍️ MiniTemplate - Simple Template Engine
- 
+
 ## Overview
- 
+
 MiniTemplate is a modular web template system designed to easily integrate various components. It leverages **Tailwind CSS** and **DaisyUI**, providing a flexible and efficient structure for statically generated web applications.
 
 ## Key Features
@@ -11,10 +12,6 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 - **Custom Theming**: Quickly change themes with the `generate.sh` script or directly using the theme controller dropdown.
 
 ## Project Structure
-
-The flat project structure is intentional to improve development speed by providing direct access to all components without deep navigation. Further structure can be added as the project scales to accommodate more complexity while maintaining this simplicity.
-
-The project consists of the following files and components:
 
 ```
 .
@@ -30,7 +27,10 @@ The project consists of the following files and components:
 ├── themecontrollerComponent.html               # Theme controller dropdown
 ├── footerComponent.html                        # Footer content
 ├── README.md                                   # Project documentation
-├── CNAME                                       # Domain name configuration
+├── addcomponent.sh                             # Adds component from lib/output to the root
+└── lib                                         # Library directory containing input/output components
+    ├── input                                   # Source components directory
+    └── output                                  # Generated components directory
 └── tests                                       # Directory containing test scripts
     ├── 🟢 run_tests.sh                         # Run all test scripts
     ├── 🟢 test_component_creation.sh           # Test component creation script
@@ -145,7 +145,7 @@ For a complete list [click here](https://daisyui.com/docs/themes/)
 
 MiniTemplate uses daisyUI for modular scoped Tailwind CSS components. You can [visit daisyUI documentation](https://daisyui.com/components/) to see all available components, themes, and their documentation.
 
-## Testing and Git Hooks
+## Testing
 
 ### Running Tests
 
@@ -160,3 +160,25 @@ To ensure the integrity of the components and templates, the project includes a 
   ```bash
   ./tests/run_tests.sh
   ```
+
+## Component Generation from Input to Output in `lib/`
+
+The `lib/` directory contains two subdirectories: `input/` and `output/`. These directories handle the transformation of components from their source form (`input/`) to their generated version (`output/`).
+
+### How It Works:
+
+- **`lib/input/`**: Contains the source components in their base form. These are simple components using DaisyUI and Tailwind CSS, with no extra JavaScript logic or complex styling applied. For example, `input/button.html` might contain just a button with minimal configuration.
+  
+- **`lib/output/`**: This is where the transformed or enhanced version of the component is saved. The `convert.sh` script in `lib/` handles this transformation, applying any additional logic or CSS necessary to generate a complete component ready for use.
+
+### Example
+
+To transform a component from `input/` to `output/`, you would run:
+
+```bash
+./lib/convert.sh [componentName]
+```
+
+This would read `lib/input/componentName.html` and generate `lib/output/componentNameComponent.html`, applying any predefined transformations.
+
+The generated components in `lib/output/` are fully usable components that can be integrated directly into the `template.html` file or any other page.
