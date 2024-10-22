@@ -27,4 +27,4 @@ If you’d like to contribute code to MiniTemplate, follow these steps:
 ### 5. Testing
 Before submitting your pull request, make sure to run any relevant tests:
 ```bash
-./tests/run_tests.sh
+cd ./tests && ./run_tests.sh
