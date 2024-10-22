@@ -30,7 +30,7 @@ MiniTemplate is a modular web template system designed to easily integrate vario
 
 ```
 .
-├── 🟢 createcomponent.sh [componentName]       # Create a new component (componentName is required)
+├── 🟢 createcomponent.sh [componentname]       # Create a new component (componentname is required)
 ├── 🟢 generate.sh [theme]                      # Generate `index.html` with an optional theme
 ├── 🟢 print.sh                                 # Print current directory structure and files
 ├── template.html                               # Base file used to generate `index.html`
@@ -76,9 +76,9 @@ To create a new component, use the `createcomponent.sh` script, which will gener
 
 - **Run the script**:
   ```bash
-  ./createcomponent.sh [componentName]
+  ./createcomponent.sh [componentname]
   ```
-- Replace `[componentName]` with the desired name for your new component.
+- Replace `[componentname]` with the desired name for your new component. Use a lowercase name.
 
 The generated component structure includes:
 
@@ -90,7 +90,7 @@ The generated component structure includes:
 
 To include a component in `template.html` (or any other component you have created):
 
-1. Use the placeholder syntax `{{componentName}}` within `template.html` where you want the component to appear.
+1. Use the placeholder syntax `{{componentname}}` within `template.html` where you want the component to appear.
 2. Ensure the component file (e.g., `headerComponent.html`) is correctly named and located in the project root.
 
 #### Example of Template Integration
