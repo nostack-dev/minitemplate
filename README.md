@@ -1,4 +1,3 @@
-
 # ✍️ MiniTemplate - Simple Template Engine
 
 ## Overview
