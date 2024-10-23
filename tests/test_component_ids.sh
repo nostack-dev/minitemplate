@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Test script for Component ID Handling
-# This script checks if the component IDs in your HTML files match their filenames.
+# Test script for Component ID Handling with consistent formatting
 
-# Initialize
-echo "Initializing test: Component ID Handling Test"
+echo -e "\n--- Initializing test: Component ID Handling Test ---"
 
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -20,7 +18,7 @@ cp "$ROOT_DIR"*Component.html "$TEST_DIR/"
 # Initialize test result
 TEST_PASSED=true
 
-# For each component file in the test directory, extract its ID and check if it matches the filename (excluding .html)
+# For each component file in the test directory, check if the id matches the filename
 for COMPONENT_FILE in "$TEST_DIR/"*Component.html; do
     if [[ -f "$COMPONENT_FILE" ]]; then
         FILENAME=$(basename "$COMPONENT_FILE")
@@ -33,29 +31,26 @@ for COMPONENT_FILE in "$TEST_DIR/"*Component.html; do
         if [[ "$COMPONENT_CONTENT" =~ id=\"([^\"]+)\" ]]; then
             ID_ATTRIBUTE="${BASH_REMATCH[1]}"
             if [[ "$ID_ATTRIBUTE" == "$COMPONENT_ID" ]]; then
-                echo "✔ Component ID matches filename for $FILENAME"
+                echo -e "${GREEN}✔ Component ID matches filename for ${FILENAME}${NC}"
             else
-                echo "✖ Component ID does NOT match filename for $FILENAME"
-                echo "   Expected ID: $COMPONENT_ID"
-                echo "   Found ID:    $ID_ATTRIBUTE"
+                echo -e "${RED}✖ Component ID does NOT match filename for ${FILENAME}${NC}"
                 TEST_PASSED=false
             fi
         else
-            echo "✖ No id attribute found in $FILENAME"
+            echo -e "${RED}✖ No id attribute found in ${FILENAME}${NC}"
             TEST_PASSED=false
         fi
     else
-        echo "✖ Component file $COMPONENT_FILE not found."
+        echo -e "${RED}✖ Component file ${FILENAME} not found.${NC}"
         TEST_PASSED=false
     fi
 done
 
+# Final result
 if [ "$TEST_PASSED" = true ]; then
-    echo -e "\nComponent ID handling test passed."
-    RESULT=0
+    echo -e "${GREEN}✔ Component ID handling test passed.${NC}"
+    exit 0
 else
-    echo -e "\nComponent ID handling test failed."
-    RESULT=1
+    echo -e "${RED}✖ Component ID handling test failed.${NC}"
+    exit 1
 fi
-
-exit $RESULT

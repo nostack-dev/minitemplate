@@ -3,9 +3,11 @@
 # Color definitions for success and failure
 GREEN='\033[0;32m'
 RED='\033[0;31m'
+YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 CHECKMARK='✔' # Checkmark
 CROSSMARK='✖' # Crossmark
+WARNING='⚠' # Warning
 
 # Verbose flag (default: false)
 VERBOSE=false
@@ -25,10 +27,10 @@ echo -e "---------------------------------\n"
 # Function to copy the required utility scripts to the tests directory
 copy_scripts_to_tests() {
     $VERBOSE && echo -e "\n📄 ${GREEN}Copying required scripts to tests directory...${NC}"
-    
+
     # Define the source scripts
     local scripts=("generate.sh")
-    
+
     # Loop through each script and copy if it exists
     for script in "${scripts[@]}"; do
         if [ -f "../$script" ]; then
@@ -41,22 +43,38 @@ copy_scripts_to_tests() {
     done
 }
 
+# Function to check if a test is implemented
+check_for_implemented_marker() {
+    local test_script="$1"
+    if grep -q "implemented=false" "$test_script"; then
+        echo -e "${YELLOW}${WARNING} New test, please implement: $test_script${NC}"
+    fi
+}
+
 # Function to run a single test script
 run_test() {
     local test_script="$1"
-    $VERBOSE && echo -e "\n### Running \`$test_script\`"
 
-    # Execute the test script
-    if bash "$test_script" > /dev/null 2>&1; then
+    if [ "$VERBOSE" = true ]; then
+        echo -e "\n--- Running \`$test_script\` ---"
+    fi
+
+    # Check if the test is implemented
+    check_for_implemented_marker "$test_script"
+
+    # Execute the test script, capture the result
+    if [ "$VERBOSE" = true ]; then
+        bash "$test_script" # Output everything in verbose mode
+    else
+        bash "$test_script" > /dev/null 2>&1 # Suppress output in non-verbose mode
+    fi
+
+    # Check the test result
+    if [ $? -eq 0 ]; then
         echo -e "${GREEN}${CHECKMARK} Test passed: $test_script${NC}"
         return 0
     else
         echo -e "${RED}${CROSSMARK} Test failed: $test_script${NC}"
-        if [ "$VERBOSE" = true ]; then
-            echo -e "\n--- Output of $test_script ---\n"
-            bash "$test_script"
-            echo -e "\n--- End of $test_script Output ---\n"
-        fi
         return 1
     fi
 }
@@ -67,7 +85,6 @@ echo -e "\n## Running Tests\n"
 copy_scripts_to_tests
 
 # Find all test scripts dynamically in the ./tests/ directory
-# Using globbing to match files starting with 'test_' and ending with '.sh'
 shopt -s nullglob
 test_scripts=( ./test_*.sh )
 shopt -u nullglob
@@ -97,7 +114,6 @@ for test_script in "${test_scripts[@]}"; do
         $VERBOSE && echo -e "${RED}Test script not found: $test_script${NC}"
         ((failed++))
     fi
-    $VERBOSE && echo -e "\n---"
 done
 
 # Summary of results
@@ -115,4 +131,6 @@ echo -e "Total Tests Failed: ${RED}$failed${NC}"
 
 echo -e "\nAll tests finished."
 
+# Cleanup
+[[ "$(basename "$(pwd)")" == "tests" ]] && find . -type f ! -name 'test_*.sh' ! -name 'run_tests.sh' ! -name 'create_test.sh' -delete && find . -type d ! -name '.' -exec rm -rf {} +
 exit 0

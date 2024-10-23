@@ -25,7 +25,7 @@ if [[ ! -z "$1" ]]; then
         echo "Using theme: $THEME_NAME"
     fi
 else
-    echo "No theme provided, will not set data-theme attribute."
+    echo "No theme provided, will not set data-theme attribute or prompt for title."
 fi
 
 # Check if the template file exists
@@ -34,8 +34,8 @@ if [[ ! -f "$TEMPLATE_FILE" ]]; then
     exit 1
 fi
 
-# If not in showcase mode, prompt for the page title
-if [[ "$SHOWCASE_MODE" == false ]]; then
+# If not in showcase mode and a theme is provided, prompt for the page title
+if [[ "$SHOWCASE_MODE" == false && ! -z "$1" ]]; then
     read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
 fi
 
