@@ -13,6 +13,7 @@ IGNORE_LIST=(
     "CONTRIBUTING.md"
     "./lib/components_converted"
     "./tests/*/" # Ignore all subfolders of ./tests
+    "./projects" # Ignore projects folder and its content
 )
 
 # Function to check if a file or folder is in the ignore list
