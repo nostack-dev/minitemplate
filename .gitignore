@@ -3,6 +3,3 @@ tests/*
 
 # Except the test scripts starting with 'test_'
 !tests/test_*.sh
-
-# Ignore everything in tests/wrapped
-tests/wrapped/*
