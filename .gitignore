@@ -7,3 +7,11 @@ tests/*
 # Except for the default directory and its contents
 !projects/default/
 !projects/default/**
+
+./contentComponent.html
+./footerComponent.html
+./headerComponent.html
+./heroComponent.html
+./sidebarComponent.html
+./template_default.html
+./themecontrollerComponent.html
