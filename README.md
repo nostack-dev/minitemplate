@@ -45,8 +45,8 @@ Here is an updated overview of the MiniTemplate project structure:
 ├── projects/                       # Contains individual project directories
 │   └── default/                    # Default project setup with components and scripts
 └── tests/                          # Test scripts to validate the functionality of MiniTemplate
-    ├── run_tests.sh                # 🟢 Script to run all the tests in the `tests/` folder
-    ├── create_test.sh              # 🟢 Script to create new test scripts
+    ├── run_tests.sh                 # 🟢 Script to run all the tests in the `tests/` folder
+    ├── create_test.sh               # 🟢 Script to create new test scripts
     ├── test_addcomponent.sh         # 🟢 Test script for `add_to_project.sh`
     ├── test_component_ids.sh        # 🟢 Test script for component ID validation
     ├── test_component_references.sh # 🟢 Test script to check for missing component references
