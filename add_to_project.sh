@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define directories based on the script's directory
 default_dir="$SCRIPT_DIR/lib/components_default"
-converted_dir="$SCRIPT_DIR/lib/converted"
+converted_dir="$SCRIPT_DIR/lib/components_converted"
 custom_dir="$SCRIPT_DIR/lib/components_custom"
 templates_dir="$SCRIPT_DIR/lib/templates"
 
