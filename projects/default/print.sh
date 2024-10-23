@@ -7,6 +7,12 @@ IGNORE_LIST=(
     "node_modules"
     "dist"
     "*.log"
+    "README.md"
+    "LICENSE"
+    "CNAME"
+    "CONTRIBUTING.md"
+    "./lib/components_converted"
+    "./tests/*/" # Ignore all subfolders of ./tests
 )
 
 # Function to check if a file or folder is in the ignore list
