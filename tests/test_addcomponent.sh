@@ -54,4 +54,4 @@ else
     echo "✖ Test 4 Failed: Invalid component error message not shown."
 fi
 
-# No cleanup of files
+
