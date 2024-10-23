@@ -121,16 +121,6 @@ You can apply a custom theme by providing the theme name when running the script
 
 This will set the `data-theme` attribute in the body tag to `dark`, applying the selected DaisyUI theme.
 
-### Showcase Mode
-
-To generate a showcase page, which displays all available components in one view, use:
-
-```bash
-./generate.sh showcase
-```
-
-This will create a `showcase_output.html` file in the `lib` directory, which includes all the components available in the `components_source` directory.
-
 ### Handling Missing Components
 
 During the generation process, if any components are missing, placeholders will remain in the output file. A warning will be displayed, listing the missing components.
