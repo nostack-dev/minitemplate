@@ -99,7 +99,7 @@ To add default components, you can use the following command:
 
 ## Component Generation
 
-MiniTemplate allows you to generate static HTML files from templates and components using the `generate.sh` script. The script takes care of replacing placeholders with component content and adding optional theming. It supports both regular and showcase modes.
+MiniTemplate allows you to generate static HTML files from templates and components using the `generate.sh` script. The script takes care of replacing placeholders with component content and adding optional theming. 
 
 ### Default Usage
 
