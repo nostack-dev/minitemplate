@@ -6,14 +6,14 @@ echo -e "\n--- Initializing test: Component ID Handling Test ---"
 
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+COMPONENTS_DIR="$SCRIPT_DIR/../lib/components_default"  # Updated path to components
 TEST_DIR="$SCRIPT_DIR/../tests"
-ROOT_DIR="$SCRIPT_DIR/../"
 
 # Ensure the test directory exists
 mkdir -p "$TEST_DIR"
 
-# Copy all component files ending with 'Component.html' from root to test directory
-cp "$ROOT_DIR"*Component.html "$TEST_DIR/"
+# Copy all component files ending with 'Component.html' from the correct directory to the test directory
+cp "$COMPONENTS_DIR/"*Component.html "$TEST_DIR/"
 
 # Initialize test result
 TEST_PASSED=true
