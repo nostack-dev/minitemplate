@@ -4,7 +4,7 @@
 set -e
 
 # Define the template and output files
-TEMPLATE_FILE="default.html"
+TEMPLATE_FILE="template_default.html"
 OUTPUT_FILE="index.html"  # Output file set to index.html
 
 # Default theme if not provided

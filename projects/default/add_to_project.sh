@@ -1,30 +1,13 @@
 #!/bin/bash
 
-# Function to find the root directory containing the 'lib' folder
-find_root_dir() {
-    local dir="$(pwd)"
+# Get the directory of the current script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-    # Traverse up the directory tree until the 'lib' folder is found
-    while [ "$dir" != "/" ]; do
-        if [ -d "$dir/lib" ]; then
-            echo "$dir"
-            return
-        fi
-        dir=$(dirname "$dir")
-    done
-
-    echo "Error: 'lib' directory not found in any parent directory."
-    exit 1
-}
-
-# Get the root directory of the project
-ROOT_DIR=$(find_root_dir)
-
-# Define directories relative to the root directory
-default_dir="$ROOT_DIR/lib/components_default"
-converted_dir="$ROOT_DIR/lib/converted"
-custom_dir="$ROOT_DIR/lib/components_custom"
-templates_dir="$ROOT_DIR/lib/templates"
+# Define directories based on the script's directory
+default_dir="$SCRIPT_DIR/lib/components_default"
+converted_dir="$SCRIPT_DIR/lib/components_converted"
+custom_dir="$SCRIPT_DIR/lib/components_custom"
+templates_dir="$SCRIPT_DIR/lib/templates"
 
 # Check if the default components directory exists
 if [ ! -d "$default_dir" ]; then
@@ -83,7 +66,7 @@ if [ "$1" == "defaults" ]; then
             fi
         fi
 
-        cp "$file" ./ 
+        cp "$file" ./
         echo "Copied $filename to the current directory."
     done
     exit 0

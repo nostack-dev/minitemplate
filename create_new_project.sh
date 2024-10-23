@@ -11,7 +11,7 @@ target_dir="$base_dir/$project_name"
 
 # Define the source directory for components and template
 components_dir="./lib/components_default"
-template_file="./lib/templates/default.html"
+template_file="./lib/templates/template_default.html"
 
 # Check if the base projects directory exists, if not create it
 if [ ! -d "$base_dir" ]; then
