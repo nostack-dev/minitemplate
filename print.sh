@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Color definitions for output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
 # List of files and directories to ignore
 printignore=(
     "./lib/components_converted"  # Exclude the converted components folder (output folder)
@@ -15,8 +23,8 @@ printignore=(
     "./print.sh"                  # Exclude the print.sh script itself
     "./index.html"                # Exclude index.html files in any directory
     "./tests/output.txt"          # Exclude output.txt specifically in the tests folder
-    "./tests/*.html"              # Exclude all .html files dynamically in the tests fol    
-    "./tests/*.md"                # Exclude all .md
+    "./tests/*.html"              # Exclude all .html files dynamically in the tests folder
+    "./tests/*.md"                # Exclude all .md files
 )
 
 # Function to check if a file or directory should be ignored
@@ -44,16 +52,16 @@ print_directory() {
 
         # If it's a directory, print and recurse into it
         if [ -d "$item" ]; then
-            echo "${prefix}$(basename "$item")/"
+            echo -e "${BLUE}${prefix}$(basename "$item")/${NC}"
             print_directory "$item" "$prefix    "
         elif [ -f "$item" ]; then
             # Print file in tree format
-            echo "${prefix}$(basename "$item")"
+            echo -e "${CYAN}${prefix}$(basename "$item")${NC}"
 
             # Print the contents of the file
-            echo "Contents of $(basename "$item"):"
+            echo -e "${YELLOW}Contents of $(basename "$item"):${NC}"
             cat "$item"
-            echo "------------------------"
+            echo -e "${RED}------------------------${NC}"
         fi
     done
 }
