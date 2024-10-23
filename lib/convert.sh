@@ -4,18 +4,18 @@
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define the new source and output directories
-source_dir="$script_dir/daisyUI"
-output_dir="$script_dir/converted"
-custom_output_dir="$script_dir/custom"
+source_dir="$script_dir/components_source"
+output_dir="$script_dir/components_converted"
+custom_output_dir="$script_dir/components_custom"
 
-# Create the daisyUI, converted, and custom directories if they don't exist
+# Create the components_source, components_converted, and components_custom directories if they don't exist
 mkdir -p "$source_dir"
 mkdir -p "$output_dir"
 mkdir -p "$custom_output_dir"
 
 # Check if the second argument (custom HTML) is provided
 if [[ -n "$2" ]]; then
-  # Use the custom directory for custom HTML input
+  # Use the components_custom directory for custom HTML input
   output_dir="$custom_output_dir"
   component_name="${1,,}custom"  # Append 'custom' to the component name
   custom_html="$2"
@@ -39,7 +39,7 @@ EOF
   exit 0
 fi
 
-# Default behavior: process files from the daisyUI directory
+# Default behavior: process files from the components_source directory
 files_to_gather=(accordion.html alert.html artboard.html avatar.html badge.html bottomnavigation.html breadcrumbs.html
 button.html buttonnavigation.html card.html carousel.html chatbubble.html checkbox.html code.html collapse.html
 countdown.html datainput.html diff.html divider.html drawer.html dropdown.html fileinput.html footer.html hero.html
@@ -48,7 +48,7 @@ navigation.html pagination.html phone.html progress.html radialprogress.html rad
 select.html skeleton.html stack.html stat.html steps.html swap.html tab.html table.html textarea.html textinput.html
 themecontroller.html timeline.html toast.html toggle.html tooltip.html window.html)
 
-# Loop over the files to gather and create new files in the converted directory
+# Loop over the files to gather and create new files in the components_converted directory
 for file in "${files_to_gather[@]}"; do
   if [[ -f "$source_dir/$file" ]]; then
     filename=$(basename "$file" .html)
