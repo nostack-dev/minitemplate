@@ -8,7 +8,7 @@ TEST_PASSED=true
 
 # Copy necessary files to the current directory
 echo -e "\n--- Copying files for the test ---"
-cp -r ../print.sh ../README.md ../template.html ../index.html . || { echo -e "${RED}✖ Error: Failed to copy required files.${NC}"; TEST_PASSED=false; }
+cp -r ../print.sh ../README.md ../lib/templates/template.html ../index.html . || { echo -e "${RED}✖ Error: Failed to copy required files.${NC}"; TEST_PASSED=false; }
 
 # Run the print.sh script and capture output
 ./print.sh > output.txt

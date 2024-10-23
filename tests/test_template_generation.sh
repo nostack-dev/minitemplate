@@ -8,7 +8,7 @@ TEST_PASSED=true
 
 # Copy necessary files to the current directory
 echo -e "\n--- Copying template files for the test ---"
-cp -r ../generate.sh ../template.html ../headerComponent.html ../contentComponent.html ../sidebarComponent.html ../footerComponent.html . || { echo -e "${RED}✖ Error: Failed to copy required files.${NC}"; TEST_PASSED=false; }
+cp -r ../generate.sh ../lib/templates/template.html ../lib/components_default/headerComponent.html ../lib/components_default/contentComponent.html ../lib/components_default/sidebarComponent.html ../lib/components_default/footerComponent.html . || { echo -e "${RED}✖ Error: Failed to copy required files.${NC}"; TEST_PASSED=false; }
 
 # Provide a default title for the test
 export PAGE_TITLE="Test Page Title"

@@ -3,3 +3,7 @@ tests/*
 
 # Except the test scripts starting with 'test_'
 !tests/test_*.sh
+
+# Except for the default directory and its contents
+!projects/default/
+!projects/default/**
