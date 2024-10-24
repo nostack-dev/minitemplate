@@ -41,7 +41,7 @@ You will be prompted to provide a name for your project. Once done, the script w
 
 Example:
 
-```bash
+```console
 Enter the project name: myproject
 ```
 
