@@ -98,7 +98,7 @@ MiniTemplate allows you to transform raw components from `components/source` (wh
 
 Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
 
-```bash
+```console
 cd ./scripts && ./convert_components.sh
 ```
 
