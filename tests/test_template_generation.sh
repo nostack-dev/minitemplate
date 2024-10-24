@@ -10,10 +10,10 @@ echo -e "\n--- Initializing test: Template Generation ---"
 
 # Find the root directory of the project
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$SCRIPT_DIR/../"  # Assuming the project root is two levels up from the script
-LIB_DIR="$PROJECT_ROOT/lib"
-COMPONENTS_DIR="$LIB_DIR/components_default"
-TEMPLATE_FILE="$LIB_DIR/templates/template_default.html"
+PROJECT_ROOT="$SCRIPT_DIR/.."  # Assuming the project root is two levels up from the script
+LIB_DIR="$PROJECT_ROOT/components"
+COMPONENTS_DIR="$LIB_DIR/default"
+TEMPLATE_FILE="$PROJECT_ROOT/templates/template_default.html"
 
 # Ensure necessary files and directories exist
 if [ ! -d "$COMPONENTS_DIR" ]; then
@@ -31,15 +31,15 @@ TEST_PASSED=true
 
 # Copy necessary files to the current directory
 echo -e "\n--- Copying template and component files for the test ---"
-cp "$PROJECT_ROOT/scripts/generate-site.sh" ./ || { echo -e "${RED}✖ Error: Failed to copy generate-site.sh.${NC}"; TEST_PASSED=false; }
+cp "$PROJECT_ROOT/scripts/generate_site.sh" ./ || { echo -e "${RED}✖ Error: Failed to copy generate_site.sh.${NC}"; TEST_PASSED=false; }
 cp "$TEMPLATE_FILE" . || { echo -e "${RED}✖ Error: Failed to copy template_default.html.${NC}"; TEST_PASSED=false; }
-cp "$COMPONENTS_DIR/headerComponent.html" "$COMPONENTS_DIR/contentComponent.html" "$COMPONENTS_DIR/sidebarComponent.html" "$COMPONENTS_DIR/footerComponent.html" . || { echo -e "${RED}✖ Error: Failed to copy component files.${NC}"; TEST_PASSED=false; }
+cp "$COMPONENTS_DIR/header_default.html" "$COMPONENTS_DIR/content_default.html" "$COMPONENTS_DIR/sidebar_default.html" "$COMPONENTS_DIR/footer_default.html" . || { echo -e "${RED}✖ Error: Failed to copy component files.${NC}"; TEST_PASSED=false; }
 
 # Provide a default title for the test
 export PAGE_TITLE="Test Page Title"
 
 # Check if all required components exist
-for component in "footerComponent.html" "headerComponent.html" "contentComponent.html" "sidebarComponent.html"; do
+for component in "footer_default.html" "header_default.html" "content_default.html" "sidebar_default.html"; do
     if [ -f "$component" ]; then
         echo -e "${GREEN}✔ $component found.${NC}"
     else
@@ -54,7 +54,7 @@ if [ ! -f "template_default.html" ]; then
     TEST_PASSED=false
 else
     # Run the test for template generation with the light theme, and specify the correct template file
-    echo "$PAGE_TITLE" | ./generate-site.sh "light" "template_default.html"
+    echo "$PAGE_TITLE" | ./generate_site.sh "light" "template_default.html"
 
     # Check if index.html was generated
     echo -e "\n--- Checking generated output ---"
@@ -74,10 +74,10 @@ else
     fi
 
     # Check if headerComponent is included in index.html
-    if grep -q '<div id="headerComponent"' "index.html"; then
-        echo -e "${GREEN}✔ Test passed: headerComponent included in index.html.${NC}"
+    if grep -q '<div id="header_default"' "index.html"; then
+        echo -e "${GREEN}✔ Test passed: header_default Component included in index.html.${NC}"
     else
-        echo -e "${RED}✖ Test failed: headerComponent missing in index.html.${NC}"
+        echo -e "${RED}✖ Test failed: header_default Component missing in index.html.${NC}"
         TEST_PASSED=false
     fi
 fi

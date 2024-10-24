@@ -12,14 +12,14 @@ TEST_DIR="$SCRIPT_DIR/../tests"
 # Ensure the test directory exists
 mkdir -p "$TEST_DIR"
 
-# Copy all component files ending with '_component.html' from the correct directory to the test directory
-cp "$COMPONENTS_DIR/"*_component.html "$TEST_DIR/"
+# Copy all component files from the correct directory to the test directory
+cp "$COMPONENTS_DIR/"*.html "$TEST_DIR/"
 
 # Initialize test result
 TEST_PASSED=true
 
 # For each component file in the test directory, check if the id matches the filename
-for COMPONENT_FILE in "$TEST_DIR/"*_component.html; do
+for COMPONENT_FILE in "$TEST_DIR/"*.html; do
     if [[ -f "$COMPONENT_FILE" ]]; then
         FILENAME=$(basename "$COMPONENT_FILE")
         COMPONENT_ID="${FILENAME%.html}"  # Remove .html extension

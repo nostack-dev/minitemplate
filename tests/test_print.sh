@@ -11,9 +11,9 @@ echo -e "\n--- Initializing test: Print Output Validation ---"
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR/../"  # Assuming the project root is two levels up from the script
-LIB_DIR="$PROJECT_ROOT/lib"
-COMPONENTS_DIR="$LIB_DIR/components_default"
-TEMPLATE_FILE="$LIB_DIR/templates/template_default.html"
+LIB_DIR="$PROJECT_ROOT/components"
+COMPONENTS_DIR="$LIB_DIR/default"
+TEMPLATE_FILE="$PROJECT_ROOT/templates/template_default.html"
 
 # Ensure the components and template file exist
 if [ ! -d "$COMPONENTS_DIR" ]; then
