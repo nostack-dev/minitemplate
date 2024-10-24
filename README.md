@@ -43,77 +43,57 @@ Example:
 
 This will set up your project with the chosen theme and ensure **fast loading speeds** via CDN resources.
 
-### 3. Add Components
+### 3. Serve Your Site for Development
 
-To add pre-built, **pagespeed-optimized components** (such as a navigation bar or footer), navigate to your project directory:
+First, navigate to your project directory:
 
 ```bash
 cd ./projects/my-awesome-site
 ```
 
-Then run the following command to list all available MiniTemplate-Components that utilize **daisyUI**-Comnponents as HTML base. See [here](https://daisyui.com/components/button/):
+Then, to start the development server and preview your project, run:
 
 ```bash
-./run_add.sh
+./run_serve.sh
 ```
 
-You can choose between adding a template, a component or default components like sidebar, header, footer and navigation.
+You can now visit your site at [http://localhost:8000](http://localhost:8000) to view the served index.html.
+
+### 4. Add a Component
+
+To customize your site, you can add components. Let’s add a button component to your project:
 
 ```bash
-./run_add.sh [defaults|component|template]
+./scripts/run_add.sh button
 ```
 
-Example:
+This command will generate a new `button.html` file in your project’s components folder. Now, you can use this component inside your template.
 
-Add a Button to your project (button.html):
-```bash
-./run_add.sh button
-```
-Add a the default template file (template_default.html):
-```bash
-./run_add.sh template_default.html
-```
-Adds a set of default components like header, footer, sidebar and default template:
-```bash
-./run_add.sh defaults
+### 5. Insert the Component in the Template
+
+Open the `template_default.html` file located in your project’s templates folder. To include the newly added button component, find a suitable place within the template and add the following placeholder:
+
+```html
+{{button}}
 ```
 
-### 4. Generate the Site
+### 6. Print the Updated Template
 
-After adding components, generate the static HTML files using:
+You can print the updated template structure to verify your changes:
 
 ```bash
-./run_generate.sh
+./scripts/print.sh
 ```
 
-This will create or update the `index.html` file, with all components integrated.
+### 7. Re-generate the Site
 
-### 5. Print the Site Structure
-
-For a quick overview of your site structure, use the print command:
+After adding the component and updating the template, you need to re-create the index.html file to reflect your changes:
 
 ```bash
-./print.sh
+./scripts/run_generate.sh
 ```
 
-### 6. Test Your Setup
-
-To ensure everything is functioning properly, run the test scripts:
-
-```bash
-bash run_tests.sh
-```
-
-#### Example Output
-
-```
-✔ Test passed: run_create_project.sh ran successfully.
-✔ Component 'navbar' added to 'my-awesome-site'.
-✔ Template generation test passed: 'index.html' created with the selected theme.
-✔ All tests passed successfully.
-```
-
-Run these tests to validate that all components, templates, and scripts are working as intended.
+This will regenerate the `index.html` file with the newly integrated button component.
 
 ## Example Pre-Created Project Structure
 
@@ -181,6 +161,49 @@ To further optimize your MiniTemplate project for production, you can follow the
    - This helps ensure only the required classes are included.
 
 By using PurgeCSS and enabling Tailwind JIT mode directly from the CDN, you can significantly reduce your CSS file size and boost your site's performance without needing any additional tools or setups.
+
+## Testing Your Site
+
+MiniTemplate provides built-in test scripts to verify the integrity and functionality of your site. Running the following command will initiate the test suite:
+
+```bash
+bash run_tests.sh
+```
+
+#### Example Output
+
+```
+✔ Test passed: run_create_project.sh ran successfully.
+✔ Component 'navbar' added to 'my-awesome-site'.
+✔ Template generation test passed: 'index.html' created with the selected theme.
+✔ All tests passed successfully.
+```
+
+## Component Structure
+
+MiniTemplate’s components are modular, with **auto-generated IDs**, **scoped CSS**, and **collision-free JavaScript**. Here’s an example of how a component is structured, showcasing the best practices for performance and maintainability:
+
+```html
+<div id="button_default" class="btn" aria-label="Button Component">
+    Click Me
+    <script>
+        // Optional state management
+        (() => {
+            let clicked = false;
+            document.getElementById('button_default').addEventListener('click', () => {
+                clicked = !clicked;
+                console.log('Button clicked:', clicked);
+            });
+        })();
+    </script>
+</div>
+```
+
+### Benefits:
+- **Auto-generated IDs** prevent conflicts.
+- **Scoped CSS** ensures that styles don't leak into other components.
+- **Collision-free JavaScript** using an Immediately Invoked Function Expression (IIFE) for encapsulation.
+- **Embedded Script** for optional state management, adding flexibility.
 
 ## Contribute
 
