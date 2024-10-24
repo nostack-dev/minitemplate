@@ -43,6 +43,9 @@ Example:
 
 ```bash
 Enter the project name: myproject
+```
+
+```bash
 cd ./projects/myproject
 ```
 
