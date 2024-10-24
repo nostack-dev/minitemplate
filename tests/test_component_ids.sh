@@ -6,20 +6,20 @@ echo -e "\n--- Initializing test: Component ID Handling Test ---"
 
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-COMPONENTS_DIR="$SCRIPT_DIR/../lib/components_default"  # Updated path to components
+COMPONENTS_DIR="$SCRIPT_DIR/../components/default"  # Updated path to components
 TEST_DIR="$SCRIPT_DIR/../tests"
 
 # Ensure the test directory exists
 mkdir -p "$TEST_DIR"
 
-# Copy all component files ending with 'Component.html' from the correct directory to the test directory
-cp "$COMPONENTS_DIR/"*Component.html "$TEST_DIR/"
+# Copy all component files ending with '_component.html' from the correct directory to the test directory
+cp "$COMPONENTS_DIR/"*_component.html "$TEST_DIR/"
 
 # Initialize test result
 TEST_PASSED=true
 
 # For each component file in the test directory, check if the id matches the filename
-for COMPONENT_FILE in "$TEST_DIR/"*Component.html; do
+for COMPONENT_FILE in "$TEST_DIR/"*_component.html; do
     if [[ -f "$COMPONENT_FILE" ]]; then
         FILENAME=$(basename "$COMPONENT_FILE")
         COMPONENT_ID="${FILENAME%.html}"  # Remove .html extension

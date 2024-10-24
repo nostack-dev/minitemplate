@@ -29,7 +29,7 @@ copy_scripts_to_tests() {
     $VERBOSE && echo -e "\n📄 ${GREEN}Copying required scripts to tests directory...${NC}"
 
     # Define the source scripts
-    local scripts=("generate-site.sh")
+    local scripts=("generate_site.sh")
 
     # Loop through each script and copy if it exists
     for script in "${scripts[@]}"; do
