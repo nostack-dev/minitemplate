@@ -64,7 +64,7 @@ You can now visit your site at [http://localhost:8000](http://localhost:8000) to
 To customize your site, you can add components. Let’s add a button component to your project:
 
 ```bash
-./scripts/run_add.sh button
+./run_add.sh button
 ```
 
 This command will generate a new `button.html` file in your project’s components folder. Now, you can use this component inside your template.
