@@ -31,7 +31,7 @@ fi
 if [[ -n "$1" ]]; then
     project_name="$1"
 else
-    echo "Error: No project name provided."
+    echo "Please provide a project name: ./run_create_project.sh myproject"
     exit 1
 fi
 
