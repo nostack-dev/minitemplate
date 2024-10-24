@@ -34,7 +34,7 @@ Ensure all the files and directories listed in the directory structure are prese
 This script will create a new project directory with default components and templates.
 
 ```bash
-cd ./scripts && ./create_project.sh
+cd ./scripts && ./create_project.sh && cd ..
 ```
 
 You will be prompted to provide a name for your project. Once done, the script will generate a new project directory under `projects/` with the necessary components and templates copied over.
@@ -43,6 +43,7 @@ Example:
 
 ```bash
 Enter the project name: myproject
+cd ./projects/myproject
 ```
 
 This will create a new folder `projects/myproject` with the default components and scripts inside.
