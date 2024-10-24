@@ -1,7 +1,7 @@
 
 # ✍️ MiniTemplate - Simple Template Engine
 
-This guide will walk you through setting up a MiniTemplate project, converting components, adding templates, and finally generating a static `index.html` file. We will break the setup into two parts, with a focus on ease of use and integration.
+This guide will walk you through setting up a MiniTemplate project, converting components, adding templates, and finally generating a static `index.html` file. The setup is divided into several parts to ease integration and usage.
 
 ## Directory Structure Overview
 
@@ -50,8 +50,6 @@ cd ./projects/myproject
 ```
 
 This will create a new folder `projects/myproject` with the default components and scripts inside.
-
-# ✍️ MiniTemplate - Simple Template Engine - Part 2
 
 ## Step 2: Adding Components to Your Project
 
@@ -132,4 +130,3 @@ If all tests pass, you’ll receive a success message. If any tests fail, check 
 MiniTemplate provides a streamlined process for setting up and managing your static site components and templates. By following this guide, you can easily create, convert, and test components, as well as generate a final static site using HTML and JavaScript.
 
 Enjoy building with MiniTemplate!
-
