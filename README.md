@@ -1,56 +1,58 @@
 
-# MiniTemplate
+# ✍️ MiniTemplate - Static CDN-Only Template Engine
 
-MiniTemplate is a lightweight, efficient template engine tailored for static web applications. It simplifies component reuse and ensures design consistency across projects. MiniTemplate seamlessly integrates with Tailwind CSS and DaisyUI to accelerate UI development.
+MiniTemplate is a lightweight, self-contained template engine designed for static web applications. It allows developers to efficiently reuse components and maintain design consistency without the need for complex setups. All assets are served via CDN, making it a dependency-free solution.
 
 ## Project Structure
 
-The project follows a simple, organized folder structure:
+The project is organized with the following structure:
 
 ```
 /components        # Reusable UI components
-/scripts           # Automation scripts for managing project workflows
-/templates         # Core HTML templates for project scaffolding
-/tests             # Automated tests to verify components and scripts
+/scripts           # Automation scripts for project workflows
+/templates         # HTML templates
+/tests             # Test scripts to validate functionality
 ```
 
 ## Scripts Overview
 
 ### `run_create_project.sh`
 
-This script streamlines the creation of new projects by generating the necessary folders and files based on a predefined template. You can specify various parameters to customize the setup.
+This script sets up a new project by generating all necessary folders and files based on a chosen template.
 
 **Parameters:**
-- `--project-name`: The name of your new project.
-- `--template`: Choose a template to base your project on (e.g., `default`, `blog`, `ecommerce`).
+
+- `[project_name]`: The name of your new project.
+- `[template]` (optional): Template to base your project on (default, blog, ecommerce).
 
 **Usage Example:**
 
 ```bash
-./scripts/run_create_project.sh --project-name my-awesome-app --template ecommerce
+./run_create_project.sh my-app [default]
 ```
 
 ### `run_add.sh`
 
-Use this script to add new components (like UI elements) into your project dynamically.
+This script dynamically adds UI components to your project.
 
 **Parameters:**
-- `--component`: The name of the component to be added (e.g., `navbar`, `footer`).
-- `--project`: The project directory where the component will be placed.
+
+- `[component]`: Name of the component to be added (e.g., `navbar`, `footer`).
+- `[project]`: The project directory where the component will be placed.
 
 **Usage Example:**
 
 ```bash
-./scripts/run_add.sh --component navbar --project my-awesome-app
+./run_add.sh navbar my-app
 ```
 
 ## Testing and Quality Assurance
 
-The `/tests` directory contains automated tests designed to ensure that all project components and scripts function as expected. These tests validate everything from component integration to script execution.
+All tests reside in the `/tests` directory and validate the proper integration of components, script functionality, and the output of templates.
 
 ### Running Tests
 
-To run the entire suite of tests, simply navigate to the `tests` directory and execute:
+To run tests, navigate to the `tests` directory and execute:
 
 ```bash
 bash run_tests.sh
@@ -58,32 +60,29 @@ bash run_tests.sh
 
 ## Workflow Overview
 
-1. **Project Initialization**: Create a new project with `run_create_project.sh`.
-2. **Component Addition**: Dynamically add components using `run_add.sh`.
-3. **Customization**: Adjust your components or templates to fit your needs.
-4. **Testing**: Run the tests to verify that everything works as intended.
+1. **Project Initialization**: Set up a new project using `run_create_project.sh`.
+2. **Component Addition**: Add new components to the project using `run_add.sh`.
+3. **Customization**: Adjust the components and templates according to your needs.
+4. **Testing**: Run the test suite to ensure everything works as expected.
 
 ## Dependencies
 
-To ensure smooth operation, the following dependencies must be installed:
+MiniTemplate uses CDN-hosted resources, so no local installations are required.
 
-- **Node.js**: Required for managing frontend libraries like Tailwind CSS and DaisyUI.
-- **Tailwind CSS**: For styling components and templates.
-- **DaisyUI**: For pre-built UI components.
-- **Bash**: Used to execute the provided shell scripts.
+- **Tailwind CSS** (via CDN)
+- **DaisyUI** (via CDN)
+- **Bash** (for script execution)
 
 ## Getting Started
 
-1. Clone the repository to your local machine:
+1. Clone the repository to your machine:
 
 ```bash
 git clone https://github.com/nostack-dev/minitemplate.git
 ```
 
-2. Install any necessary dependencies by following the instructions in the `scripts` folder.
-3. Use the provided scripts to quickly set up and manage your project.
+2. Use the provided scripts to quickly set up your project.
 
 ---
 
-Enjoy building scalable and reusable web applications with **MiniTemplate**. Feel free to customize components and templates to fit your specific needs.
-
+With **MiniTemplate**, you can build efficient, modular, and reusable web applications. Feel free to customize components and templates as needed.
