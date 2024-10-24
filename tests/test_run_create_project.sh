@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 # Function to find project root
 find_project_root() {
     local dir="$(cd "${1:-$(pwd)}" && pwd)"
-    local root_files=("README.md" "LICENSE" "CONTRIBUTING.md" "CNAME")
+    local root_files=("README.md" "LICENSE" "CONTRIBUTE.md" "CNAME")
 
     while [[ "$dir" != "/" ]]; do
         for file in "${root_files[@]}"; do
@@ -35,29 +35,31 @@ fi
 # Define paths
 TEST_PROJECTS_DIR="$PROJECT_ROOT/tests/projects"
 PUBLIC_DIR="$TEST_PROJECTS_DIR/public"
+PROJECT_NAME="test_project"
+TARGET_DIR="$TEST_PROJECTS_DIR/$PROJECT_NAME"
 
-# Step 1: Run run_create_project.sh
+# Step 1: Check if the project directory already exists, rename if it does
+if [[ -d "$TARGET_DIR" ]]; then
+    TIMESTAMP=$(date +%s)
+    RENAMED_DIR="${TARGET_DIR}_backup_$TIMESTAMP"
+    echo -e "${YELLOW}Warning: Directory '$TARGET_DIR' already exists. Renaming it to '$RENAMED_DIR'.${NC}"
+    mv "$TARGET_DIR" "$RENAMED_DIR"
+fi
+
+# Step 2: Run run_create_project.sh with the new parameters (project name, theme, base directory)
 CREATE_PROJECT_SCRIPT="$PROJECT_ROOT/run_create_project.sh"
+THEME="dark"  # Example theme
+BASE_DIR="$TEST_PROJECTS_DIR"
 
 if [[ ! -f "$CREATE_PROJECT_SCRIPT" ]]; then
     echo -e "${RED}✖ Error: run_create_project.sh not found in $PROJECT_ROOT.${NC}"
     exit 1
 fi
 
-# Ensure the test projects directory exists
-mkdir -p "$TEST_PROJECTS_DIR"
+# Run the script and capture the output
+OUTPUT="$(bash "$CREATE_PROJECT_SCRIPT" "$PROJECT_NAME" "$THEME" "$BASE_DIR" 2>&1)"
 
-# Remove existing test project directory if it exists
-if [[ -d "$TEST_PROJECTS_DIR/test_project" ]]; then
-    rm -rf "$TEST_PROJECTS_DIR/test_project"
-fi
-
-# Run the script with a project name and target directory and capture the output
-PROJECT_NAME="test_project"
-TARGET_DIR="$TEST_PROJECTS_DIR/$PROJECT_NAME"
-OUTPUT="$(bash "$CREATE_PROJECT_SCRIPT" "$PROJECT_NAME" "$TARGET_DIR" 2>&1)"
-
-# Check for errors during script run
+# Step 3: Check for errors during the script run
 if echo "$OUTPUT" | grep -q "Error"; then
     echo -e "${RED}✖ Test Failed: Error during run_create_project.sh run.${NC}"
     echo -e "Script output:\n$OUTPUT"
@@ -67,13 +69,13 @@ else
     echo -e "${YELLOW}Script output:\n$OUTPUT${NC}"
 fi
 
-# Step 2: Adjust directory structure to remove double nesting
+# Step 4: Adjust directory structure to remove double nesting if necessary
 if [[ -d "$TARGET_DIR/$PROJECT_NAME" ]]; then
     mv "$TARGET_DIR/$PROJECT_NAME"/* "$TARGET_DIR/"
     rmdir "$TARGET_DIR/$PROJECT_NAME"
 fi
 
-# Step 3: Run run_generate.sh to generate index.html
+# Step 5: Run run_generate.sh to generate index.html
 RUN_GENERATE_SCRIPT="$TARGET_DIR/run_generate.sh"
 if [[ -f "$RUN_GENERATE_SCRIPT" ]]; then
     (cd "$TARGET_DIR" && bash "$RUN_GENERATE_SCRIPT")
@@ -83,7 +85,7 @@ else
     exit 1
 fi
 
-# Step 4: Verify generated project output
+# Step 6: Verify generated project output
 if [[ ! -f "$TARGET_DIR/index.html" ]]; then
     echo -e "${RED}✖ Error: Generated output 'index.html' not found in test projects directory for project '$PROJECT_NAME'.${NC}"
     echo -e "${YELLOW}Ensure the project name is correct. The generated output should be in the 'tests/projects/$PROJECT_NAME' directory.${NC}"
