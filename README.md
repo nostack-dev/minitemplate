@@ -130,7 +130,7 @@ This will read all HTML files in the `source` directory and convert them into se
   ```
 
 ### The converted Components Don’t Look Special or New—What Sets Them Apart?
-At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages. They utilize immediately invoked functions to isolate JavaScript within embedded scripts, preventing conflicts and enhancing reliability. The integration of inline Tailwind CSS through DaisyUI ensures that styles are modular and collision-free, promoting consistent design. Moreover, these components allow for local state management within the scripts, with the option to integrate a state manager, enhancing functionality and maintainability without adding unnecessary complexity. This combination results in a powerful, scalable approach to web development.
+At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages:
 
 ```html
 <div id="alert_component"> <!-- Auto-generated ID -->
@@ -148,6 +148,12 @@ At first glance, MiniTemplate components may seem like standard HTML, but their 
   </script>
 </div>
  ```
+- **Auto-Generated Unique ID:** Ensures each component is uniquely identifiable, preventing duplication.
+- **Collision-Free DaisyUI Styles:** Inline Tailwind CSS ensures that styles remain modular and do not interfere with others.
+- **Isolation of JavaScript:** Uses an immediately invoked function expression (IIFE) to prevent conflicts and enhance reliability.
+- **Local State Management:** Local state variables, like `isOpen`, can be utilized to manage component behavior within the function.
+
+This combination results in a powerful, scalable approach to web development without adding unnecessary complexity.
 
 ## Step 4: Generating the Static Site
 
