@@ -21,7 +21,7 @@ Ready to build a fast, **SEO-optimized static site**? Here’s how to get starte
 Clone the project to your machine:
 
 ```bash
-git clone https://github.com/nostack-dev/minitemplate.git
+git clone https://github.com/nostack-dev/minitemplate.git && cd minitemplate
 ```
 
 ### 2. Create Your Project
@@ -51,18 +51,31 @@ To add pre-built, **pagespeed-optimized components** (such as a navigation bar o
 cd ./projects/my-awesome-site
 ```
 
-Then run the following command to add components from **DaisyUI**:
+Then run the following command to list all available MiniTemplate-Components that utilize **daisyUI**-Comnponents as HTML base. See [here](https://daisyui.com/components/button/):
 
 ```bash
-./run_add.sh [component_name] 
+./run_add.sh
 ```
 
-- `[component_name]`: Name of the component (e.g., **navbar**, **footer**).
+You can choose between adding a template, a component or default components like sidebar, header, footer and navigation.
+
+```bash
+./run_add.sh [defaults|component|template]
+```
 
 Example:
 
+Add a Button to your project (button.html):
 ```bash
-./run_add.sh navbar
+./run_add.sh button
+```
+Add a the default template file (template_default.html):
+```bash
+./run_add.sh template_default.html
+```
+Adds a set of default components like header, footer, sidebar and default template:
+```bash
+./run_add.sh defaults
 ```
 
 ### 4. Generate the Site
