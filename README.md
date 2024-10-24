@@ -6,17 +6,16 @@ This guide will walk you through setting up a MiniTemplate project, adding compo
 
 ```console
 .
+├── run_create_project.sh # create a new project
 ├── components
-│   ├── converted        # Converted components ready for use in the project
-│   ├── default          # Default components provided by MiniTemplate
-│   ├── custom           # Custom user-defined components
-│   ├── source           # Source components to be converted
-├── public               # Final static site will be here
-├── scripts              # Utility scripts for generating the site
-├── templates            # HTML templates for the project
-├── tests                # Test scripts to validate MiniTemplate functionality
-├── LICENSE              # License information for MiniTemplate
-└── CONTRIBUTE.md        # Contribution guidelines
+│   ├── converted         # Converted components ready for use in the project
+│   ├── default           # Default components provided by MiniTemplate
+│   ├── custom            # Custom user-defined components
+│   ├── source            # Source components to be converted
+├── public                # Final static site can be served from here
+├── scripts               # Utility scripts for generating the site
+├── templates             # HTML template for the project
+├── tests                 # Test scripts to validate MiniTemplate functionality
 ```
 
 ## Step 1: Setting Up Your Project
