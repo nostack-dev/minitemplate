@@ -54,23 +54,36 @@ cd ./projects/my-awesome-site
 Then run the following command to add components from **DaisyUI**:
 
 ```bash
-../../run_add.sh [component_name] [project_name]
+./run_add.sh [component_name] 
 ```
 
 - `[component_name]`: Name of the component (e.g., **navbar**, **footer**).
-- `[project_name]`: Your project directory.
 
 Example:
 
 ```bash
-../../run_add.sh navbar my-awesome-site
+./run_add.sh navbar
 ```
 
-### 4. Customize Your Project
+### 4. Generate the Site
 
-After setting up the project, you can easily modify any component or template. Simply open the project directory, edit the files, and enjoy **instant updates**.
+After adding components, generate the static HTML files using:
 
-### 5. Test Your Setup
+```bash
+./run_generate.sh
+```
+
+This will create or update the `index.html` file, with all components integrated.
+
+### 5. Print the Site Structure
+
+For a quick overview of your site structure, use the print command:
+
+```bash
+./print.sh
+```
+
+### 6. Test Your Setup
 
 To ensure everything is functioning properly, run the test scripts:
 
@@ -88,6 +101,24 @@ bash run_tests.sh
 ```
 
 Run these tests to validate that all components, templates, and scripts are working as intended.
+
+## Example Pre-Created Project Structure
+
+MiniTemplate comes with an **example project** that shows how the components and structure can be used. Here's the structure:
+
+```
+projects/example
+├── index.html          # The main entry point for the static site
+├── run_add.sh          # Script to add components
+├── run_generate.sh     # Script to generate the site
+├── print.sh            # Script to print the site structure
+└── components
+    ├── navbar.html     # Pre-built navbar component
+    ├── footer.html     # Pre-built footer component
+    └── content.html    # Pre-built content area component
+```
+
+Feel free to explore and modify this example to suit your needs.
 
 ## Components and Themes
 
