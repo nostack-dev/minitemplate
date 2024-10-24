@@ -79,7 +79,7 @@ This will copy the `button.html` component into your project directory.
 You can also add all default components by running:
 
 ```bash
-./scripts/add.sh defaults
+./add.sh defaults
 ```
 
 This command copies all default components (like header, footer, sidebar, etc.) into your project directory.
