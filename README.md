@@ -178,7 +178,7 @@ If all tests pass, you’ll receive a success message. If any tests fail, check 
 
 ## Additional Step: Converting Source Components (Optional)
 
-MiniTemplate allows you to transform raw components from `components/source` (which are basic DaisyUI HTML components) into usable MiniTemplate components in `components/converted`.
+MiniTemplate allows you to transform raw components from `components/source`, which are basic DaisyUI HTML-files, into usable MiniTemplate components in `components/converted`. See all daisyUI-Components  [here]([url](https://daisyui.com/components/button/)).
 
 ### Convert Components
 
