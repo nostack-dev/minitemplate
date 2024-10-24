@@ -4,7 +4,7 @@ This guide will walk you through setting up a MiniTemplate project, converting c
 
 ## Directory Structure Overview
 
-```console
+```shell
 .
 ├── components
 │   ├── converted        # Converted components ready for use in the project
@@ -23,7 +23,7 @@ This guide will walk you through setting up a MiniTemplate project, converting c
 
 ### Clone the repository
 
-```console
+```bash
 git clone https://github.com/nostack-dev/minitemplate.git
 cd minitemplate
 ```
@@ -34,7 +34,7 @@ Ensure all the files and directories listed in the directory structure are prese
 
 This script will create a new project directory with default components and templates.
 
-```console
+```bash
 chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
@@ -48,7 +48,7 @@ myproject
 
 Then navigate to your created project:
 
-```console
+```bash
 cd ./projects/myproject
 ```
 
@@ -62,7 +62,7 @@ MiniTemplate allows you to easily add components to your project using the `run_
 
 To list all available components, run the `run_add.sh` script without any arguments inside your project directory:
 
-```console
+```bash
 ./run_add.sh
 ```
 
@@ -72,7 +72,7 @@ You will see a list of components from `components/default`, `components/custom`
 
 To add a specific component to your project, pass the component name as an argument to `run_add.sh`:
 
-```console
+```bash
 ./run_add.sh button
 ```
 
@@ -84,7 +84,7 @@ After adding a component, you can embed it in any template or component file usi
 
 You can also add all default components by running:
 
-```console
+```bash
 ./run_add.sh defaults
 ```
 
@@ -98,13 +98,13 @@ MiniTemplate allows you to transform raw components from `components/source` (wh
 
 Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
 
-```console
+```bash
 cd ./scripts && ./convert_components.sh
 ```
 
 This will read all HTML files in the `source` directory and convert them into self-contained components, which will be placed in the `converted` directory.
 
-### Structure Comparison: Source (daisyUI HTML) vs Converted (self-contained MiniTemplate-Components)
+### Structure Comparison: Source vs Converted
 
 - **Source Component Example (Basic DaisyUI HTML):**
 
@@ -129,41 +129,21 @@ This will read all HTML files in the `source` directory and convert them into se
   </div>
   ```
 
-### The converted Components Don’t Look Special or New—What Sets Them Apart?
-At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages:
+### Benefits of Conversion
 
-```html
-<div id="alert_component"> <!-- Auto-generated ID -->
-  <div class="alert"> <!-- Collision-free DaisyUI style-classes -->
-    <span>Alert message here!</span>
-  </div>
-  <script>
-    (function() { // Isolation of JavaScript using an IIFE
-      let isOpen = true; // Local state variable for alert status
-      // Component-specific JavaScript
-      if (isOpen) {
-        console.log("Alert is open");
-      }
-    })();
-  </script>
-</div>
- ```
-- **Auto-Generated Unique ID:** Ensures each component is uniquely identifiable, preventing duplication.
-- **Collision-Free DaisyUI Styles:** Inline Tailwind CSS ensures that styles remain modular and do not interfere with others.
-- **Isolation of JavaScript:** Uses an immediately invoked function expression (IIFE) to prevent conflicts and enhance reliability.
-- **Local State Management:** Local state variables, like `isOpen`, can be utilized to manage component behavior within the function.
+The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
 
-This combination results in a powerful, scalable approach to web development without adding unnecessary complexity, along with the option to integrate state management tools.
+## Step 4: Adding Template Variables and Generating the Static Site
 
-## Step 4: Generating the Static Site
+Once you have all the necessary components in place, you can integrate them into your templates using the `{{component_name}}` syntax. This allows for nesting components within templates or even within other components.
 
-Once you have all the necessary components in place, you can generate the final `index.html` by running the `run_generate_site.sh` script.
+For example, to include a `button` component within a template, simply add `{{button}}` to the desired location in your template file.
 
 ### Generate the Static Site
 
 From your project directory, run:
 
-```console
+```bash
 ./run_generate_site.sh
 ```
 
@@ -171,7 +151,7 @@ The script processes the main template (`template_default.html`), replacing plac
 
 After generating the site, you can manually copy the `index.html` file to the `public` directory:
 
-```console
+```bash
 cp index.html ../../public/
 ```
 
@@ -181,6 +161,31 @@ This will allow the static site to be served from the `public` directory if desi
 
 Any template file or component HTML file can include other components using the `{{component}}` syntax. When you run `run_generate_site.sh` from your project folder, these placeholders are replaced by the actual component contents.
 
+### Example: Using Template Variables
+
+Here is an example of how `{{}}` placeholders are used within a template file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+</head>
+<body>
+    {{header_default}}
+    <main>
+        <h1>Welcome to My Project</h1>
+        {{button}}
+    </main>
+    {{footer_default}}
+</body>
+</html>
+```
+
+In this example, the `{{header_default}}`, `{{button}}`, and `{{footer_default}}` placeholders are replaced with their respective component contents during the generation process.
+
 ## Step 5: Testing the Setup
 
 You can run a suite of tests to ensure that your setup is working as expected.
@@ -189,7 +194,7 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 Navigate to the `tests` directory, then run:
 
-```console
+```bash
 cd ./tests && ./run_tests.sh
 ```
 
@@ -212,7 +217,7 @@ Example output:
 
 ### Test Summary
 ---------------------------------
-✔ All tests passed.
+✔ All tests passed!
 ---------------------------------
 
 Total Tests Passed: 6
