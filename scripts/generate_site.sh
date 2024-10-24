@@ -3,26 +3,20 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Accept the working directory as an argument
-WORKING_DIR="${1:-$(pwd)}"  # Use current directory if none provided
-
-# Navigate to the working directory
-cd "$WORKING_DIR" || { echo "Error: Directory '$WORKING_DIR' does not exist."; exit 1; }
-
 # Define the script directory and project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"  # Assuming the project root is one level up from scripts
 
 # Define the template and output files
 TEMPLATE_FILE="template_default.html"
-OUTPUT_FILE="index.html"
+OUTPUT_FILE="index.html"  # Output file set to index.html
 
 # Default theme if not provided (optional)
 THEME_NAME=""
 
 # Check if a theme name was passed as an argument
-if [[ ! -z "$2" ]]; then
-    THEME_NAME="$2"
+if [[ ! -z "$1" ]]; then
+    THEME_NAME="$1"
     echo "Using theme: $THEME_NAME"
 else
     echo "No theme provided, proceeding without data-theme attribute."
