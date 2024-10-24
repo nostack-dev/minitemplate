@@ -1,5 +1,5 @@
 
-# ✍️ MiniTemplate - Simple Template Engine - Part 1
+# ✍️ MiniTemplate - Simple Template Engine
 
 This guide will walk you through setting up a MiniTemplate project, converting components, adding templates, and finally generating a static `index.html` file. We will break the setup into two parts, with a focus on ease of use and integration.
 
