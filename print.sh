@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Clear the screen
+clear
+
 # Color definitions for output similar to the tree command
 GREEN='\033[1;32m'
 BLUE='\033[1;34m'
