@@ -108,6 +108,15 @@ else
     echo "Error: run_add.sh not found in '$scripts_dir'."
 fi
 
+# Copy run_serve.sh to the project directory
+run_serve_script="$scripts_dir/run_serve.sh"
+if [[ -f "$run_serve_script" ]]; then
+    cp "$run_serve_script" "$target_dir/"
+    echo "Copied run_serve.sh to '$target_dir'."
+else
+    echo "Error: run_serve.sh not found in '$scripts_dir'."
+fi
+
 # Apply the theme (this is a placeholder, you can customize how to handle theme selection)
 echo "Setting theme to '$theme' in project..."
 
