@@ -7,37 +7,35 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"  # Assuming the project root is one level up from scripts
 
-# Define the template and output files
-TEMPLATE_FILE="template_default.html"
-OUTPUT_FILE="index.html"  # Output file set to index.html
+# Get the project directory passed as an argument, default to current directory if not provided
+PROJECT_DIR="${1:-$(pwd)}"
+
+# Define the template and output files within the project directory
+TEMPLATE_FILE="$PROJECT_DIR/template_default.html"
+OUTPUT_FILE="$PROJECT_DIR/index.html"  # Output file set to index.html
 
 # Default theme if not provided (optional)
-THEME_NAME=""
+THEME_NAME="$2"
 
 # Check if a theme name was passed as an argument
-if [[ ! -z "$1" ]]; then
-    THEME_NAME="$1"
+if [[ ! -z "$THEME_NAME" ]]; then
     echo "Using theme: $THEME_NAME"
 else
-    echo "No theme provided, proceeding without data-theme attribute."
+    THEME_NAME="default"
+    echo "No theme provided, proceeding with default theme."
 fi
 
-# Check if the template file exists
+# Check if the template file exists in the project directory
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
-    echo "Error: Template file '$TEMPLATE_FILE' not found. Use './run_add.sh template_default.html' to add the default template file."
+    echo "Error: Template file '$TEMPLATE_FILE' not found in project directory. Use './run_add.sh template_default.html' to add the default template file."
     exit 1
 fi
 
-# Prompt for the page title if a theme is provided
-if [[ ! -z "$THEME_NAME" ]]; then
-    read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
-fi
-
-# Function to ensure required components exist
+# Function to ensure required components exist in the project directory
 ensure_components() {
     local missing=()
     for component in sidebar_default content_default footer_default; do
-        local component_file="./${component}.html"
+        local component_file="$PROJECT_DIR/${component}.html"
         if [[ ! -f "$component_file" ]]; then
             missing+=("$component")
         fi
@@ -53,7 +51,7 @@ ensure_components() {
     fi
 }
 
-# Ensure all required components are present
+# Ensure all required components are present in the project directory
 ensure_components
 
 # Create or overwrite the output file
@@ -72,48 +70,26 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 
     # Replace the <body> tag with the data-theme attribute if a theme is specified
     if [[ "$line" =~ \<body ]]; then
-        if [[ ! -z "$THEME_NAME" ]]; then
-            echo "Adding data-theme attribute with theme: $THEME_NAME"
-            line="<body class=\"flex flex-col min-h-screen\" data-theme=\"$THEME_NAME\">"
-        else
-            line="<body class=\"flex flex-col min-h-screen\">"
-        fi
+        echo "Adding data-theme attribute with theme: $THEME_NAME"
+        line="<body class=\"flex flex-col min-h-screen\" data-theme=\"$THEME_NAME\">"
     fi
 
-    # Use regex to find all placeholders in the format {{component_name}}
+    # Process components
     while [[ "$line" =~ \{\{([a-zA-Z0-9_]+)\}\} ]]; do
         COMPONENT_ID="${BASH_REMATCH[1]}"
-        COMPONENT_FILE="${COMPONENT_ID}.html"
+        COMPONENT_FILE="$PROJECT_DIR/${COMPONENT_ID}.html"
 
-        # Check if the component file exists
         if [[ -f "$COMPONENT_FILE" ]]; then
-            echo "Processing component: $COMPONENT_ID"
             COMPONENT_CONTENT=$(<"$COMPONENT_FILE")
-
-            # Safely escape special characters like &
             COMPONENT_CONTENT=$(echo "$COMPONENT_CONTENT" | sed 's/&/\\&/g')
-
-            # Replace the placeholder with the component content
             line="${line/\{\{$COMPONENT_ID\}\}/$COMPONENT_CONTENT}"
-            echo "Replaced {{${COMPONENT_ID}}} successfully."
         else
-            echo "Warning: Component file '$COMPONENT_ID.html' not found in '$components_dir/default/'. Leaving placeholder unchanged."
-            missing_components+=("$COMPONENT_ID")
-            # Optionally, keep the placeholder or replace it with an empty string
-            line="${line/\{\{$COMPONENT_ID\}\}/{{${COMPONENT_ID}}}}"
+            line="${line/\{\{$COMPONENT_ID\}\}/}"
         fi
     done
 
     # Write the processed line to the output file
     echo "$line" >> "$OUTPUT_FILE"
 done < "$TEMPLATE_FILE"
-
-# Check for any missing components
-if [[ ${#missing_components[@]} -gt 0 ]]; then
-    echo "The following components were not found and left unchanged:"
-    for missing in "${missing_components[@]}"; do
-        echo "- {{${missing}}}"
-    done
-fi
 
 echo "Template processing complete. Check '$OUTPUT_FILE'."

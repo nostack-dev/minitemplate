@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Find the project root
+# Function to find the project root
 find_project_root() {
     local dir="$(cd "${1:-$(pwd)}" && pwd)"  # Convert to absolute path
     local root_files=("README.md" "LICENSE" "CONTRIBUTE.md" "CNAME")
@@ -81,6 +81,10 @@ else
     exit 1
 fi
 
+# Replace the data-theme attribute in the template with the selected theme
+sed -i "s/data-theme=\"\"/data-theme=\"$theme\"/" "$target_dir/template_default.html"
+echo "Applied theme '$theme' to template_default.html."
+
 # Copy all components from the components directory to the target project directory
 if [[ -d "$components_dir" ]]; then
     cp "$components_dir"/* "$target_dir/"
@@ -117,15 +121,10 @@ else
     echo "Error: run_serve.sh not found in '$scripts_dir'."
 fi
 
-# Insert the selected theme into the template_default.html file
-template_file="$target_dir/template_default.html"
-if [[ -f "$template_file" ]]; then
-    # Replace the data-theme attribute with the selected theme
-    sed -i "s/data-theme=\"\"/data-theme=\"$theme\"/g" "$template_file"
-    echo "Applied theme '$theme' to template_default.html."
-else
-    echo "Error: template_default.html not found in '$target_dir'."
-    exit 1
-fi
+# Apply the theme (this is a placeholder, you can customize how to handle theme selection)
+echo "Setting theme to '$theme' in project..."
+
+# Run the project generate script with the theme
+cd "$target_dir" && ./run_generate.sh "$theme"
 
 echo "Project setup complete with theme '$theme' in directory '$base_dir/$project_name'."
