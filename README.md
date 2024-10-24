@@ -75,6 +75,12 @@ Open the `template_default.html` file located in your project’s templates fold
 
 Example: Open your `template_default.html` and add your component:
 
+```bash
+nano ./template_default.html
+```
+
+Find a place to insert `{{button}}` in the template below:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
