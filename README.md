@@ -1,6 +1,6 @@
 # ✍️ MiniTemplate - Simple Template Engine
 
-This guide will walk you through setting up a MiniTemplate project, adding components, templates, and generating the static `index.html` file as result. The setup is streamlined to make it easy for developers to test and get started quickly.
+This guide will walk you through setting up a MiniTemplate project, adding components, templates, and generating the static `index.html` file as result.
 
 ## Directory Structure Overview
 
