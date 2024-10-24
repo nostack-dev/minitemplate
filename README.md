@@ -103,10 +103,9 @@ After generating the site, you can copy the `index.html` file to the `public` di
 cp index.html ../../public/
 ```
 
-This will allow the static site to be served from the `public` directory if desired.
+This will allow the static site to be served from the `public` directory if desired. 
 
-### Template and Component Nesting
-
+### Placeholders
 Any template file or component HTML file can include other components using the `{{component}}` syntax. When you run `run_generate_site.sh` from your project folder, these placeholders are replaced by the actual component contents.
 
 ### Example: Using Template Variables
