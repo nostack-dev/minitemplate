@@ -4,7 +4,7 @@ This guide will walk you through setting up a MiniTemplate project, converting c
 
 ## Directory Structure Overview
 
-```shell
+```console
 .
 ├── components
 │   ├── converted        # Converted components ready for use in the project
