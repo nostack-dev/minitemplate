@@ -39,7 +39,7 @@ cd ./scripts && ./create_project.sh && cd ..
 
 You will be prompted to provide a name for your project. Once done, the script will generate a new project directory under `projects/` with the necessary components and templates copied over.
 
-Enter this into the prompt:
+When prompoted for a project name use:
 ```console
 myproject
 ```
