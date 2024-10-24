@@ -20,8 +20,8 @@ printignore=(
     "objects"
     "print.sh"
     "index.html"
-    "lib/components_converted"
-    "lib/components_source"
+    "components/converted"
+    "lib/source"
     "projects"
     "tests/output.txt"
     "tests/*.html"
@@ -104,7 +104,7 @@ if [ "$PRINT_CONTENTS" = true ]; then
 
                 # Print the contents of the file, indented properly
                 sed "s/^/${prefix}    /" "$item"
-            elif [ -d "$item" ] && ! [[ "$item" =~ components_converted|components_source ]]; then
+            elif [ -d "$item" ] && ! [[ "$item" =~ converted|source ]]; then
                 # Recurse into subdirectories if present and not ignored
                 echo -e "${BLUE}${prefix}├── $(basename "$item")/${NC}"
                 print_file_contents "$item" "$prefix    "
