@@ -16,6 +16,8 @@ OUTPUT_FILE="$PROJECT_DIR/index.html"  # Output file set to index.html
 
 # Default theme if not provided (optional)
 THEME_NAME=""
+# Default title
+DEFAULT_TITLE="My Default Title"
 
 # Check if a theme name was passed as an argument
 if [[ ! -z "$2" ]]; then
@@ -25,15 +27,19 @@ else
     echo "No theme provided, proceeding without data-theme attribute."
 fi
 
+# Check if a custom title was provided as the third argument
+if [[ ! -z "$3" ]]; then
+    PAGE_TITLE="$3"
+    echo "Using custom title: $PAGE_TITLE"
+else
+    PAGE_TITLE="$DEFAULT_TITLE"
+    echo "No custom title provided, using default title: $PAGE_TITLE"
+fi
+
 # Check if the template file exists in the project directory
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
     echo "Error: Template file '$TEMPLATE_FILE' not found in project directory."
     exit 1
-fi
-
-# Prompt for the page title if a theme is provided
-if [[ ! -z "$THEME_NAME" ]]; then
-    read -p "Enter the title for your page (leave empty to use default): " PAGE_TITLE
 fi
 
 # Function to ensure required components exist in the project directory
@@ -67,9 +73,9 @@ missing_components=()
 
 # Read the template file line by line
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # Replace the <title> tag with the user-provided title, if provided
-    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]] && [[ ! -z "$PAGE_TITLE" ]]; then
-        echo "Replacing <title> tag with user-provided title."
+    # Replace the <title> tag with the user-provided or default title
+    if [[ "$line" =~ \<title\>(.*)\<\/title\> ]]; then
+        echo "Replacing <title> tag with provided title."
         line="<title>${PAGE_TITLE}</title>"
     fi
 
