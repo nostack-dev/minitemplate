@@ -39,14 +39,13 @@ if [[ ! -f "$scripts_dir/generate_site.sh" ]]; then
     exit 1
 fi
 
-# Check if a theme was provided as an argument, default to "default" if none
-if [[ -n "$1" ]]; then
-    theme="$1"
-    echo "Using theme: $theme"
+# Check if a theme was provided as an argument, default to empty string if none
+if [[ -n "$2" ]]; then
+    theme="$2"
 else
     theme="default"
     echo "No theme provided, proceeding with default theme."
 fi
 
-# Run the generate_site.sh script and pass the theme as a parameter
-"$scripts_dir/generate_site.sh" "$project_root" "$theme"
+# Run the generate_site.sh script and pass the project directory and theme as parameters
+"$scripts_dir/generate_site.sh" "$1" "$theme"

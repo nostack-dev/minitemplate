@@ -121,10 +121,8 @@ else
     echo "Error: run_serve.sh not found in '$scripts_dir'."
 fi
 
-# Apply the theme (this is a placeholder, you can customize how to handle theme selection)
-echo "Setting theme to '$theme' in project..."
-
-# Run the project generate script with the theme
-cd "$target_dir" && ./run_generate.sh "$theme"
+# Run the project generate script with the theme, passing the project directory as the first argument
+echo "Running the generate script in the project directory..."
+cd "$target_dir" && ./run_generate.sh "$target_dir" "$theme"
 
 echo "Project setup complete with theme '$theme' in directory '$base_dir/$project_name'."

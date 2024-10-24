@@ -18,10 +18,7 @@ find_project_root() {
     return 1  # Return error if no root found
 }
 
-# Get the current directory where the script is executed
-current_dir=$(pwd)
-
-# Find the project root directory (if needed for other purposes)
+# Find the project root directory
 project_root=$(find_project_root "$(dirname "${BASH_SOURCE[0]}")")
 
 # Check if the project root was found
@@ -33,6 +30,9 @@ fi
 # Append the scripts directory to the root path
 scripts_dir="$project_root/scripts"
 
+# Print the final scripts directory for verification
+echo "Scripts directory path: $scripts_dir"
+
 # Check if the generate_site.sh script exists in the scripts directory
 if [[ ! -f "$scripts_dir/generate_site.sh" ]]; then
     echo "Error: generate_site.sh not found in $scripts_dir"
@@ -40,13 +40,12 @@ if [[ ! -f "$scripts_dir/generate_site.sh" ]]; then
 fi
 
 # Check if a theme was provided as an argument, default to empty string if none
-if [[ -n "$1" ]]; then
-    theme="$1"
-    echo "Theme '$theme' will be used."
+if [[ -n "$2" ]]; then
+    theme="$2"
 else
     theme="default"
     echo "No theme provided, proceeding with default theme."
 fi
 
-# Run the generate_site.sh script and pass the current directory and theme as parameters
-"$scripts_dir/generate_site.sh" "$current_dir" "$theme"
+# Run the generate_site.sh script and pass the project directory and theme as parameters
+"$scripts_dir/generate_site.sh" "$1" "$theme"
