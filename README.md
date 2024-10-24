@@ -39,7 +39,7 @@ cd ./scripts && ./create_project.sh && cd ..
 
 You will be prompted to provide a name for your project. Once done, the script will generate a new project directory under `projects/` with the necessary components and templates copied over.
 
-When prompoted for a project name use:
+When prompted for a project name, use:
 ```console
 myproject
 ```
@@ -112,3 +112,24 @@ Once you have all the necessary components in place, you can generate the final 
 ```
 
 The script reads the main template (`template_default.html`) and replaces placeholders (like `{{header_default}}`) with the corresponding component files. The generated `index.html` file will be saved in the root of your project or the `public` directory.
+
+## Step 5: Testing the Setup
+
+You can run a suite of tests to ensure that your setup is working as expected.
+
+### Run the Tests
+
+```bash
+./tests/run_tests.sh
+```
+
+This will execute the test suite found in the `tests/` directory and validate your project’s setup, components, and templates.
+
+If all tests pass, you’ll receive a success message. If any tests fail, check the logs to identify the issue.
+
+## Conclusion
+
+MiniTemplate provides a streamlined process for setting up and managing your static site components and templates. By following this guide, you can easily create, convert, and test components, as well as generate a final static site using HTML and JavaScript.
+
+Enjoy building with MiniTemplate!
+
