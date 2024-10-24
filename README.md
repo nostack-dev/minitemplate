@@ -190,7 +190,7 @@ Example output:
 
 ### Test Summary
 ---------------------------------
-✔ All tests passed!
+✔ All tests passed.
 ---------------------------------
 
 Total Tests Passed: 6
