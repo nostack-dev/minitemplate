@@ -143,6 +143,32 @@ With **CDN-hosted** resources, MiniTemplate is designed for **pagespeed optimiza
 
 There’s no need for local tools like Node.js. MiniTemplate runs entirely on CDN resources, making it the **simplest static site generator** for building quick and efficient websites.
 
+## Production Optimization
+
+To further optimize your MiniTemplate project for production, you can follow these simple steps to ensure minimal file sizes and faster page load times without using any npm or local dependencies:
+
+1. **Use PurgeCSS via CDN**: PurgeCSS can help remove any unused CSS classes from Tailwind and DaisyUI, reducing the final CSS file size significantly.
+   - Add this `<script>` tag to your HTML:
+     ```html
+     <script src="https://unpkg.com/purgecss@2.1.0/lib/browser.js"></script>
+     ```
+   - PurgeCSS will automatically analyze your HTML for used CSS classes and purge unused ones on the fly.
+
+2. **Enable Tailwind CSS JIT Mode**: When loading Tailwind via CDN, use the Just-In-Time (JIT) mode to keep your styles optimized during development.
+   - Use this `<script>` tag in your HTML:
+     ```html
+     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+     <script>
+         tailwind.config = {
+             mode: 'jit',
+             purge: ['./**/*.html'],
+         }
+     </script>
+     ```
+   - This helps ensure only the required classes are included.
+
+By using PurgeCSS and enabling Tailwind JIT mode directly from the CDN, you can significantly reduce your CSS file size and boost your site's performance without needing any additional tools or setups.
+
 ## Contribute
 
 We welcome contributions from the community! If you’d like to contribute, please check the [CONTRIBUTING.md](./CONTRIBUTING.md) file for details on how to get started.
