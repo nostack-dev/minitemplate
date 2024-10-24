@@ -1,6 +1,6 @@
 # ✍️ MiniTemplate - Simple Template Engine
 
-This guide will walk you through setting up a MiniTemplate project, converting components, adding templates, and finally generating a static `index.html` file. The setup is divided into several parts to ease integration and usage.
+This guide will walk you through setting up a MiniTemplate project, adding components, templates, and finally generating a static `index.html` file. The setup is streamlined to make it easy for developers to test and get started quickly.
 
 ## Directory Structure Overview
 
@@ -90,50 +90,7 @@ You can also add all default components by running:
 
 This command copies all default components (like header, footer, sidebar, etc.) into your project directory.
 
-## Step 3: Converting Source Components
-
-MiniTemplate allows you to transform raw components from `components/source` (which are basic DaisyUI HTML components) into usable MiniTemplate components in `components/converted`.
-
-### Convert Components
-
-Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
-
-```bash
-cd ./scripts && ./convert_components.sh
-```
-
-This will read all HTML files in the `source` directory and convert them into self-contained components, which will be placed in the `converted` directory.
-
-### Structure Comparison: Source vs Converted
-
-- **Source Component Example (Basic DaisyUI HTML):**
-
-  ```html
-  <div class="alert">
-    <span>Alert message here!</span>
-  </div>
-  ```
-
-- **Converted Component Example (MiniTemplate Component):**
-
-  ```html
-  <div id="alert_component">
-    <div class="alert">
-      <span>Alert message here!</span>
-    </div>
-    <script>
-      (function() {
-        // Component-specific JavaScript
-      })();
-    </script>
-  </div>
-  ```
-
-### Benefits of Conversion
-
-The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
-
-## Step 4: Adding Template Variables and Generating the Static Site
+## Step 3: Adding Template Variables and Generating the Static Site
 
 Once you have all the necessary components in place, you can integrate them into your templates using the `{{component_name}}` syntax. This allows for nesting components within templates or even within other components.
 
@@ -186,7 +143,7 @@ Here is an example of how `{{}}` placeholders are used within a template file:
 
 In this example, the `{{header_default}}`, `{{button}}`, and `{{footer_default}}` placeholders are replaced with their respective component contents during the generation process.
 
-## Step 5: Testing the Setup
+## Step 4: Testing the Setup
 
 You can run a suite of tests to ensure that your setup is working as expected.
 
@@ -229,4 +186,47 @@ All tests finished.
 If all tests pass, you’ll receive a success message. If any tests fail, check the logs to identify the issue.
 
 Refer to [CONTRIBUTE.md](../CONTRIBUTE.md) for guidelines on how to contribute and see [LICENSE](../LICENSE) for licensing information.
+
+## Additional Step: Converting Source Components (Optional)
+
+MiniTemplate allows you to transform raw components from `components/source` (which are basic DaisyUI HTML components) into usable MiniTemplate components in `components/converted`.
+
+### Convert Components
+
+Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
+
+```bash
+cd ./scripts && ./convert_components.sh
+```
+
+This will read all HTML files in the `source` directory and convert them into self-contained components, which will be placed in the `converted` directory.
+
+### Structure Comparison: Source vs Converted
+
+- **Source Component Example (Basic DaisyUI HTML):**
+
+  ```html
+  <div class="alert">
+    <span>Alert message here!</span>
+  </div>
+  ```
+
+- **Converted Component Example (MiniTemplate Component):**
+
+  ```html
+  <div id="alert_component">
+    <div class="alert">
+      <span>Alert message here!</span>
+    </div>
+    <script>
+      (function() {
+        // Component-specific JavaScript
+      })();
+    </script>
+  </div>
+  ```
+
+### Benefits of Conversion
+
+The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
 
