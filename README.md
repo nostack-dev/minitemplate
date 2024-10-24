@@ -163,7 +163,7 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 Navigate to the `tests` directory, then run:
 
-```bash
+```console
 cd ./tests && ./run_tests.sh
 ```
 
@@ -186,7 +186,7 @@ Example output:
 
 ### Test Summary
 ---------------------------------
-✔ All tests passed!
+✔ All tests passed.
 ---------------------------------
 
 Total Tests Passed: 6
