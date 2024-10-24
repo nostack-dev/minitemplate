@@ -23,7 +23,7 @@ This script sets up a new project by generating all necessary folders and files 
 **Parameters:**
 
 - `[project_name]`: The name of your new project.
-- `[template]` (optional): Template to base your project on (default, blog, ecommerce).
+- `[template]` (optional): Template to base your project on (cyberpunk, dark, light, bussiness, see daisyUI themes [here]([url](https://daisyui.com/docs/themes/))).
 
 **Usage Example:**
 
