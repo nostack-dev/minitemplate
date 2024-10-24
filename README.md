@@ -4,7 +4,7 @@ This guide will walk you through setting up a MiniTemplate project, adding compo
 
 ## Directory Structure Overview
 
-```shell
+```console
 .
 ├── components
 │   ├── converted        # Converted components ready for use in the project
@@ -23,7 +23,7 @@ This guide will walk you through setting up a MiniTemplate project, adding compo
 
 ### Clone the repository
 
-```bash
+```console
 git clone https://github.com/nostack-dev/minitemplate.git
 cd minitemplate
 ```
@@ -34,7 +34,7 @@ Ensure all the files and directories listed in the directory structure are prese
 
 This script will create a new project directory with default components and templates.
 
-```bash
+```console
 chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
@@ -48,11 +48,13 @@ myproject
 
 Then navigate to your created project:
 
-```bash
+```console
 cd ./projects/myproject
 ```
 
 This will create a new folder `projects/myproject` with the default components and scripts inside.
+
+Default components are automatically added during project creation. If needed, you can override them using the `run_add.sh defaults` command, but this is not the main focus.
 
 ## Step 2: Adding Components to Your Project
 
@@ -62,7 +64,7 @@ MiniTemplate allows you to easily add components to your project using the `run_
 
 To list all available components, run the `run_add.sh` script without any arguments inside your project directory:
 
-```bash
+```console
 ./run_add.sh
 ```
 
@@ -72,23 +74,13 @@ You will see a list of components from `components/default`, `components/custom`
 
 To add a specific component to your project, pass the component name as an argument to `run_add.sh`:
 
-```bash
+```console
 ./run_add.sh button
 ```
 
 This will copy the `button.html` component into your project directory.
 
 After adding a component, you can embed it in any template or component file using the `{{component_name}}` syntax. For example, to use the button component, add `{{button}}` to your template file.
-
-### Add Default Components
-
-You can also add all default components by running:
-
-```bash
-./run_add.sh defaults
-```
-
-This command copies all default components (like header, footer, sidebar, etc.) into your project directory.
 
 ## Step 3: Adding Template Variables and Generating the Static Site
 
@@ -100,7 +92,7 @@ For example, to include a `button` component within a template, simply add `{{bu
 
 From your project directory, run:
 
-```bash
+```console
 ./run_generate_site.sh
 ```
 
@@ -108,7 +100,7 @@ The script processes the main template (`template_default.html`), replacing plac
 
 After generating the site, you can manually copy the `index.html` file to the `public` directory:
 
-```bash
+```console
 cp index.html ../../public/
 ```
 
@@ -151,7 +143,7 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 Navigate to the `tests` directory, then run:
 
-```bash
+```console
 cd ./tests && ./run_tests.sh
 ```
 
@@ -159,7 +151,7 @@ This will execute the test suite found in the `tests/` directory and validate yo
 
 Example output:
 
-```bash
+```console
 ### Test Start
 ---------------------------------
 
@@ -185,8 +177,6 @@ All tests finished.
 
 If all tests pass, you’ll receive a success message. If any tests fail, check the logs to identify the issue.
 
-Refer to [CONTRIBUTE.md](../CONTRIBUTE.md) for guidelines on how to contribute and see [LICENSE](../LICENSE) for licensing information.
-
 ## Additional Step: Converting Source Components (Optional)
 
 MiniTemplate allows you to transform raw components from `components/source` (which are basic DaisyUI HTML components) into usable MiniTemplate components in `components/converted`.
@@ -195,7 +185,7 @@ MiniTemplate allows you to transform raw components from `components/source` (wh
 
 Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
 
-```bash
+```console
 cd ./scripts && ./convert_components.sh
 ```
 
@@ -230,3 +220,32 @@ This will read all HTML files in the `source` directory and convert them into se
 
 The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
 
+### The Converted Components Don’t Look Special or New—What Sets Them Apart?
+
+At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages:
+
+```html
+<div id="alert_component"> <!-- Auto-generated ID -->
+  <div class="alert"> <!-- Collision-free DaisyUI style-classes -->
+    <span>Alert message here!</span>
+  </div>
+  <script>
+    (function() { // Isolation of JavaScript using an IIFE
+      let isOpen = true; // Local state variable for alert status
+      // Component-specific JavaScript
+      if (isOpen) {
+        console.log("Alert is open");
+      }
+    })();
+  </script>
+</div>
+```
+
+- **Auto-Generated Unique ID:** Ensures each component is uniquely identifiable, preventing duplication.
+- **Collision-Free DaisyUI Styles:** Inline Tailwind CSS ensures that styles remain modular and do not interfere with others.
+- **Isolation of JavaScript:** Uses an immediately invoked function expression (IIFE) to prevent conflicts and enhance reliability.
+- **Local State Management:** Local state variables, like `isOpen`, can be utilized to manage component behavior within the function.
+
+This combination results in a powerful, scalable approach to web development without adding unnecessary complexity, along with the option to integrate state management tools.
+
+Refer to [CONTRIBUTE.md](../CONTRIBUTE.md) for guidelines on how to contribute and see [LICENSE](../LICENSE) for licensing information.
