@@ -31,7 +31,7 @@ TEST_PASSED=true
 
 # Copy necessary files to the current directory
 echo -e "\n--- Copying template and component files for the test ---"
-cp "$PROJECT_ROOT/generate.sh" . || { echo -e "${RED}✖ Error: Failed to copy generate.sh.${NC}"; TEST_PASSED=false; }
+cp "$PROJECT_ROOT/scripts/generate-site.sh" ./ || { echo -e "${RED}✖ Error: Failed to copy generate-site.sh.${NC}"; TEST_PASSED=false; }
 cp "$TEMPLATE_FILE" . || { echo -e "${RED}✖ Error: Failed to copy template_default.html.${NC}"; TEST_PASSED=false; }
 cp "$COMPONENTS_DIR/headerComponent.html" "$COMPONENTS_DIR/contentComponent.html" "$COMPONENTS_DIR/sidebarComponent.html" "$COMPONENTS_DIR/footerComponent.html" . || { echo -e "${RED}✖ Error: Failed to copy component files.${NC}"; TEST_PASSED=false; }
 
@@ -54,7 +54,7 @@ if [ ! -f "template_default.html" ]; then
     TEST_PASSED=false
 else
     # Run the test for template generation with the light theme, and specify the correct template file
-    echo "$PAGE_TITLE" | ./generate.sh "light" "template_default.html"
+    echo "$PAGE_TITLE" | ./generate-site.sh "light" "template_default.html"
 
     # Check if index.html was generated
     echo -e "\n--- Checking generated output ---"

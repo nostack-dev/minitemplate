@@ -29,15 +29,15 @@ copy_scripts_to_tests() {
     $VERBOSE && echo -e "\n📄 ${GREEN}Copying required scripts to tests directory...${NC}"
 
     # Define the source scripts
-    local scripts=("generate.sh")
+    local scripts=("generate-site.sh")
 
     # Loop through each script and copy if it exists
     for script in "${scripts[@]}"; do
-        if [ -f "../$script" ]; then
-            cp "../$script" "./$script" && \
+        if [ -f "../scripts/$script" ]; then
+            cp "../scripts/$script" "./$script" && \
             $VERBOSE && echo -e "${GREEN}✅ Copied $script successfully.${NC}"
         else
-            echo -e "${RED}Error: ../$script not found.${NC}"
+            echo -e "${RED}Error: ../scripts/$script not found.${NC}"
             exit 1
         fi
     done
@@ -131,6 +131,6 @@ echo -e "Total Tests Failed: ${RED}$failed${NC}"
 
 echo -e "\nAll tests finished."
 
-# Cleanup
+# Cleanup: Remove any files copied or generated during the test that aren't test scripts.
 [[ "$(basename "$(pwd)")" == "tests" ]] && find . -type f ! -name 'test_*.sh' ! -name 'run_tests.sh' ! -name 'create_test.sh' -delete && find . -type d ! -name '.' -exec rm -rf {} +
 exit 0
