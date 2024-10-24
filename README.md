@@ -28,20 +28,16 @@ git clone https://github.com/nostack-dev/minitemplate.git && cd minitemplate
 
 Use the provided script to create a new project. You can specify a **project name** and select a theme from DaisyUI to match your design.
 
-```bash
-./run_create_project.sh [project_name] [theme]
-```
-
-- `[project_name]`: Your desired project name.
-- `[theme]` (optional): Pick a theme (e.g., **cyberpunk**, **dark**, **light**, **business**). Explore more themes on the [DaisyUI theme page](https://daisyui.com/docs/themes/).
-
-Example:
+Create your Project:
 
 ```bash
 ./run_create_project.sh my-awesome-site dark
 ```
-
 This will set up your project with the chosen theme and ensure **fast loading speeds** via CDN resources.
+
+Additional Parameters:
+- `[project_name]`: Your desired project name.
+- `[theme]` (optional): Pick a theme (e.g., **cyberpunk**, **dark**, **light**, **business**). Explore more themes on the [DaisyUI theme page](https://daisyui.com/docs/themes/).
 
 ### 3. Serve Your Site for Development
 
@@ -78,6 +74,7 @@ Open the `template_default.html` file located in your project’s templates fold
 ```
 
 Example: Open your `template_default.html` and add your component:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -96,12 +93,12 @@ Example: Open your `template_default.html` and add your component:
         {{sidebar_default}}
     </div>
 
+    <div class="my-4">
+        <!--Replace this line with your component, for example: --> {{button}}
+    </div>
+
     <div id="content" class="flex-1 p-6">
         {{content_default}}
-
-          <div class="my-4">
-               <!--Replace this line with your component, for example: --> {{button}}
-         </div>
     </div>
 
     <footer class="p-4">
@@ -122,9 +119,10 @@ After adding the component and saving the template, you need to re-create the in
 
 This will regenerate the `index.html` file with the newly integrated button component.
 
-### 7. Serve the index.html locally
+### 7. Serve the index.html
 
-Run this command to serve the index.html:
+Run this command to serve the new index.html:
+
 ```bash
 ./run_serve.sh
 ```
