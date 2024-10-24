@@ -21,7 +21,7 @@ This guide will walk you through setting up a MiniTemplate project, converting c
 
 ## Step 1: Setting Up Your Project
 
-### 1. Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/nostack-dev/minitemplate.git
@@ -30,11 +30,11 @@ cd minitemplate
 
 Ensure all the files and directories listed in the directory structure are present before proceeding.
 
-### 2. Run `run_create_project.sh`
+### Run `run_create_project.sh`
 
 This script will create a new project directory with default components and templates.
 
-```console
+```bash
 chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
@@ -98,7 +98,7 @@ MiniTemplate allows you to transform raw components from `components/source` (wh
 
 Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
 
-```console
+```bash
 cd ./scripts && ./convert_components.sh
 ```
 
@@ -129,6 +129,10 @@ This will read all HTML files in the `source` directory and convert them into se
   </div>
   ```
 
+### Benefits of Conversion
+
+The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
+
 ## Step 4: Generating the Static Site
 
 Once you have all the necessary components in place, you can generate the final `index.html` by running the `run_generate_site.sh` script.
@@ -153,7 +157,7 @@ This will allow the static site to be served from the `public` directory if desi
 
 ### Template and Component Nesting
 
-Any template file or component HTML file can include other components using the `{{component}}` syntax. When you run `run_generate.sh` from your project folder, these placeholders are replaced by the actual component contents.
+Any template file or component HTML file can include other components using the `{{component}}` syntax. When you run `run_generate_site.sh` from your project folder, these placeholders are replaced by the actual component contents.
 
 ## Step 5: Testing the Setup
 
@@ -163,7 +167,7 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 Navigate to the `tests` directory, then run:
 
-```console
+```bash
 cd ./tests && ./run_tests.sh
 ```
 
@@ -186,7 +190,7 @@ Example output:
 
 ### Test Summary
 ---------------------------------
-✔ All tests passed.
+✔ All tests passed!
 ---------------------------------
 
 Total Tests Passed: 6
