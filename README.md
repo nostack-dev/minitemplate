@@ -1,4 +1,3 @@
-
 # ✍️ MiniTemplate - Simple Template Engine
 
 This guide will walk you through setting up a MiniTemplate project, converting components, adding templates, and finally generating a static `index.html` file. The setup is divided into several parts to ease integration and usage.
@@ -117,12 +116,38 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 ### Run the Tests
 
-navigate to the root of the project, then run:
+Navigate to the root of the project, then run:
 ```bash
 cd ./tests && ./run_tests.sh
 ```
 
 This will execute the test suite found in the `tests/` directory and validate your project’s setup, components, and templates.
+
+Example output:
+
+```
+### Test Start
+---------------------------------
+
+## Running Tests
+
+✔ Test passed: ./test_addcomponent.sh
+✔ Test passed: ./test_component_ids.sh
+✔ Test passed: ./test_component_references.sh
+✔ Test passed: ./test_index_served.sh
+✔ Test passed: ./test_print.sh
+✔ Test passed: ./test_template_generation.sh
+
+### Test Summary
+---------------------------------
+✔ All tests passed!
+---------------------------------
+
+Total Tests Passed: 6
+Total Tests Failed: 0
+
+All tests finished.
+```
 
 If all tests pass, you’ll receive a success message. If any tests fail, check the logs to identify the issue.
 
@@ -131,3 +156,4 @@ If all tests pass, you’ll receive a success message. If any tests fail, check 
 MiniTemplate provides a streamlined process for setting up and managing your static site components and templates. By following this guide, you can easily create, convert, and test components, as well as generate a final static site using HTML and JavaScript.
 
 Enjoy building with MiniTemplate!
+
