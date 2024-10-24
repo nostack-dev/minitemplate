@@ -99,7 +99,7 @@ Find a place to insert `{{button}}` in the template below:
         {{sidebar_default}}
     </div>
 
-    <div class="my-4">
+    <div class="my-4 flex items-center justify-center">
         <!--Replace this line with your component, for example: --> {{button}}
     </div>
 
