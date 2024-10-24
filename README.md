@@ -77,6 +77,40 @@ Open the `template_default.html` file located in your project’s templates fold
 {{button}}
 ```
 
+Example:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Site</title>
+
+    <!-- Tailwind and DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen" data-theme="">
+
+    <div id="sidebar">
+        {{sidebar_default}}
+    </div>
+
+    <div id="content" class="flex-1 p-6">
+        {{content_default}}
+
+        <div class="my-4">
+        <!-- Add your component here -->
+        </div>
+    </div>
+
+    <footer class="p-4">
+        {{footer_default}}
+    </footer>
+
+</body>
+</html>
+```
 ### 6. Print the Updated Template
 
 You can print the updated template structure to verify your changes:
