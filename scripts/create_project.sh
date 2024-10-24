@@ -27,11 +27,20 @@ if [[ -z "$project_root" ]]; then
     exit 1
 fi
 
-# Prompt the user for a project name
-read -p "Enter the project name: " project_name
+# Check if the project name is provided as an argument
+if [[ -n "$1" ]]; then
+    project_name="$1"
+else
+    # Set a default project name if none is provided
+    project_name="default_project"
+fi
 
-# Define the base directory as ./projects inside the project root
-base_dir="$project_root/projects"
+# Use the second argument as the base directory if provided, otherwise use the default location
+if [[ -n "$2" ]]; then
+    base_dir="$2"
+else
+    base_dir="$project_root/projects"
+fi
 
 # Define the target project directory
 target_dir="$base_dir/$project_name"
@@ -85,7 +94,6 @@ else
     echo "Error: run_generate.sh not found in '$scripts_dir'."
 fi
 
-
 # Copy run_add.sh to the project directory
 run_add_script="$scripts_dir/run_add.sh"
 if [ -f "$run_add_script" ]; then
@@ -94,4 +102,5 @@ if [ -f "$run_add_script" ]; then
 else
     echo "Error: run_add.sh not found in '$scripts_dir'."
 fi
+
 echo "Project setup complete!"

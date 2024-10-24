@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to find the project root based on key files like README.md, LICENSE, etc.
+# Find the project root
 find_project_root() {
     local dir="$(cd "${1:-$(pwd)}" && pwd)"  # Convert to absolute path
     local root_files=("README.md" "LICENSE" "CONTRIBUTE.md" "CNAME")
@@ -19,23 +19,88 @@ find_project_root() {
     return 1
 }
 
-# Find the project root
+# Get the project root dynamically
 project_root=$(find_project_root)
 
-# Check if the project root was found
 if [[ -z "$project_root" ]]; then
     echo "Error: Project root not found."
     exit 1
 fi
 
-# Construct the path to the create_project.sh script
-create_project_script="$project_root/scripts/create_project.sh"
-
-# Check if create_project.sh exists
-if [[ ! -f "$create_project_script" ]]; then
-    echo "Error: create_project.sh not found in $project_root/scripts."
+# Check if the project name is provided as an argument
+if [[ -n "$1" ]]; then
+    project_name="$1"
+else
+    echo "Error: No project name provided."
     exit 1
 fi
 
-# Execute the create_project.sh script
-bash "$create_project_script"
+# Use the second argument as the base directory if provided, otherwise use the default location
+if [[ -n "$2" ]]; then
+    base_dir="$2"
+else
+    base_dir="$project_root/projects"
+fi
+
+# Define the target project directory
+target_dir="$base_dir/$project_name"
+
+# Define the source directory for components and template
+components_dir="$project_root/components/default"
+template_file="$project_root/templates/template_default.html"
+scripts_dir="$project_root/scripts"
+
+# Check if the base projects directory exists, if not create it
+if [ ! -d "$base_dir" ]; then
+    echo "Creating base directory '$base_dir'..."
+    mkdir -p "$base_dir"
+fi
+
+# Check if the project directory already exists
+if [ -d "$target_dir" ]; then
+    echo "Error: Directory '$target_dir' already exists. Exiting."
+    exit 1
+else
+    # Create the project directory
+    mkdir -p "$target_dir"
+    echo "Directory '$target_dir' created successfully."
+fi
+
+# Check if the components directory exists
+if [ ! -d "$components_dir" ]; then
+    echo "Error: Components directory '$components_dir' does not exist."
+    exit 1
+fi
+
+# Copy template_default.html to the target project directory
+if [ -f "$template_file" ]; then
+    cp "$template_file" "$target_dir/"
+    echo "Copied template_default.html to '$target_dir'."
+else
+    echo "Error: template_default.html not found in '$template_file'."
+    exit 1
+fi
+
+# Copy all components from the components directory to the target project directory
+cp "$components_dir"/* "$target_dir/"
+echo "Copied all default components to '$target_dir'."
+
+# Copy run_generate.sh to the project directory
+run_generate_script="$scripts_dir/run_generate.sh"
+if [ -f "$run_generate_script" ]; then
+    cp "$run_generate_script" "$target_dir/"
+    echo "Copied run_generate.sh to '$target_dir'."
+else
+    echo "Error: run_generate.sh not found in '$scripts_dir'."
+fi
+
+# Copy run_add.sh to the project directory
+run_add_script="$scripts_dir/run_add.sh"
+if [ -f "$run_add_script" ]; then
+    cp "$run_add_script" "$target_dir/"
+    echo "Copied run_add.sh to '$target_dir'."
+else
+    echo "Error: run_add.sh not found in '$scripts_dir'."
+fi
+
+echo "Project setup complete!"
