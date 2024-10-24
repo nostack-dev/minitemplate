@@ -245,3 +245,4 @@ At first glance, MiniTemplate components may seem like standard HTML, but their 
 This combination results in a powerful, scalable approach to web development without adding unnecessary complexity, along with the option to integrate state management tools.
 
 Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute and see [LICENSE](LICENSE) for licensing information.
+Thanks to [TailwindCSS](https://tailwindcss.com) and [daisyUI](https://daisyui.com/) for their great work.
