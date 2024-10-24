@@ -43,10 +43,16 @@ This creates a new project directory with the chosen theme applied.
 
 ### 3. Add Components
 
-Enhance your project by adding pre-built components, such as navigation bars, footers, or buttons. Use this script to include them:
+To add pre-built components (like a navigation bar, footer, etc.), first navigate to the project directory you just created:
 
 ```bash
-./run_add.sh [component_name] [project_name]
+cd my-awesome-site
+```
+
+Then, run the following script to include the component:
+
+```bash
+../run_add.sh [component_name] [project_name]
 ```
 
 - `[component_name]`: The name of the UI component (e.g., **navbar**, **footer**).
@@ -55,7 +61,7 @@ Enhance your project by adding pre-built components, such as navigation bars, fo
 Example:
 
 ```bash
-./run_add.sh navbar my-awesome-site
+../run_add.sh navbar my-awesome-site
 ```
 
 ### 4. Customize Your Project
@@ -102,7 +108,7 @@ Forget about installing local dependencies like Node.js. MiniTemplate is fully C
 
 ## Contribute
 
-We welcome contributions from the community! If you’d like to contribute, please check the [Contribute.md](./CONTRIBUTE.md) file for details on how to get started.
+We welcome contributions from the community! If you’d like to contribute, please check the [CONTRIBUTING.md](./CONTRIBUTING.md) file for details on how to get started.
 
 ## License
 
