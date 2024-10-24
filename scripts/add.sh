@@ -72,8 +72,8 @@ if [ -z "$1" ]; then
     display_components "Available templates" "${template_files[@]}"
 
     # Display usage at the end
-    echo -e "\nUsage: ./add.sh [defaults|component|template]"
-    echo "Example: ./add.sh defaults or ./add.sh button or ./add.sh template_default.html"
+    echo -e "\nUsage: ./run_add.sh [defaults|component|template]"
+    echo "Example: ./run_add.sh defaults or ./run_add.sh button or ./run_add.sh template_default.html"
     exit 1
 fi
 

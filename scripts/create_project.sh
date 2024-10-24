@@ -63,7 +63,7 @@ if [ ! -d "$components_dir" ]; then
     exit 1
 fi
 
-# Copy template.html to the target project directory
+# Copy template_default.html to the target project directory
 if [ -f "$template_file" ]; then
     cp "$template_file" "$target_dir/"
     echo "Copied template_default.html to '$target_dir'."
@@ -85,4 +85,13 @@ else
     echo "Error: run_generate.sh not found in '$scripts_dir'."
 fi
 
+
+# Copy run_add.sh to the project directory
+run_add_script="$scripts_dir/run_add.sh"
+if [ -f "$run_add_script" ]; then
+    cp "$run_add_script" "$target_dir/"
+    echo "Copied run_add.sh to '$target_dir'."
+else
+    echo "Error: run_add.sh not found in '$scripts_dir'."
+fi
 echo "Project setup complete!"
