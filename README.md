@@ -129,9 +129,8 @@ This will read all HTML files in the `source` directory and convert them into se
   </div>
   ```
 
-### Benefits of Conversion
-
-The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
+### The converted Components Don’t Look Special or New—What Sets Them Apart?
+At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages. They utilize immediately invoked functions to isolate JavaScript within embedded scripts, preventing conflicts and enhancing reliability. The integration of inline Tailwind CSS through DaisyUI ensures that styles are modular and collision-free, promoting consistent design. Moreover, these components allow for local state management within the scripts, with the option to integrate a state manager, enhancing functionality and maintainability without adding unnecessary complexity. This combination results in a powerful, scalable approach to web development.
 
 ## Step 4: Generating the Static Site
 
