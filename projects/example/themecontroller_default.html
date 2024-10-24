@@ -28,16 +28,22 @@
                 const themeButton = document.getElementById('themeButton');
                 const themeDropdown = document.getElementById('themeDropdown');
                 const themeOptions = document.querySelectorAll('.theme-controller');
+                
+                // Check session storage or default to body data-theme
+                let selectedTheme = sessionStorage.getItem('selectedTheme');
+                if (!selectedTheme) {
+                    selectedTheme = document.body.getAttribute('data-theme') || 'light'; // Default to 'light' if no theme
+                    sessionStorage.setItem('selectedTheme', selectedTheme);
+                }
 
-                // Set initial theme from local storage or default to "Theme"
-                const savedTheme = localStorage.getItem('selectedTheme');
-                if (savedTheme) {
-                    document.body.setAttribute('data-theme', savedTheme);
-                    const selectedOption = Array.from(themeOptions).find(option => option.value === savedTheme);
-                    if (selectedOption) {
-                        themeButton.childNodes[0].textContent = selectedOption.getAttribute('aria-label');
-                        selectedOption.checked = true;
-                    }
+                // Apply the selected theme
+                document.body.setAttribute('data-theme', selectedTheme);
+
+                // Pre-select the dropdown based on the selected theme
+                const selectedOption = Array.from(themeOptions).find(option => option.value === selectedTheme);
+                if (selectedOption) {
+                    themeButton.childNodes[0].textContent = selectedOption.getAttribute('aria-label');
+                    selectedOption.checked = true;
                 }
 
                 // Toggle dropdown visibility when the button is clicked
@@ -52,12 +58,12 @@
                     }
                 });
 
-                // Apply selected theme, update button label, save to local storage, and close dropdown
+                // Apply selected theme, update button label, save to session storage, and close dropdown
                 themeOptions.forEach(option => {
                     option.addEventListener('change', function() {
                         document.body.setAttribute('data-theme', this.value); // Change theme
                         themeButton.childNodes[0].textContent = this.getAttribute('aria-label'); // Update button label
-                        localStorage.setItem('selectedTheme', this.value); // Save to local storage
+                        sessionStorage.setItem('selectedTheme', this.value); // Save to session storage
                         themeDropdown.classList.add('hidden'); // Close dropdown
                     });
                 });
