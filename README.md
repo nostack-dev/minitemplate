@@ -141,14 +141,18 @@ MiniTemplate comes with an **example project** that shows how the components and
 
 ```
 projects/example
-├── index.html          # The main entry point for the static site
-├── run_add.sh          # Script to add components
-├── run_generate.sh     # Script to generate the site
-├── print.sh            # Script to print the site structure
-└── components
-    ├── navbar.html     # Pre-built navbar component
-    ├── footer.html     # Pre-built footer component
-    └── content.html    # Pre-built content area component
+├── content_default.html           # Default content component
+├── footer_default.html            # Default footer component
+├── header_default.html            # Default header component
+├── hero_default.html              # Default hero component
+├── index.html                     # Default footer component
+├── print.sh                       # Script to print the site structure
+├── run_add.sh                     # Script to add components
+├── run_generate.sh                # Script to generate the site
+├── run_serve.sh                   # Script to serve the index.html locally
+├── sidebar_default.html           # Default sidebar component
+├── template_default.html          # Default template file
+└── themecontroller_default.html   # Default themecontroller component
 ```
 
 Feel free to explore and modify this example to suit your needs.
