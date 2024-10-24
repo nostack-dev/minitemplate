@@ -49,7 +49,7 @@ cp "$components_dir"/* "$target_dir/"
 echo "Copied all default components to '$target_dir'."
 
 # Copy additional scripts to the target project directory
-for script in generate_site.sh add.sh print.sh; do
+for script in generate_site.sh ; do
     if [ -f "./$script" ]; then
         cp "./$script" "$target_dir/"
         echo "Copied $script to '$target_dir'."
