@@ -216,8 +216,6 @@ This will read all HTML files in the `source` directory and convert them into se
   </div>
   ```
 
-### Benefits of Conversion
-
 The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
 
 ### The Converted Components Don’t Look Special or New—What Sets Them Apart?
