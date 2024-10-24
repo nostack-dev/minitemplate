@@ -77,7 +77,7 @@ Open the `template_default.html` file located in your project’s templates fold
 {{button}}
 ```
 
-Example:
+Example: Open your `template_default.html` and add your component:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -111,23 +111,25 @@ Example:
 </body>
 </html>
 ```
-### 6. Print the Updated Template
 
-You can print the updated template structure to verify your changes:
+### 6. Re-generate the Site
 
-```bash
-./scripts/print.sh
-```
-
-### 7. Re-generate the Site
-
-After adding the component and updating the template, you need to re-create the index.html file to reflect your changes:
+After adding the component and saving the template, you need to re-create the index.html file to reflect your changes:
 
 ```bash
-./scripts/run_generate.sh
+./run_generate.sh
 ```
 
 This will regenerate the `index.html` file with the newly integrated button component.
+
+### 7. Serve the index.html locally
+
+Run this command to serve the index.html:
+```bash
+./run_serve.sh
+```
+
+Open your browser on http://localhost:8000 to view your new site and your added component.
 
 ## Example Pre-Created Project Structure
 
