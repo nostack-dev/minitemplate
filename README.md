@@ -46,13 +46,13 @@ This creates a new project directory with the chosen theme applied.
 To add pre-built components (like a navigation bar, footer, etc.), first navigate to the project directory you just created:
 
 ```bash
-cd my-awesome-site
+cd ./projects/my-awesome-site
 ```
 
 Then, run the following script to include the component:
 
 ```bash
-../run_add.sh [component_name] [project_name]
+../../run_add.sh [component_name] [project_name]
 ```
 
 - `[component_name]`: The name of the UI component (e.g., **navbar**, **footer**).
@@ -61,7 +61,7 @@ Then, run the following script to include the component:
 Example:
 
 ```bash
-../run_add.sh navbar my-awesome-site
+../../run_add.sh navbar my-awesome-site
 ```
 
 ### 4. Customize Your Project
