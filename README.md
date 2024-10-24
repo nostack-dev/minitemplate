@@ -97,7 +97,7 @@ From your project directory, run:
 
 The script processes the main template (`template_default.html`), replacing placeholders (e.g., `{{header_default}}`) with the appropriate component files. The resulting `index.html` can be served directly on any static web host, such as GitHub Pages.
 
-After generating the site, you can manually copy the `index.html` file to the `public` directory:
+After generating the site, you can copy the `index.html` file to the `public` directory:
 
 ```console
 cp index.html ../../public/
