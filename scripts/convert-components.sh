@@ -3,10 +3,10 @@
 # Get the absolute path of the script directory
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Define the new source and output directories
-source_dir="$script_dir/components_source"
-output_dir="$script_dir/components_converted"
-custom_output_dir="$script_dir/components_custom"
+# Define the source and output directories located in root/lib/
+source_dir="$script_dir/../lib/components_source"
+output_dir="$script_dir/../lib/components_converted"
+custom_output_dir="$script_dir/../lib/components_custom"
 
 # Create the components_source, components_converted, and components_custom directories if they don't exist
 mkdir -p "$source_dir"

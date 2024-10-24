@@ -30,7 +30,7 @@ fi
 
 # Check if the template file exists
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
-    echo "Error: Template file '$TEMPLATE_FILE' not found."
+    echo "Error: Template file '$TEMPLATE_FILE' not found. Use './add-component.sh template_default.html' to add the default template file"
     exit 1
 fi
 
@@ -43,7 +43,7 @@ fi
 ensure_components() {
     for component in sidebarComponent.html contentComponent.html footerComponent.html; do
         if [[ ! -f "$component" ]]; then
-            echo "Error: Component '$component' not found. Please create it before proceeding."
+            echo "Error: Component '$component' not found. Please create it before proceeding. Use './add-component.sh defaults' to add default components"
             exit 1
         fi
     done

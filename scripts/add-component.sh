@@ -4,10 +4,11 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define directories based on the script's directory
-default_dir="$SCRIPT_DIR/lib/components_default"
-converted_dir="$SCRIPT_DIR/lib/components_converted"
-custom_dir="$SCRIPT_DIR/lib/components_custom"
-templates_dir="$SCRIPT_DIR/lib/templates"
+project_root="$(dirname "$SCRIPT_DIR")"  # Get the project root directory
+default_dir="$project_root/lib/components_default"
+converted_dir="$project_root/lib/components_converted"
+custom_dir="$project_root/lib/components_custom"
+templates_dir="$project_root/lib/templates"
 
 # Check if the default components directory exists
 if [ ! -d "$default_dir" ]; then
