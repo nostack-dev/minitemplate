@@ -24,7 +24,7 @@ fi
 
 # Check if the template file exists
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
-    echo "Error: Template file '$TEMPLATE_FILE' not found. Use './add.sh template_default.html' to add the default template file."
+    echo "Error: Template file '$TEMPLATE_FILE' not found. Use './run_add.sh template_default.html' to add the default template file."
     exit 1
 fi
 
@@ -48,7 +48,7 @@ ensure_components() {
         for comp in "${missing[@]}"; do
             echo "- $comp.html"
         done
-        echo "Please add them using './add.sh defaults' or individually."
+        echo "Please add them using './run_add.sh defaults' or individually."
         exit 1
     fi
 }
