@@ -1,70 +1,114 @@
 #!/bin/bash
 
-# Color definitions for output
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
+# Color definitions for output similar to the tree command
+GREEN='\033[1;32m'
+BLUE='\033[1;34m'
 CYAN='\033[0;36m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
+YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
-# List of files and directories to ignore
+# List of files and directories to ignore in tree and content printing
 printignore=(
-    "./lib/components_converted"  # Exclude the converted components folder (output folder)
-    "./lib/components_source"     # Exclude the source components folder
-    "./projects"                  # Exclude the projects directory
-    "./tests/*/*"                 # Exclude subfolders inside the tests folder, but keep direct contents
-    "./CNAME"                     # Exclude the CNAME file (typically used for custom domains)
-    "./LICENSE"                   # Exclude the LICENSE file
-    "./README.md"                 # Exclude the README.md file
-    "./CONTRIBUTING.md"           # Exclude the CONTRIBUTING.md file
-    "./.git"                      # Exclude the .git directory (version control related)
-    "./objects"                   # Exclude the objects folder (possibly git objects or build artifacts)
-    "./print.sh"                  # Exclude the print.sh script itself
-    "./index.html"                # Exclude index.html files in any directory
-    "./tests/output.txt"          # Exclude output.txt specifically in the tests folder
-    "./tests/*.html"              # Exclude all .html files dynamically in the tests folder
-    "./tests/*.md"                # Exclude all .md files
+    "CNAME"
+    "LICENSE"
+    "README.md"
+    "CONTRIBUTING.md"
+    ".git"
+    "objects"
+    "print.sh"
+    "index.html"
+    "lib/components_converted"
+    "lib/components_source"
+    "projects"
+    "tests/output.txt"
+    "tests/*.html"
+    "tests/*.md"
 )
 
-# Function to check if a file or directory should be ignored
-should_ignore() {
-    local item="$1"
-    for ignore in "${printignore[@]}"; do
-        if [[ "$item" == $ignore* ]]; then
-            return 0
-        fi
-    done
-    return 1
+# Function to display help information
+show_help() {
+    echo -e "${CYAN}Usage: ./print.sh [OPTION]${NC}"
+    echo -e "Display the directory structure and optionally print file contents."
+    echo -e ""
+    echo -e "${CYAN}Options:${NC}"
+    echo -e "  ${GREEN}--help${NC}          Show this help message and exit."
+    echo -e "  ${GREEN}--tree${NC}           Only display the directory structure, do not print file contents."
+    echo -e "  ${GREEN}--hide FILE${NC}      Hide the specified FILE from both the tree and the content output."
+    exit 0
 }
 
-# Recursive function to print the directory tree and file contents
-print_directory() {
-    local dir="$1"
-    local prefix="$2"
+# Variable to control whether to print file contents or just the tree
+PRINT_CONTENTS=true
+HIDE_FILE=""
 
-    # Iterate through all items in the directory
-    for item in "$dir"/*; do
-        # Check if the item is in the ignore list
-        if should_ignore "$item" || [[ "$(basename "$item")" == "index.html" ]] || [[ "$(basename "$item")" == "print.sh" ]]; then
-            continue
-        fi
+# Parse options
+while [[ "$1" != "" ]]; do
+    case $1 in
+        --help)
+            show_help
+            ;;
+        --tree)
+            PRINT_CONTENTS=false
+            ;;
+        --hide)
+            shift
+            HIDE_FILE=$1
+            ;;
+        *)
+            echo -e "${RED}Unknown option: $1${NC}"
+            show_help
+            ;;
+    esac
+    shift
+done
 
-        # If it's a directory, print and recurse into it
-        if [ -d "$item" ]; then
-            echo -e "${BLUE}${prefix}$(basename "$item")/${NC}"
-            print_directory "$item" "$prefix    "
-        elif [ -f "$item" ]; then
-            # Print file in tree format
-            echo -e "${CYAN}${prefix}$(basename "$item")${NC}"
+# Check if the tree command is installed
+if ! command -v tree &> /dev/null; then
+    echo -e "${RED}The 'tree' command is not installed.${NC}"
+    echo -e "${CYAN}You can install it using one of the following commands based on your system:${NC}"
+    echo -e "  ${YELLOW}For Debian/Ubuntu:${NC} sudo apt install tree"
+    echo -e "  ${YELLOW}For RedHat/CentOS/Fedora:${NC} sudo yum install tree"
+    echo -e "  ${YELLOW}For macOS (with Homebrew):${NC} brew install tree"
+    echo -e "  ${YELLOW}For Arch Linux:${NC} sudo pacman -S tree"
+    exit 1
+fi
 
-            # Print the contents of the file
-            echo -e "${YELLOW}Contents of $(basename "$item"):${NC}"
-            cat "$item"
-            echo -e "${RED}------------------------${NC}"
-        fi
-    done
-}
+# Add the HIDE_FILE to the ignore list if provided
+if [[ -n "$HIDE_FILE" ]]; then
+    printignore+=("$HIDE_FILE")
+fi
 
-# Run the script starting from the current directory
-print_directory "." ""
+# Convert the ignore list to a format tree can use
+tree_ignore=$(printf " -I '%s'" "${printignore[@]}")
+
+# Print the directory tree using tree
+echo -e "${CYAN}Directory tree:${NC}"
+eval "tree -C $tree_ignore"
+
+# If the --tree option is not provided, print the file contents
+if [ "$PRINT_CONTENTS" = true ]; then
+    # Function to print file contents
+    print_file_contents() {
+        local dir="$1"
+        local prefix="$2"
+
+        # Iterate through all files in the directory
+        for item in "$dir"/*; do
+            # Check if it's a file and not in the ignore list
+            if [ -f "$item" ] && ! [[ "${printignore[*]}" =~ "$(basename "$item")" ]]; then
+                # Print file in tree format
+                echo -e "${GREEN}${prefix}├── $(basename "$item")${NC}"
+
+                # Print the contents of the file, indented properly
+                sed "s/^/${prefix}    /" "$item"
+            elif [ -d "$item" ] && ! [[ "$item" =~ components_converted|components_source ]]; then
+                # Recurse into subdirectories if present and not ignored
+                echo -e "${BLUE}${prefix}├── $(basename "$item")/${NC}"
+                print_file_contents "$item" "$prefix    "
+            fi
+        done
+    }
+
+    # Print file contents starting from the current directory
+    print_file_contents "." ""
+fi
