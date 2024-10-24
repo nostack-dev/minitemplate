@@ -1,0 +1,68 @@
+<!-- themecontrollerComponent.html -->
+<div id="themecontrollerComponent" class="dropdown">
+    <div id="themeButton" tabindex="0" role="button" class="btn">
+        Theme
+        <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+        </svg>
+    </div>
+    <ul id="themeDropdown" tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] shadow-2xl hidden">
+        <li>
+            <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dark" value="dark" />
+        </li>
+        <li>
+            <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Light" value="light" />
+        </li>
+        <li>
+            <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Cyberpunk" value="cyberpunk" />
+        </li>
+        <li>
+            <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business" />
+        </li>
+        <li>
+            <input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Aqua" value="aqua" />
+        </li>
+    </ul>
+    <script>
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const themeButton = document.getElementById('themeButton');
+                const themeDropdown = document.getElementById('themeDropdown');
+                const themeOptions = document.querySelectorAll('.theme-controller');
+
+                // Set initial theme from local storage or default to "Theme"
+                const savedTheme = localStorage.getItem('selectedTheme');
+                if (savedTheme) {
+                    document.body.setAttribute('data-theme', savedTheme);
+                    const selectedOption = Array.from(themeOptions).find(option => option.value === savedTheme);
+                    if (selectedOption) {
+                        themeButton.childNodes[0].textContent = selectedOption.getAttribute('aria-label');
+                        selectedOption.checked = true;
+                    }
+                }
+
+                // Toggle dropdown visibility when the button is clicked
+                themeButton.addEventListener('click', function() {
+                    themeDropdown.classList.toggle('hidden');
+                });
+
+                // Close the dropdown if clicked outside
+                document.addEventListener('click', function(event) {
+                    if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
+                        themeDropdown.classList.add('hidden');
+                    }
+                });
+
+                // Apply selected theme, update button label, save to local storage, and close dropdown
+                themeOptions.forEach(option => {
+                    option.addEventListener('change', function() {
+                        document.body.setAttribute('data-theme', this.value); // Change theme
+                        themeButton.childNodes[0].textContent = this.getAttribute('aria-label'); // Update button label
+                        localStorage.setItem('selectedTheme', this.value); // Save to local storage
+                        themeDropdown.classList.add('hidden'); // Close dropdown
+                    });
+                });
+            });
+        })();
+    </script>
+</div>
