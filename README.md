@@ -53,24 +53,24 @@ This will create a new folder `projects/myproject` with the default components a
 
 ## Step 2: Adding Components to Your Project
 
-MiniTemplate allows you to easily add components to your project using the `add.sh` script.
+MiniTemplate allows you to easily add components to your project using the `run_add.sh` script.
 
 ### List Available Components
 
-To list all available components, run the `add.sh` script without any arguments:
+To list all available components, run the `run_add.sh` script without any arguments:
 
 ```bash
-./scripts/add.sh
+./run_add.sh
 ```
 
 You will see a list of components from `components/default`, `components/custom`, and `components/converted`.
 
 ### Add Specific Components
 
-To add a specific component to your project, pass the component name as an argument to `add.sh`:
+To add a specific component to your project, pass the component name as an argument to `run_add.sh`:
 
 ```bash
-./scripts/add.sh button
+./run_add.sh button
 ```
 
 This will copy the `button.html` component into your project directory.
@@ -101,15 +101,15 @@ This will read all HTML files in the `source` directory and convert them into se
 
 ## Step 4: Generating the Static Site
 
-Once you have all the necessary components in place, you can generate the final `index.html` by running the `generate_site.sh` script.
+Once you have all the necessary components in place, you can generate the final `index.html` by running the `run_generate_site.sh` script.
 
 ### Generate the Static Site
 
 ```bash
-./scripts/generate_site.sh
+./run_generate_site.sh
 ```
 
-The script reads the main template (`template_default.html`) and replaces placeholders (like `{{header_default}}`) with the corresponding component files. The generated `index.html` file will be saved in the root of your project or the `public` directory.
+The script processes the main template (`template_default.html`), replacing placeholders (e.g., `{{header_default}}`) with the appropriate component files. The resulting `index.html` can be served directly on any static web host, such as GitHub Pages.
 
 ## Step 5: Testing the Setup
 
@@ -117,8 +117,9 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 ### Run the Tests
 
+navigate to the root of the project, then run:
 ```bash
-./tests/run_tests.sh
+cd ./tests && ./run_tests.sh
 ```
 
 This will execute the test suite found in the `tests/` directory and validate your project’s setup, components, and templates.
