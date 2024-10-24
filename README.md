@@ -111,7 +111,7 @@ Any template file or component HTML file can include other components using the 
 
 ### Example: Using Template Variables
 
-Here is an example of how `{{}}` placeholders are used within a template file:
+Here is an example of how `{{}}` placeholders are used within a template file (or any other Component):
 
 ```html
 <!DOCTYPE html>
