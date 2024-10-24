@@ -34,7 +34,7 @@ Ensure all the files and directories listed in the directory structure are prese
 
 This script will create a new project directory with default components and templates.
 
-```bash
+```console
 chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
@@ -98,7 +98,7 @@ MiniTemplate allows you to transform raw components from `components/source` (wh
 
 Navigate to the `scripts` directory and use the `convert_components.sh` script to convert all raw components:
 
-```bash
+```console
 cd ./scripts && ./convert_components.sh
 ```
 
@@ -167,7 +167,7 @@ You can run a suite of tests to ensure that your setup is working as expected.
 
 Navigate to the `tests` directory, then run:
 
-```bash
+```console
 cd ./tests && ./run_tests.sh
 ```
 
