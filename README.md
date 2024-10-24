@@ -23,7 +23,7 @@ This guide will walk you through setting up a MiniTemplate project, converting c
 
 ### Clone the repository
 
-```bash
+```console
 git clone https://github.com/nostack-dev/minitemplate.git
 cd minitemplate
 ```
@@ -48,7 +48,7 @@ myproject
 
 Then navigate to your created project:
 
-```bash
+```console
 cd ./projects/myproject
 ```
 
@@ -62,7 +62,7 @@ MiniTemplate allows you to easily add components to your project using the `run_
 
 To list all available components, run the `run_add.sh` script without any arguments inside your project directory:
 
-```bash
+```console
 ./run_add.sh
 ```
 
@@ -72,7 +72,7 @@ You will see a list of components from `components/default`, `components/custom`
 
 To add a specific component to your project, pass the component name as an argument to `run_add.sh`:
 
-```bash
+```console
 ./run_add.sh button
 ```
 
@@ -84,7 +84,7 @@ After adding a component, you can embed it in any template or component file usi
 
 You can also add all default components by running:
 
-```bash
+```console
 ./run_add.sh defaults
 ```
 
@@ -163,7 +163,7 @@ Once you have all the necessary components in place, you can generate the final 
 
 From your project directory, run:
 
-```bash
+```console
 ./run_generate_site.sh
 ```
 
@@ -171,7 +171,7 @@ The script processes the main template (`template_default.html`), replacing plac
 
 After generating the site, you can manually copy the `index.html` file to the `public` directory:
 
-```bash
+```console
 cp index.html ../../public/
 ```
 
