@@ -29,12 +29,12 @@ cd minitemplate
 
 Ensure all the files and directories listed in the directory structure are present before proceeding.
 
-### 2. Run `create_project.sh`
+### 2. Run `run_create_project.sh`
 
 This script will create a new project directory with default components and templates.
 
 ```bash
-cd ./scripts && ./create_project.sh && cd ..
+chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
 You will be prompted to provide a name for your project. Once done, the script will generate a new project directory under `projects/` with the necessary components and templates copied over.
