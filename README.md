@@ -104,7 +104,7 @@ cd ./scripts && ./convert_components.sh
 
 This will read all HTML files in the `source` directory and convert them into self-contained components, which will be placed in the `converted` directory.
 
-### Structure Comparison: Source vs Converted
+### Structure Comparison: Source (daisyUI HTML) vs Converted (self-contained MiniTemplate-Components)
 
 - **Source Component Example (Basic DaisyUI HTML):**
 
