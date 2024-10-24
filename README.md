@@ -153,7 +153,7 @@ At first glance, MiniTemplate components may seem like standard HTML, but their 
 - **Isolation of JavaScript:** Uses an immediately invoked function expression (IIFE) to prevent conflicts and enhance reliability.
 - **Local State Management:** Local state variables, like `isOpen`, can be utilized to manage component behavior within the function.
 
-This combination results in a powerful, scalable approach to web development without adding unnecessary complexity.
+This combination results in a powerful, scalable approach to web development without adding unnecessary complexity, along with the option to integrate state management tools.
 
 ## Step 4: Generating the Static Site
 
