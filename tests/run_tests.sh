@@ -131,6 +131,9 @@ echo -e "Total Tests Failed: ${RED}$failed${NC}"
 
 echo -e "\nAll tests finished."
 
+# Cleanup
+[[ "$(basename "$(pwd)")" == "tests" ]] && find . -type f ! -name 'test_*.sh' ! -name 'run_tests.sh' ! -name 'create_test.sh' -delete && find . -type d ! -name '.' -exec rm -rf {} +
+
 # Final exit based on failed tests
 if [ "$failed" -gt 0 ]; then
     exit 1  # Exit with failure if any tests failed
