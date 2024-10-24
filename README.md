@@ -100,7 +100,7 @@ Example:
         {{content_default}}
 
           <div class="my-4">
-               **Replace this line with your component, for example: `{{button}}`**
+               <!--Replace this line with your component, for example: **{{button}}** -->
          </div>
     </div>
 
