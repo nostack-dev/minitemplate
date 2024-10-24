@@ -34,7 +34,7 @@ Ensure all the files and directories listed in the directory structure are prese
 
 This script will create a new project directory with default components and templates.
 
-```bash
+```console
 chmod +x run_create_project.sh && ./run_create_project.sh
 ```
 
