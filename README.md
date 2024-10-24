@@ -132,6 +132,23 @@ This will read all HTML files in the `source` directory and convert them into se
 ### The converted Components Don’t Look Special or New—What Sets Them Apart?
 At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages. They utilize immediately invoked functions to isolate JavaScript within embedded scripts, preventing conflicts and enhancing reliability. The integration of inline Tailwind CSS through DaisyUI ensures that styles are modular and collision-free, promoting consistent design. Moreover, these components allow for local state management within the scripts, with the option to integrate a state manager, enhancing functionality and maintainability without adding unnecessary complexity. This combination results in a powerful, scalable approach to web development.
 
+```html
+<div id="alert_component"> <!-- Auto-generated ID -->
+  <div class="alert"> <!-- Collision-free DaisyUI style-classes -->
+    <span>Alert message here!</span>
+  </div>
+  <script>
+    (function() { // Isolation of JavaScript using an IIFE
+      let isOpen = true; // Local state variable for alert status
+      // Component-specific JavaScript
+      if (isOpen) {
+        console.log("Alert is open");
+      }
+    })();
+  </script>
+</div>
+ ```
+
 ## Step 4: Generating the Static Site
 
 Once you have all the necessary components in place, you can generate the final `index.html` by running the `run_generate_site.sh` script.
