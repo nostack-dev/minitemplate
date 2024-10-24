@@ -64,9 +64,9 @@ run_test() {
 
     # Execute the test script, capture the result
     if [ "$VERBOSE" = true ]; then
-        bash "$test_script" # Output everything in verbose mode
+        bash "$test_script"  # Output everything in verbose mode
     else
-        bash "$test_script > /dev/null 2>&1" # Suppress output in non-verbose mode
+        bash "$test_script" >/dev/null 2>&1  # Suppress output in non-verbose mode
     fi
 
     # Check the test result
