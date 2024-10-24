@@ -108,9 +108,24 @@ else
     echo "Error: run_add.sh not found in '$scripts_dir'."
 fi
 
-# Apply the theme (this is a placeholder, you can customize how to handle theme selection)
-echo "Setting theme to '$theme' in project..."
+# Copy run_serve.sh to the project directory
+run_serve_script="$scripts_dir/run_serve.sh"
+if [[ -f "$run_serve_script" ]]; then
+    cp "$run_serve_script" "$target_dir/"
+    echo "Copied run_serve.sh to '$target_dir'."
+else
+    echo "Error: run_serve.sh not found in '$scripts_dir'."
+fi
 
-# You can add logic here to insert the theme into the generated files
+# Insert the selected theme into the template_default.html file
+template_file="$target_dir/template_default.html"
+if [[ -f "$template_file" ]]; then
+    # Replace the data-theme attribute with the selected theme
+    sed -i "s/data-theme=\"\"/data-theme=\"$theme\"/g" "$template_file"
+    echo "Applied theme '$theme' to template_default.html."
+else
+    echo "Error: template_default.html not found in '$target_dir'."
+    exit 1
+fi
 
 echo "Project setup complete with theme '$theme' in directory '$base_dir/$project_name'."
