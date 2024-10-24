@@ -99,9 +99,9 @@ Example:
     <div id="content" class="flex-1 p-6">
         {{content_default}}
 
-        <div class="my-4">
-        <!-- Add your component here -->
-        </div>
+          <div class="my-4">
+               **Add your component here**
+         </div>
     </div>
 
     <footer class="p-4">
@@ -221,7 +221,7 @@ MiniTemplate’s components are modular, with **auto-generated IDs**, **scoped C
 <div id="button_default" class="btn" aria-label="Button Component">
     Click Me
     <script>
-        // Optional state management
+        // local state
         (() => {
             let clicked = false;
             document.getElementById('button_default').addEventListener('click', () => {
