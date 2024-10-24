@@ -216,7 +216,7 @@ This will read all HTML files in the `source` directory and convert them into se
 
 The converted components are self-contained and modular, allowing for easy reuse and consistent styling throughout your project. Each component includes a JavaScript block for additional behavior, making them more powerful compared to the basic DaisyUI HTML.
 
-### The Converted Components Don’t Look Special or New—What Sets Them Apart?
+## MiniTemplate-Components Don’t Look Special or New—What Sets Them Apart?
 
 At first glance, MiniTemplate components may seem like standard HTML, but their design offers distinct advantages:
 
