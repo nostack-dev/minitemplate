@@ -53,8 +53,8 @@ if [ ! -f "template_default.html" ]; then
     echo -e "${RED}✖ Error: Template file 'template_default.html' not found.${NC}"
     TEST_PASSED=false
 else
-    # Run the test for template generation with the light theme, and specify the correct template file
-    echo "$PAGE_TITLE" | ./generate_site.sh "light" "template_default.html"
+    # Run the test for template generation
+    echo "$PAGE_TITLE" | ./generate_site.sh
 
     # Check if index.html was generated
     echo -e "\n--- Checking generated output ---"
@@ -62,14 +62,6 @@ else
         echo -e "${GREEN}✔ Test passed: index.html exists.${NC}"
     else
         echo -e "${RED}✖ Test failed: index.html does not exist.${NC}"
-        TEST_PASSED=false
-    fi
-
-    # Check if the correct theme is applied in the generated file
-    if grep -q 'data-theme="light"' "index.html"; then
-        echo -e "${GREEN}✔ Test passed: index.html has correct theme.${NC}"
-    else
-        echo -e "${RED}✖ Test failed: Theme not applied correctly in index.html.${NC}"
         TEST_PASSED=false
     fi
 

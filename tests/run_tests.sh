@@ -66,7 +66,7 @@ run_test() {
     if [ "$VERBOSE" = true ]; then
         bash "$test_script" # Output everything in verbose mode
     else
-        bash "$test_script" > /dev/null 2>&1 # Suppress output in non-verbose mode
+        bash "$test_script > /dev/null 2>&1" # Suppress output in non-verbose mode
     fi
 
     # Check the test result
@@ -131,6 +131,9 @@ echo -e "Total Tests Failed: ${RED}$failed${NC}"
 
 echo -e "\nAll tests finished."
 
-# Cleanup: Remove any files copied or generated during the test that aren't test scripts.
-[[ "$(basename "$(pwd)")" == "tests" ]] && find . -type f ! -name 'test_*.sh' ! -name 'run_tests.sh' ! -name 'create_test.sh' -delete && find . -type d ! -name '.' -exec rm -rf {} +
-exit 0
+# Final exit based on failed tests
+if [ "$failed" -gt 0 ]; then
+    exit 1  # Exit with failure if any tests failed
+else
+    exit 0  # Exit with success if all tests passed
+fi
