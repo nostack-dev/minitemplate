@@ -1,5 +1,29 @@
 #!/bin/bash
 
+find_project_root() {
+    local dir="$(cd "${1:-$(pwd)}" && pwd)"  # Convert to absolute path
+    local root_files=("README.md" "LICENSE" "CONTRIBUTE.md" "CNAME")
+
+    while [[ "$dir" != "/" ]]; do
+        echo "Checking directory: $dir"  # Print current directory
+
+        for file in "${root_files[@]}"; do
+            if [[ -f "$dir/$file" ]]; then
+                echo "Project root found at: $dir"
+                return 0
+            fi
+        done
+
+        dir=$(dirname "$dir")  # Move one level up
+    done
+
+    echo "No project root found"
+    return 1
+}
+
+# Example usage
+find_project_root "$(dirname "${BASH_SOURCE[0]}")"
+
 # Get the directory of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
