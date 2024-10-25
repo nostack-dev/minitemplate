@@ -212,7 +212,7 @@ MiniTemplate provides built-in test scripts to verify the integrity and function
 
 Navigate to the root of the repository and run:
 ```bash
-cd  tests && run_tests.sh
+cd tests && run_tests.sh
 ```
 
 #### Example Output
