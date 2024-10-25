@@ -225,7 +225,7 @@ cd  tests && run_tests.sh
 ```
 
 
-## Additional information: MiniTemplate-Components structure:
+## MiniTemplate-Components:
 
 MiniTemplate’s components are modular, with **auto-generated IDs**, **scoped CSS**, and **collision-free JavaScript**. Here’s an example of how a component is structured, showcasing the best practices for performance and maintainability:
 
