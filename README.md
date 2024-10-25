@@ -206,12 +206,13 @@ To further optimize your MiniTemplate project for production, you can follow the
 
 By using PurgeCSS and enabling Tailwind JIT mode directly from the CDN, you can significantly reduce your CSS file size and boost your site's performance without needing any additional tools or setups.
 
-## Testing Your Site
+## Running Tests
 
 MiniTemplate provides built-in test scripts to verify the integrity and functionality of your site. Running the following command will initiate the test suite:
 
+Navigate to the root of the repository and run:
 ```bash
-bash run_tests.sh
+cd  tests && run_tests.sh
 ```
 
 #### Example Output
@@ -223,7 +224,8 @@ bash run_tests.sh
 ✔ All tests passed successfully.
 ```
 
-## Component Structure
+
+## Additional information: MiniTemplate-Components structure:
 
 MiniTemplate’s components are modular, with **auto-generated IDs**, **scoped CSS**, and **collision-free JavaScript**. Here’s an example of how a component is structured, showcasing the best practices for performance and maintainability:
 
