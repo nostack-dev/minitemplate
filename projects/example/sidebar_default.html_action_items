@@ -1,0 +1,180 @@
+<div id="sidebar_default" data-state="closed" class="bg-neutral w-64 h-full fixed top-0 left-0 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-10">
+    <!-- Sidebar Header -->
+    <div class="h-16 flex items-center justify-between">
+        <!-- Hamburger Icon (Always Visible) -->
+        <button class="toggleSidebarButton text-accent px-4" aria-label="Toggle Sidebar">
+            ☰
+        </button>
+        <button onclick="" aria-label="New" class="px-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent">
+                <path d="M12 19c4.418 0 8-3.582 8-8s-3.582-8-8-8S4 6.582 4 11a7.93 7.93 0 0 0 1.582 4.635l-1.39 3.483a1 1 0 0 0 1.266 1.266l3.483-1.39A7.93 7.93 0 0 0 12 19zm0-10v4m0 0v-4m-2 2h4"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation with Scrollable Container -->
+    <div class="flex-1 overflow-y-auto">
+        <nav class="p-4">
+            <!-- Actions Group -->
+            <details id="disclosure-actions" open>
+                <summary class="cursor-pointer font-semibold text-accent">Actions</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="button">Button</a></li>
+                    <li><a href="#" data-component="dropdown">Dropdown</a></li>
+                    <li><a href="#" data-component="modal">Modal</a></li>
+                    <li><a href="#" data-component="swap">Swap</a></li>
+                    <li><a href="#" data-component="themecontroller">Theme Controller</a></li>
+                </ul>
+            </details>
+
+            <!-- Data Display Group -->
+            <details id="disclosure-data-display" open>
+                <summary class="cursor-pointer font-semibold text-accent">Data Display</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="accordion">Accordion</a></li>
+                    <li><a href="#" data-component="avatar">Avatar</a></li>
+                    <li><a href="#" data-component="badge">Badge</a></li>
+                    <li><a href="#" data-component="card">Card</a></li>
+                    <li><a href="#" data-component="carousel">Carousel</a></li>
+                    <li><a href="#" data-component="chatbubble">Chat Bubble</a></li>
+                    <li><a href="#" data-component="collapse">Collapse</a></li>
+                    <li><a href="#" data-component="countdown">Countdown</a></li>
+                    <li><a href="#" data-component="diff">Diff</a></li>
+                    <li><a href="#" data-component="kbd">Kbd</a></li>
+                    <li><a href="#" data-component="stat">Stat</a></li>
+                    <li><a href="#" data-component="table">Table</a></li>
+                    <li><a href="#" data-component="timeline">Timeline</a></li>
+                </ul>
+            </details>
+
+            <!-- Navigation Group -->
+            <details id="disclosure-navigation" open>
+                <summary class="cursor-pointer font-semibold text-accent">Navigation</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="breadcrumbs">Breadcrumbs</a></li>
+                    <li><a href="#" data-component="bottomnavigation">Bottom Navigation</a></li>
+                    <li><a href="#" data-component="link">Link</a></li>
+                    <li><a href="#" data-component="menu">Menu</a></li>
+                    <li><a href="#" data-component="navbar">Navbar</a></li>
+                    <li><a href="#" data-component="pagination">Pagination</a></li>
+                    <li><a href="#" data-component="steps">Steps</a></li>
+                    <li><a href="#" data-component="tab">Tab</a></li>
+                </ul>
+            </details>
+
+            <!-- Feedback Group -->
+            <details id="disclosure-feedback" open>
+                <summary class="cursor-pointer font-semibold text-accent">Feedback</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="alert">Alert</a></li>
+                    <li><a href="#" data-component="loading">Loading</a></li>
+                    <li><a href="#" data-component="progress">Progress</a></li>
+                    <li><a href="#" data-component="radialprogress">Radial Progress</a></li>
+                    <li><a href="#" data-component="skeleton">Skeleton</a></li>
+                    <li><a href="#" data-component="toast">Toast</a></li>
+                    <li><a href="#" data-component="tooltip">Tooltip</a></li>
+                </ul>
+            </details>
+
+            <!-- Data Input Group -->
+            <details id="disclosure-data-input" open>
+                <summary class="cursor-pointer font-semibold text-accent">Data Input</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="checkbox">Checkbox</a></li>
+                    <li><a href="#" data-component="fileinput">File Input</a></li>
+                    <li><a href="#" data-component="radio">Radio</a></li>
+                    <li><a href="#" data-component="range">Range</a></li>
+                    <li><a href="#" data-component="rating">Rating</a></li>
+                    <li><a href="#" data-component="select">Select</a></li>
+                    <li><a href="#" data-component="textinput">Text Input</a></li>
+                    <li><a href="#" data-component="textarea">Textarea</a></li>
+                    <li><a href="#" data-component="toggle">Toggle</a></li>
+                </ul>
+            </details>
+
+            <!-- Layout Group -->
+            <details id="disclosure-layout" open>
+                <summary class="cursor-pointer font-semibold text-accent">Layout</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="artboard">Artboard</a></li>
+                    <li><a href="#" data-component="divider">Divider</a></li>
+                    <li><a href="#" data-component="drawer">Drawer</a></li>
+                    <li><a href="#" data-component="footer">Footer</a></li>
+                    <li><a href="#" data-component="hero">Hero</a></li>
+                    <li><a href="#" data-component="indicator">Indicator</a></li>
+                    <li><a href="#" data-component="joingroupitems">Join (Group Items)</a></li>
+                    <li><a href="#" data-component="mask">Mask</a></li>
+                    <li><a href="#" data-component="stack">Stack</a></li>
+                </ul>
+            </details>
+
+            <!-- Mockup Group -->
+            <details id="disclosure-mockup" open>
+                <summary class="cursor-pointer font-semibold text-accent">Mockup</summary>
+                <ul class="menu w-full pl-4">
+                    <li><a href="#" data-component="browser">Browser</a></li>
+                    <li><a href="#" data-component="code">Code</a></li>
+                    <li><a href="#" data-component="phone">Phone</a></li>
+                    <li><a href="#" data-component="window">Window</a></li>
+                </ul>
+            </details>
+        </nav>
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-4 h-5px flex items-center justify-center">
+        <p class="text-sm"></p>
+    </div>
+
+    <!-- Self-contained JavaScript for Sidebar Toggle and Breakpoint Detection -->
+    <script>
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebar = document.getElementById('sidebar_default');
+                const toggleButtons = document.querySelectorAll('.toggleSidebarButton');
+                const mainContainer = document.body;
+                const content = document.getElementById('content_default');
+                const contentHamburger = document.getElementById('contentHamburger');
+
+                function updateSidebarState() {
+                    if (window.innerWidth >= 768) {
+                        sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
+                        sidebar.classList.add('md:translate-x-0');
+                        sidebar.setAttribute('data-state', 'open');
+                        content.classList.add('md:ml-64');
+                        mainContainer.setAttribute('data-sidebar', 'open');
+                        contentHamburger.classList.add('hidden');
+                    } else {
+                        sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
+                        sidebar.setAttribute('data-state', 'closed');
+                        content.classList.remove('md:ml-64');
+                        mainContainer.setAttribute('data-sidebar', 'closed');
+                        contentHamburger.classList.remove('hidden');
+                    }
+                }
+
+                toggleButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const state = sidebar.getAttribute('data-state');
+                        if (state === 'open') {
+                            sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
+                            sidebar.setAttribute('data-state', 'closed');
+                            mainContainer.setAttribute('data-sidebar', 'closed');
+                            content.classList.remove('md:ml-64');
+                            contentHamburger.classList.remove('hidden');
+                        } else {
+                            sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
+                            sidebar.setAttribute('data-state', 'open');
+                            mainContainer.setAttribute('data-sidebar', 'open');
+                            content.classList.add('md:ml-64');
+                            contentHamburger.classList.add('hidden');
+                        }
+                    });
+                });
+
+                window.addEventListener('resize', updateSidebarState);
+                updateSidebarState();
+            });
+        })();
+    </script>
+</div>
