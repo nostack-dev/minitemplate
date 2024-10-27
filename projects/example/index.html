@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex flex-col min-h-screen" data-theme="aqua">
+<body class="flex flex-col min-h-screen" data-theme="default">
 
     <div id="sidebar">
         <div id="sidebar_default" data-state="closed" class="bg-neutral w-64 h-full fixed top-0 left-0 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-10">
@@ -30,7 +30,64 @@
     <!-- Sidebar Navigation -->
     <nav class="flex-1 p-4">
         <ul class="menu w-full">
-            <li>sidebar entry</li>
+            <!-- DaisyUI Components -->
+            <li><a href="accordion">Accordion</a></li>
+            <li><a href="alert">Alert</a></li>
+            <li><a href="artboard">Artboard</a></li>
+            <li><a href="avatar">Avatar</a></li>
+            <li><a href="badge">Badge</a></li>
+            <li><a href="bottomnavigation">Bottom Navigation</a></li>
+            <li><a href="breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="button">Button</a></li>
+            <li><a href="buttonnavigation">Button Navigation</a></li>
+            <li><a href="card">Card</a></li>
+            <li><a href="carousel">Carousel</a></li>
+            <li><a href="chatbubble">Chat Bubble</a></li>
+            <li><a href="checkbox">Checkbox</a></li>
+            <li><a href="code">Code</a></li>
+            <li><a href="collapse">Collapse</a></li>
+            <li><a href="countdown">Countdown</a></li>
+            <li><a href="datainput">Data Input</a></li>
+            <li><a href="diff">Diff</a></li>
+            <li><a href="divider">Divider</a></li>
+            <li><a href="drawer">Drawer</a></li>
+            <li><a href="dropdown">Dropdown</a></li>
+            <li><a href="fileinput">File Input</a></li>
+            <li><a href="footer">Footer</a></li>
+            <li><a href="hero">Hero</a></li>
+            <li><a href="indicator">Indicator</a></li>
+            <li><a href="joingroupitems">Join Group Items</a></li>
+            <li><a href="kbh">KBH</a></li>
+            <li><a href="link">Link</a></li>
+            <li><a href="loading">Loading</a></li>
+            <li><a href="mask">Mask</a></li>
+            <li><a href="menu">Menu</a></li>
+            <li><a href="modal">Modal</a></li>
+            <li><a href="navbar">Navbar</a></li>
+            <li><a href="navigation">Navigation</a></li>
+            <li><a href="pagination">Pagination</a></li>
+            <li><a href="phone">Phone</a></li>
+            <li><a href="progress">Progress</a></li>
+            <li><a href="radialprogress">Radial Progress</a></li>
+            <li><a href="radio">Radio</a></li>
+            <li><a href="range">Range</a></li>
+            <li><a href="rating">Rating</a></li>
+            <li><a href="select">Select</a></li>
+            <li><a href="skeleton">Skeleton</a></li>
+            <li><a href="stack">Stack</a></li>
+            <li><a href="stat">Stat</a></li>
+            <li><a href="steps">Steps</a></li>
+            <li><a href="swap">Swap</a></li>
+            <li><a href="tab">Tab</a></li>
+            <li><a href="table">Table</a></li>
+            <li><a href="textarea">Textarea</a></li>
+            <li><a href="textinput">Text Input</a></li>
+            <li><a href="themecontroller">Theme Controller</a></li>
+            <li><a href="timeline">Timeline</a></li>
+            <li><a href="toast">Toast</a></li>
+            <li><a href="toggle">Toggle</a></li>
+            <li><a href="tooltip">Tooltip</a></li>
+            <li><a href="window">Window</a></li>
         </ul>
     </nav>
 
@@ -44,29 +101,28 @@
         (function() {
             document.addEventListener('DOMContentLoaded', function() {
                 const sidebar = document.getElementById('sidebar_default');
-                const toggleButtons = document.querySelectorAll('.toggleSidebarButton'); // Targeting all hamburger icons
+                const toggleButtons = document.querySelectorAll('.toggleSidebarButton');
                 const mainContainer = document.body;
                 const content = document.getElementById('content_default');
-                const contentHamburger = document.getElementById('contentHamburger'); // The hamburger in the content header
+                const contentHamburger = document.getElementById('contentHamburger');
 
                 function updateSidebarState() {
-                    if (window.innerWidth >= 768) { // Medium screens and larger
+                    if (window.innerWidth >= 768) {
                         sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
                         sidebar.classList.add('md:translate-x-0');
                         sidebar.setAttribute('data-state', 'open');
                         content.classList.add('md:ml-64');
                         mainContainer.setAttribute('data-sidebar', 'open');
-                        contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
-                    } else { // Small screens (mobile)
+                        contentHamburger.classList.add('hidden');
+                    } else {
                         sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
                         sidebar.setAttribute('data-state', 'closed');
                         content.classList.remove('md:ml-64');
                         mainContainer.setAttribute('data-sidebar', 'closed');
-                        contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
+                        contentHamburger.classList.remove('hidden');
                     }
                 }
 
-                // Add event listener to buttons for toggling the sidebar
                 toggleButtons.forEach(button => {
                     button.addEventListener('click', function() {
                         const state = sidebar.getAttribute('data-state');
@@ -75,21 +131,18 @@
                             sidebar.setAttribute('data-state', 'closed');
                             mainContainer.setAttribute('data-sidebar', 'closed');
                             content.classList.remove('md:ml-64');
-                            contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
+                            contentHamburger.classList.remove('hidden');
                         } else {
                             sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
                             sidebar.setAttribute('data-state', 'open');
                             mainContainer.setAttribute('data-sidebar', 'open');
                             content.classList.add('md:ml-64');
-                            contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
+                            contentHamburger.classList.add('hidden');
                         }
                     });
                 });
 
-                // Detect window resize and apply sidebar state accordingly
                 window.addEventListener('resize', updateSidebarState);
-
-                // Set initial sidebar state based on screen size
                 updateSidebarState();
             });
         })();
