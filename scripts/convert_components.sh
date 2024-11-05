@@ -8,7 +8,7 @@ source_dir="$script_dir/../components/source"
 output_dir="$script_dir/../components/converted"
 custom_output_dir="$script_dir/../components/custom"
 
-# Create the components_source, components_converted, and components_custom directories if they don't exist
+# Create the necessary directories if they don't exist
 mkdir -p "$source_dir"
 mkdir -p "$output_dir"
 mkdir -p "$custom_output_dir"
@@ -21,13 +21,14 @@ if [[ -n "$2" ]]; then
   custom_html="$2"
 
   new_filename="${component_name}.html"
+  unique_id="component-${component_name}"
 
   # Wrap the provided custom HTML with <div> and <script> stub
   cat <<EOF > "$output_dir/$new_filename"
-<div id="${component_name}">
+<div id="${unique_id}">
   $custom_html
   <script>
-    (function() {
+    (() => {
       // Empty stub for immediate function
     })();
   </script>
@@ -52,14 +53,15 @@ for file in "${files_to_gather[@]}"; do
   if [[ -f "$source_dir/$file" ]]; then
     filename=$(basename "$file" .html)
     new_filename="${filename,,}.html"
+    unique_id="component-${filename,,}"
 
     # Wrap the content from the input file with <div> and <script> stub
     cat <<EOF > "$output_dir/$new_filename"
-<div id="${filename,,}">
+<div id="${unique_id}">
   $(cat "$source_dir/$file")
   <script>
-    (function() {
-      // Empty stub for immediate function
+    (() => {
+      // Component-specific logic here
     })();
   </script>
 </div>

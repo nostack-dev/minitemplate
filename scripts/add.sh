@@ -33,6 +33,7 @@ default_dir="$project_root/components/default"
 converted_dir="$project_root/components/converted"
 custom_dir="$project_root/components/custom"
 templates_dir="$project_root/templates"
+converted_templates_dir="$converted_dir/instantiable"  # Directory for instanciable <template/> components
 
 # Check if the default components directory exists
 if [ ! -d "$default_dir" ]; then
@@ -41,12 +42,11 @@ if [ ! -d "$default_dir" ]; then
 fi
 
 # Gather component lists
-converted_components=($(find "$converted_dir" -type f -name "*.html" | sed 's|.*/||' | sed 's/.html//'))
+converted_components=($(find "$converted_dir" -maxdepth 1 -type f -name "*.html" | sed 's|.*/||' | sed 's/.html//'))
 custom_components=($(find "$custom_dir" -type f -name "*.html" | sed 's|.*/||' | sed 's/.html//'))
 default_components=($(find "$default_dir" -type f -name "*.html" | sed 's|.*/||'))
-
-# Gather template list
 template_files=($(find "$templates_dir" -type f -name "*.html" | sed 's|.*/||'))
+converted_template_components=($(find "$converted_templates_dir" -type f -name "*_instance.html" | sed 's|.*/||' | sed 's/.html//'))
 
 # Function to display components in a side-by-side format
 display_components() {
@@ -70,10 +70,11 @@ if [ -z "$1" ]; then
     display_components "Available components (Custom)" "${custom_components[@]}"
     display_components "Available components (Default)" "${default_components[@]}"
     display_components "Available templates" "${template_files[@]}"
+    display_components "Available template components (Converted Instances)" "${converted_template_components[@]}"
 
     # Display usage at the end
-    echo -e "\nUsage: ./run_add.sh [defaults|component|template]"
-    echo "Example: ./run_add.sh defaults or ./run_add.sh button or ./run_add.sh template_default.html"
+    echo -e "\nUsage: ./run_add.sh [defaults|component|template|template component]"
+    echo "Example: ./run_add.sh defaults or ./run_add.sh button or ./run_add.sh template_default.html or ./run_add.sh accordion_instance"
     exit 1
 fi
 
@@ -135,6 +136,24 @@ if [[ " ${template_files[*]} " == *" $1 "* ]]; then
 
     cp "$template_file" ./
     echo "Copied template: $template_file to the current directory."
+    exit 0
+fi
+
+# Check if the argument is a converted template component
+if [[ " ${converted_template_components[*]} " == *" $1 "* ]]; then
+    template_component="$converted_templates_dir/${1}.html"
+
+    # Check if the component file already exists in the current directory
+    if [ -f "${1}.html" ]; then
+        read -p "${1}.html already exists. Override? (y/n): " choice
+        if [[ "$choice" != [Yy] ]]; then
+            echo "Skipping ${1}.html."
+            exit 0
+        fi
+    fi
+
+    cp "$template_component" ./
+    echo "Copied template component: $template_component to the current directory."
     exit 0
 fi
 

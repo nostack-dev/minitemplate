@@ -1,23 +1,24 @@
 <div id="sidebar_default" data-state="closed" class="bg-neutral w-64 h-full fixed top-0 left-0 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-10">
     <!-- Sidebar Header -->
-    <div class="h-16 flex items-center justify-between">
+    <div class="h-16 flex items-center justify-between px-4">
         <!-- Hamburger Icon (Always Visible) -->
-        <button class="toggleSidebarButton text-accent px-4" aria-label="Toggle Sidebar">
+        <button class="toggleSidebarButton text-accent" aria-label="Toggle Sidebar">
             ☰
         </button>
-        <button onclick="" aria-label="New" class="px-4">
+
+        <button onclick="" aria-label="New">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent">
                 <path d="M12 19c4.418 0 8-3.582 8-8s-3.582-8-8-8S4 6.582 4 11a7.93 7.93 0 0 0 1.582 4.635l-1.39 3.483a1 1 0 0 0 1.266 1.266l3.483-1.39A7.93 7.93 0 0 0 12 19zm0-10v4m0 0v-4m-2 2h4"/>
             </svg>
         </button>
     </div>
 
-    <!-- Sidebar Navigation with Scrollable Container -->
-    <div class="flex-1 overflow-y-auto">
-        <nav class="p-4">
-            <!-- Actions Group -->
-        </nav>
-    </div>
+    <!-- Sidebar Navigation -->
+    <nav class="flex-1 p-4">
+        <ul class="menu w-full">
+            <li>sidebar entry</li>
+        </ul>
+    </nav>
 
     <!-- Sidebar Footer -->
     <div class="p-4 h-5px flex items-center justify-center">
@@ -29,28 +30,29 @@
         (function() {
             document.addEventListener('DOMContentLoaded', function() {
                 const sidebar = document.getElementById('sidebar_default');
-                const toggleButtons = document.querySelectorAll('.toggleSidebarButton');
+                const toggleButtons = document.querySelectorAll('.toggleSidebarButton'); // Targeting all hamburger icons
                 const mainContainer = document.body;
                 const content = document.getElementById('content_default');
-                const contentHamburger = document.getElementById('contentHamburger');
+                const contentHamburger = document.getElementById('contentHamburger'); // The hamburger in the content header
 
                 function updateSidebarState() {
-                    if (window.innerWidth >= 768) {
+                    if (window.innerWidth >= 768) { // Medium screens and larger
                         sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
                         sidebar.classList.add('md:translate-x-0');
                         sidebar.setAttribute('data-state', 'open');
                         content.classList.add('md:ml-64');
                         mainContainer.setAttribute('data-sidebar', 'open');
-                        contentHamburger.classList.add('hidden');
-                    } else {
+                        contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
+                    } else { // Small screens (mobile)
                         sidebar.classList.add('-translate-x-full', 'md:-translate-x-64');
                         sidebar.setAttribute('data-state', 'closed');
                         content.classList.remove('md:ml-64');
                         mainContainer.setAttribute('data-sidebar', 'closed');
-                        contentHamburger.classList.remove('hidden');
+                        contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
                     }
                 }
 
+                // Add event listener to buttons for toggling the sidebar
                 toggleButtons.forEach(button => {
                     button.addEventListener('click', function() {
                         const state = sidebar.getAttribute('data-state');
@@ -59,18 +61,21 @@
                             sidebar.setAttribute('data-state', 'closed');
                             mainContainer.setAttribute('data-sidebar', 'closed');
                             content.classList.remove('md:ml-64');
-                            contentHamburger.classList.remove('hidden');
+                            contentHamburger.classList.remove('hidden'); // Show content hamburger when sidebar is collapsed
                         } else {
                             sidebar.classList.remove('-translate-x-full', 'md:-translate-x-64');
                             sidebar.setAttribute('data-state', 'open');
                             mainContainer.setAttribute('data-sidebar', 'open');
                             content.classList.add('md:ml-64');
-                            contentHamburger.classList.add('hidden');
+                            contentHamburger.classList.add('hidden'); // Hide content hamburger when sidebar is open
                         }
                     });
                 });
 
+                // Detect window resize and apply sidebar state accordingly
                 window.addEventListener('resize', updateSidebarState);
+
+                // Set initial sidebar state based on screen size
                 updateSidebarState();
             });
         })();

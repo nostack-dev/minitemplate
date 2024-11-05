@@ -117,6 +117,52 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     echo "$line" >> "$OUTPUT_FILE"
 done < "$TEMPLATE_FILE"
 
+# Add JavaScript for template instantiation at the end of the output file
+cat << EOF >> "$OUTPUT_FILE" 
+<script>
+const instantiatedElements = []; // Array to keep track of instantiated elements
+
+window.instantiate = function(templateId, insertLocationId) {
+    const template = document.getElementById(templateId);
+    if (template) {
+        const clone = document.importNode(template.content, true);
+        const insertLocation = document.getElementById(insertLocationId);
+        if (insertLocation) {
+            const instantiatedElement = document.createElement('div'); // Create a wrapper for the instance
+            instantiatedElement.appendChild(clone); // Append the cloned template content to the wrapper
+            insertLocation.appendChild(instantiatedElement); // Append the wrapper to the insert location
+            
+            // Store the reference of the instantiated element
+            instantiatedElements.push({ templateId, insertLocationId, element: instantiatedElement });
+        } else {
+            console.warn('Insert location with ID "' + insertLocationId + '" not found.');
+        }
+    } else {
+        console.error('Template with ID "' + templateId + '" not found.');
+    }
+};
+
+window.uninstantiate = function(templateId, insertLocationId) {
+    // Find the index of the instantiated element that matches the parameters
+    const index = instantiatedElements.findIndex(inst => inst.templateId === templateId && inst.insertLocationId === insertLocationId);
+
+    if (index !== -1) {
+        const { element } = instantiatedElements[index];
+        const insertLocation = document.getElementById(insertLocationId);
+        
+        if (insertLocation) {
+            insertLocation.removeChild(element); // Remove the element from the insert location
+            instantiatedElements.splice(index, 1); // Remove from the tracking array
+        } else {
+            console.error('Insert location with ID "' + insertLocationId + '" not found.');
+        }
+    } else {
+        console.warn('No instantiated element found for template ID "' + templateId + '" and insert location ID "' + insertLocationId + '".');
+    }
+};
+</script>
+EOF
+
 # Check for any missing components
 if [[ ${#missing_components[@]} -gt 0 ]]; then
     echo "The following components were not found and left unchanged:"
