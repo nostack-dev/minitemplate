@@ -65,7 +65,15 @@ display_components() {
 }
 
 # Check if a component name is passed as a parameter
-if [ -z "$1" ]; then
+override_all=false
+for arg in "$@"; do
+    if [[ "$arg" == "--override-all" ]]; then
+        override_all=true
+        break
+    fi
+done
+
+if [ -z "$1" ] && ! $override_all; then
     display_components "Available components (Converted)" "${converted_components[@]}"
     display_components "Available components (Custom)" "${custom_components[@]}"
     display_components "Available components (Default)" "${default_components[@]}"
@@ -73,10 +81,57 @@ if [ -z "$1" ]; then
     display_components "Available template components (Converted Instances)" "${converted_template_components[@]}"
 
     # Display usage at the end
-    echo -e "\nUsage: ./run_add.sh [defaults|component|template|template component]"
-    echo "Example: ./run_add.sh defaults or ./run_add.sh button or ./run_add.sh template_default.html or ./run_add.sh accordion_instance"
+    echo -e "\nUsage: ./run_add.sh [defaults|all|component|template|template component] [--override-all]"
+    echo "Example: ./run_add.sh defaults or ./run_add.sh all or ./run_add.sh button or ./run_add.sh template_default.html or ./run_add.sh accordion_instance"
     exit 1
 fi
+
+# Handle all parameter
+if [ "$1" == "all" ]; then
+    echo -e "\n--- Copying All Converted Template Components and Non-Instance Components ---"
+
+    # Copy all non-instantiable components from the converted directory
+    for file in "$converted_dir"/*.html; do
+        filename=$(basename "$file")
+
+        # Check if the file already exists in the current directory
+        if [ -f "$filename" ]; then
+            if ! $override_all; then
+                read -p "$filename already exists. Override? (y/n): " choice
+                if [[ "$choice" != [Yy] ]]; then
+                    echo "Skipping $filename."
+                    continue
+                fi
+            fi
+        fi
+
+        cp "$file" ./  # Copy each file to the current directory
+        echo "Copied $filename to the current directory."
+    done
+
+    # Now copy all instantiable template components
+    for file in "$converted_templates_dir"/*.html; do
+        filename=$(basename "$file")
+
+        # Check if the file already exists in the current directory
+        if [ -f "$filename" ]; then
+            if ! $override_all; then
+                read -p "$filename already exists. Override? (y/n): " choice
+                if [[ "$choice" != [Yy] ]]; then
+                    echo "Skipping $filename."
+                    continue
+                fi
+            fi
+        fi
+
+        cp "$file" ./  # Copy each file to the current directory
+        echo "Copied $filename to the current directory."
+    done
+
+    exit 0
+fi
+
+# (The rest of your script remains unchanged)
 
 # Handle defaults parameter
 if [ "$1" == "defaults" ]; then
@@ -86,14 +141,16 @@ if [ "$1" == "defaults" ]; then
 
         # Check if the file already exists in the current directory
         if [ -f "$filename" ]; then
-            read -p "$filename already exists. Override? (y/n): " choice
-            if [[ "$choice" != [Yy] ]]; then
-                echo "Skipping $filename."
-                continue
+            if ! $override_all; then
+                read -p "$filename already exists. Override? (y/n): " choice
+                if [[ "$choice" != [Yy] ]]; then
+                    echo "Skipping $filename."
+                    continue
+                fi
             fi
         fi
 
-        cp "$file" ./
+        cp "$file" ./ 
         echo "Copied $filename to the current directory."
     done
 
@@ -103,15 +160,20 @@ if [ "$1" == "defaults" ]; then
     if [ -f "$template_file" ]; then
         # Check if the template file already exists in the current directory
         if [ -f "template_default.html" ]; then
-            read -p "template_default.html already exists. Override? (y/n): " choice
-            if [[ "$choice" != [Yy] ]]; then
-                echo "Skipping template_default.html."
+            if ! $override_all; then
+                read -p "template_default.html already exists. Override? (y/n): " choice
+                if [[ "$choice" != [Yy] ]]; then
+                    echo "Skipping template_default.html."
+                else
+                    cp "$template_file" ./ 
+                    echo "Copied template_default.html to the current directory."
+                fi
             else
-                cp "$template_file" ./
+                cp "$template_file" ./ 
                 echo "Copied template_default.html to the current directory."
             fi
         else
-            cp "$template_file" ./
+            cp "$template_file" ./ 
             echo "Copied template_default.html to the current directory."
         fi
     else
@@ -127,14 +189,16 @@ if [[ " ${template_files[*]} " == *" $1 "* ]]; then
 
     # Check if the template file already exists in the current directory
     if [ -f "$1" ]; then
-        read -p "$1 already exists. Override? (y/n): " choice
-        if [[ "$choice" != [Yy] ]]; then
-            echo "Skipping $1."
-            exit 0
+        if ! $override_all; then
+            read -p "$1 already exists. Override? (y/n): " choice
+            if [[ "$choice" != [Yy] ]]; then
+                echo "Skipping $1."
+                exit 0
+            fi
         fi
     fi
 
-    cp "$template_file" ./
+    cp "$template_file" ./ 
     echo "Copied template: $template_file to the current directory."
     exit 0
 fi
@@ -145,14 +209,16 @@ if [[ " ${converted_template_components[*]} " == *" $1 "* ]]; then
 
     # Check if the component file already exists in the current directory
     if [ -f "${1}.html" ]; then
-        read -p "${1}.html already exists. Override? (y/n): " choice
-        if [[ "$choice" != [Yy] ]]; then
-            echo "Skipping ${1}.html."
-            exit 0
+        if ! $override_all; then
+            read -p "${1}.html already exists. Override? (y/n): " choice
+            if [[ "$choice" != [Yy] ]]; then
+                echo "Skipping ${1}.html."
+                exit 0
+            fi
         fi
     fi
 
-    cp "$template_component" ./
+    cp "$template_component" ./ 
     echo "Copied template component: $template_component to the current directory."
     exit 0
 fi
@@ -170,14 +236,16 @@ if [ -f "$component" ]; then
 
     # Check if the component file already exists in the current directory
     if [ -f "${1}.html" ]; then
-        read -p "${1}.html already exists. Override? (y/n): " choice
-        if [[ "$choice" != [Yy] ]]; then
-            echo "Skipping ${1}.html."
-            exit 0
+        if ! $override_all; then
+            read -p "${1}.html already exists. Override? (y/n): " choice
+            if [[ "$choice" != [Yy] ]]; then
+                echo "Skipping ${1}.html."
+                exit 0
+            fi
         fi
     fi
 
-    cp "$component" ./
+    cp "$component" ./ 
     echo "Copied $component to the current directory."
 else
     echo "Component '$1' not found!"
