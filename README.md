@@ -1,5 +1,5 @@
 
-# ✍️ MiniTemplate - Fast Static Site Generator with CDN
+# ✍️ MiniTemplate - Fast Static Site Generator
 
 MiniTemplate is a powerful, fast, and CDN-based static site generator designed to help developers build high-performance, modular websites. **No complex setup** or **local dependencies** are required—all you need is an internet connection, and you're ready to build.
 
