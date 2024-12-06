@@ -1,0 +1,60 @@
+License Agreement for "Deterministic, Recursive Waveform Reconstruction and Proportional Mapping"
+
+License Holder: Christian Heinrich Hohlfeld
+Address: Engelsteig 14D, D-78467, Konstanz, Germany
+Email: chris.hohlfeld@gmail.com
+ORCID: https://orcid.org/0009-0003-6634-9045
+Date of Creation: December 6, 2024
+Digital Object Identifier (DOI): 10.5281/zenodo.14288663
+Full Copyright License (Worldwide Enforcement)
+1. Ownership of Intellectual Property
+
+This document and all associated materials (hereinafter referred to as "Work") are the sole intellectual property of Christian Heinrich Hohlfeld. All original concepts, insights, theories, algorithms, software, and intellectual combinations presented in the Work are exclusively created by the author. No third party or external individual or entity holds any intellectual property rights related to this Work.
+2. Use of Artificial Intelligence
+
+This Work has involved the use of Artificial Intelligence (AI) tools such as Google Gemini and OpenAI ChatGPT. These AI tools were used strictly for:
+
+    Verification of Hypotheses through mathematical proof generation.
+    Text Generation for the structure, wording, and presentation of content.
+
+The author asserts that all conclusions, insights, and intellectual findings are entirely his own, and the AI tools were used solely as supplementary resources to aid in verifying the author's hypotheses and improving text fluency. The AI systems did not contribute any original ideas or intellectual conclusions to this Work.
+3. License Grant
+
+No rights to use, reproduce, modify, distribute, publish, display, adapt, or create derivative works based on this Work are granted to any party without explicit, prior, and written permission from Christian Heinrich Hohlfeld.
+
+Unauthorized use, reproduction, or distribution of this Work or any part thereof, including but not limited to extraction of algorithms, software, or methods, is strictly prohibited.
+4. Restrictions and Prohibitions
+
+    No Sublicensing: The licensee is not allowed to transfer rights under this license to third parties or sublicense the Work in any manner.
+    No Reverse Engineering: The licensee is prohibited from reverse engineering, decompiling, or disassembling any software or algorithms included in the Work.
+    No Patent Applications: The licensee is expressly prohibited from using the Work, in whole or in part, for the purpose of filing patent applications or otherwise claiming intellectual property rights over the author's original contributions.
+
+5. Legal Protection and Enforcement
+
+This Work is protected under international copyright law, including the Berne Convention, and any applicable national intellectual property laws.
+
+Any infringement of rights related to this Work will be pursued to the fullest extent of the law, including civil and/or criminal penalties.
+
+This license is legally enforceable in all jurisdictions worldwide, and Christian Heinrich Hohlfeld reserves the right to take legal action against any entity or individual violating the terms of this license. The jurisdiction for all disputes shall be Konstanz, Germany.
+6. Attribution and Citation
+
+If permission for use is granted, appropriate attribution must be given to Christian Heinrich Hohlfeld as the sole author and copyright holder. Citation must include the DOI: 10.5281/zenodo.14288663 and ORCID: https://orcid.org/0009-0003-6634-9045.
+
+The use of this Work for any academic, research, or professional purpose must explicitly cite the author as the original creator.
+7. Moral Rights
+
+The author retains all moral rights in the Work, including the right to attribution, the right to the integrity of the Work, and the right to object to any derogatory treatment of the Work that may prejudice the author's honor or reputation.
+8. Disclaimer
+
+    No Warranty: The author does not provide any warranty, express or implied, regarding the accuracy, completeness, merchantability, or fitness for a particular purpose of this Work.
+    Use of the Work: Any use of the content is at the user's own risk. The author shall not be liable for any consequences, damages, or liabilities resulting from its use.
+
+9. Severability
+
+If any provision of this license is held to be invalid or unenforceable, such provision shall be struck from this license and the remaining provisions shall remain in full force and effect.
+10. Modification
+
+This license may not be modified, except with the written consent of Christian Heinrich Hohlfeld.
+
+Christian Heinrich Hohlfeld
+Date: December 6, 2024
