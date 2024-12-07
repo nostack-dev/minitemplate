@@ -1,60 +1,66 @@
-License Agreement for "Deterministic, Recursive Waveform Reconstruction and Proportional Mapping"
+Copyright and Intellectual Property Protection Document for Christian Heinrich Hohlfeld
+Document Title
+"Deterministic, Recursive Waveform Reconstruction and Proportional Mapping: Rigorous Derivation, Noise Definition, and 100% Deterministic Stability"
 
-License Holder: Christian Heinrich Hohlfeld
+Copyright Holder
+Christian Heinrich Hohlfeld
 Address: Engelsteig 14D, D-78467, Konstanz, Germany
 Email: chris.hohlfeld@gmail.com
 ORCID: https://orcid.org/0009-0003-6634-9045
-Date of Creation: December 6, 2024
-Digital Object Identifier (DOI): 10.5281/zenodo.14288663
-Full Copyright License (Worldwide Enforcement)
+
+Creation Date
+December 6, 2024
+
+DOI
+DOI: 10.5281/zenodo.14288663
+
 1. Ownership of Intellectual Property
+This document and its contents, including all related materials (hereinafter referred to as the "Work"), are the exclusive intellectual property of Christian Heinrich Hohlfeld. All original concepts, theories, methods, mathematical formulas, and insights contained in this Work are created and owned solely by the author. No third party or entity has any rights, title, or interest in this Work, unless explicitly granted by the author in writing.
 
-This document and all associated materials (hereinafter referred to as "Work") are the sole intellectual property of Christian Heinrich Hohlfeld. All original concepts, insights, theories, algorithms, software, and intellectual combinations presented in the Work are exclusively created by the author. No third party or external individual or entity holds any intellectual property rights related to this Work.
+All rights reserved. Any use of this Work without written consent from Christian Heinrich Hohlfeld is strictly prohibited. Unauthorized copying, distribution, modification, or creation of derivative works is a violation of copyright law and will be legally pursued.
+
 2. Use of Artificial Intelligence
+This Work has utilized Artificial Intelligence (AI) tools, including Google Gemini and OpenAI ChatGPT, solely for:
 
-This Work has involved the use of Artificial Intelligence (AI) tools such as Google Gemini and OpenAI ChatGPT. These AI tools were used strictly for:
+Verification of Hypotheses: The AI tools were used to help generate and verify mathematical proofs and hypotheses.
+Text Generation: The AI tools assisted in drafting sections of the document, improving its structure, fluency, and presentation.
+The author affirms that all intellectual findings, conclusions, and innovations presented in this Work are exclusively his own, and the AI tools were used as supportive resources and not contributors of original intellectual property.
 
-    Verification of Hypotheses through mathematical proof generation.
-    Text Generation for the structure, wording, and presentation of content.
+3. License Grant and Permitted Uses
+This Work is licensed under a restrictive license, and no rights to use, reproduce, modify, distribute, or create derivative works are granted to any individual or entity except under the following conditions:
 
-The author asserts that all conclusions, insights, and intellectual findings are entirely his own, and the AI tools were used solely as supplementary resources to aid in verifying the author's hypotheses and improving text fluency. The AI systems did not contribute any original ideas or intellectual conclusions to this Work.
-3. License Grant
+Non-Commercial Use: For academic, research, and educational purposes, individuals may download, read, and reference this Work provided proper attribution is given to the author.
+Commercial Use: Any use of this Work for commercial purposes (e.g., profit-driven redistribution, adaptation, or integration into a commercial product) requires explicit written consent from Christian Heinrich Hohlfeld.
+Derivatives: The creation of derivative works or modifications to the content is strictly prohibited unless prior consent is obtained in writing.
+The rights granted here do not extend to any third-party tools, data, or other content referenced in the Work, unless specifically permitted.
 
-No rights to use, reproduce, modify, distribute, publish, display, adapt, or create derivative works based on this Work are granted to any party without explicit, prior, and written permission from Christian Heinrich Hohlfeld.
+4. Legal Protection and Enforcement
+This Work is protected under United States and European Union copyright law, as well as the copyright laws of Germany and other applicable national and international intellectual property laws. Any infringement of these rights will be pursued vigorously under the full extent of applicable law, including both civil and criminal penalties.
 
-Unauthorized use, reproduction, or distribution of this Work or any part thereof, including but not limited to extraction of algorithms, software, or methods, is strictly prohibited.
-4. Restrictions and Prohibitions
+This license is legally enforceable worldwide, and Christian Heinrich Hohlfeld reserves the right to pursue legal action, including injunctions, damages, and criminal penalties, against any individual or entity violating the terms set forth in this document.
 
-    No Sublicensing: The licensee is not allowed to transfer rights under this license to third parties or sublicense the Work in any manner.
-    No Reverse Engineering: The licensee is prohibited from reverse engineering, decompiling, or disassembling any software or algorithms included in the Work.
-    No Patent Applications: The licensee is expressly prohibited from using the Work, in whole or in part, for the purpose of filing patent applications or otherwise claiming intellectual property rights over the author's original contributions.
+5. Attribution and Citation
+If this Work is used in any way permitted by the license, appropriate attribution must be provided, including the following citation:
 
-5. Legal Protection and Enforcement
+Full Citation:
+Christian Heinrich Hohlfeld, "Deterministic, Recursive Waveform Reconstruction and Proportional Mapping: Rigorous Derivation, Noise Definition, and 100% Deterministic Stability," Zenodo, 2024. DOI: 10.5281/zenodo.14288663. ORCID: https://orcid.org/0009-0003-6634-9045.
+This attribution must be included in any instance of direct usage (e.g., reproduction, publication, or display) or indirect usage (e.g., citation, referencing, and academic papers).
 
-This Work is protected under international copyright law, including the Berne Convention, and any applicable national intellectual property laws.
+6. Disclaimer
+The Work is provided "as is", without any warranties, express or implied. The author does not guarantee the accuracy, completeness, or reliability of the information contained in this Work, nor does he accept any liability for any errors or omissions.
 
-Any infringement of rights related to this Work will be pursued to the fullest extent of the law, including civil and/or criminal penalties.
+No Warranty: The author makes no representations or warranties of any kind regarding the Work’s accuracy, completeness, or fitness for any particular purpose.
+Use at Your Own Risk: Any use or application of this Work is solely at the user's own risk. The author will not be held liable for any damages, losses, or negative consequences resulting from the use of this Work.
+7. Modification
+This license and its terms may not be modified or amended without explicit, written consent from Christian Heinrich Hohlfeld. Any attempt to alter the terms without permission will result in a breach of contract and possible legal action.
 
-This license is legally enforceable in all jurisdictions worldwide, and Christian Heinrich Hohlfeld reserves the right to take legal action against any entity or individual violating the terms of this license. The jurisdiction for all disputes shall be Konstanz, Germany.
-6. Attribution and Citation
+8. Legal Jurisdiction
+This agreement shall be governed by and construed in accordance with the laws of Germany, with exclusive jurisdiction granted to the courts of Konstanz, Germany. Any legal disputes arising from the use or infringement of the Work shall be settled in those courts.
 
-If permission for use is granted, appropriate attribution must be given to Christian Heinrich Hohlfeld as the sole author and copyright holder. Citation must include the DOI: 10.5281/zenodo.14288663 and ORCID: https://orcid.org/0009-0003-6634-9045.
+9. Release and Upload Details
+This Work is stored on Zenodo and is made publicly available under the terms outlined in this document.
 
-The use of this Work for any academic, research, or professional purpose must explicitly cite the author as the original creator.
-7. Moral Rights
-
-The author retains all moral rights in the Work, including the right to attribution, the right to the integrity of the Work, and the right to object to any derogatory treatment of the Work that may prejudice the author's honor or reputation.
-8. Disclaimer
-
-    No Warranty: The author does not provide any warranty, express or implied, regarding the accuracy, completeness, merchantability, or fitness for a particular purpose of this Work.
-    Use of the Work: Any use of the content is at the user's own risk. The author shall not be liable for any consequences, damages, or liabilities resulting from its use.
-
-9. Severability
-
-If any provision of this license is held to be invalid or unenforceable, such provision shall be struck from this license and the remaining provisions shall remain in full force and effect.
-10. Modification
-
-This license may not be modified, except with the written consent of Christian Heinrich Hohlfeld.
-
-Christian Heinrich Hohlfeld
-Date: December 6, 2024
+Zenodo Record: https://zenodo.org/record/14288663
+DOI: 10.5281/zenodo.14288663
+Signature and Legal Acknowledgment
+By releasing this Work, the author affirms their understanding and agreement to the terms outlined in this document. As this is a legal agreement, the Work is protected globally under the terms specified above.
